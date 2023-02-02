@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@6.x/css/materialdesignicons.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+
+    <link href="./style.css" rel="stylesheet">
+
+    <title>Controle de Orçamento</title>
+</head>
+<body>
+    <div id="app">
+        <v-app>
+            <v-main>
+                <v-container>
+                    <v-row>
+                        <v-col cols="12">
+                            <v-text-field
+                                v-model="description"
+                                id="description"
+                                name="description"
+                                label="Descrição"
+                                type="text"
+                            >
+                            </v-text-field>
+
+                            <v-text-field
+                                v-model="amount"
+                                id="amount"
+                                name="amount"
+                                label="Valor"
+                                type="number"
+                                prefix="R$"
+                            >
+                            </v-text-field>
+
+                            <v-date-picker
+                                v-model="datePicker"
+                                type="month"
+                            >
+                            </v-date-picker>
+
+                            <v-radio-group
+                                v-model="typeBudget"
+                                column
+                            >
+                                <v-radio
+                                    label="Ganho"
+                                    color="success"
+                                    value="gain"
+                                >
+                                </v-radio>
+
+                                <v-radio
+                                    label="Despesa"
+                                    color="error"
+                                    value="cost"
+                                >
+                                </v-radio>
+                            </v-radio-group>
+
+                            <v-btn
+                                color="primary"
+                                :disabled="disabledButton()"
+                                @click="registerBudget()"
+                            >
+                                Registrar
+                            </v-btn>
+
+                            <div class="d-flex align-center justify-space-between mt-12">
+                                <div>
+                                    <strong>Total Ganhos</strong>
+
+                                    <p>R$ {{ calculateGains() }}</p>
+                                </div>
+
+                                <div>
+                                    <strong>Fechamento do Mês</strong>
+
+                                    <p>R$ {{ calculateAmountMonth() }}</p>
+                                </div>
+
+                                <div>
+                                    <strong>Total Despesas</strong>
+
+                                    <p>R$ {{ calculateCosts() }}</p>
+                                </div>
+                            </div>
+
+                            <v-card
+                                class="mt-5"
+                                :class="item.typeBudget === 'gain' ? 'card__gain' : 'card__cost'"
+                                :style="item.typeBudget === 'gain' ? 'border: 1px solid green;' : 'border: 1px solid red;'"
+                                v-for="item in budgetItems"
+                            >
+                                <v-card-title>{{ item.date }}</v-card-title>
+
+                                <v-card-text class="card__text">
+                                    <p>{{ item.description }}</p>
+
+                                    <p class="card__text__amount">{{ item.typeBudget === 'gain' ? '+' : '-' }} R${{ item.amount }}</p>
+                                </v-card-text>
+
+                                <v-card-actions>
+                                    <v-btn icon>
+                                        <v-icon>
+                                            mdi-pencil
+                                        </v-icon>
+                                    </v-btn>
+
+                                    <v-btn icon @click="openDeleteModal(item.id)">
+                                        <v-icon>
+                                            mdi-trash-can
+                                        </v-icon>
+                                    </v-btn>
+                                </v-card-actions>
+                            </v-card>
+                        </v-col>
+
+                        <v-dialog
+                            v-model="deleteDialog.isOpen"
+                            persistent
+                            max-width="290"
+                        >
+                            <v-card>
+                                <v-card-title class="text-h5">
+                                    Atenção
+                                </v-card-title>
+
+                                <v-card-text>
+                                    Realmente deseja excluir esse registro?
+                                </v-card-text>
+
+                                <v-card-actions>
+
+                                    <v-spacer></v-spacer>
+
+                                    <v-btn
+                                        color="red darken-1"
+                                        text
+                                        @click="closeDeleteModal()"
+                                    >
+                                        Cancelar
+                                    </v-btn>
+
+                                    <v-btn
+                                        color="green darken-1"
+                                        text
+                                        @click="removeItemFromBudget()"
+                                    >
+                                        Excluir
+                                    </v-btn>
+                                </v-card-actions>
+                            </v-card>
+                        </v-dialog>
+                    </v-row>
+                </v-container>
+            </v-main>
+        </v-app>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+
+    <script src="./script.js"></script>
+</body>
+</html>

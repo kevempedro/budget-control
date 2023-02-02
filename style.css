@@ -1,0 +1,21 @@
+.v-picker {
+    border: 1px solid black;
+}
+
+.v-radio {
+    width: max-content;
+}
+
+.card__gain .v-card__text p,
+.card__cost .v-card__text p {
+    margin: 0;
+    padding: 0;
+}
+
+.card__gain .card__text .card__text__amount {
+    color: green;
+}
+
+.card__cost .card__text .card__text__amount {
+    color: red;
+}
