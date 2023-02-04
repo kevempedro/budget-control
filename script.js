@@ -9,8 +9,25 @@ new Vue({
             amount: null,
             typeBudget: 'gain',
             datePicker: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
-            budgetItems: JSON.parse(localStorage.getItem('budgetItems')) || []
+            budgetItems: JSON.parse(localStorage.getItem('budgetItems')) || [],
+            typeBudgetFilter: '',
+            datePickerFilter: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
+            descriptionFilter: ''
         };
+    },
+
+    watch: {
+        typeBudgetFilter() {
+            this.filterBudgetItems();
+        },
+
+        datePickerFilter() {
+            this.filterBudgetItems();
+        },
+
+        descriptionFilter() {
+            this.filterBudgetItems();
+        }
     },
 
     methods: {
@@ -35,7 +52,7 @@ new Vue({
         calculateGains() {
             let total = 0;
 
-            this.budgetItems.forEach((item) => {
+            this.filterBudgetItems().forEach((item) => {
                 if (item.typeBudget === 'gain') {
                     total += Number(item.amount);
                 }
@@ -47,7 +64,7 @@ new Vue({
         calculateCosts() {
             let total = 0;
 
-            this.budgetItems.forEach((item) => {
+            this.filterBudgetItems().forEach((item) => {
                 if (item.typeBudget === 'cost') {
                     total += Number(item.amount);
                 }
@@ -59,7 +76,7 @@ new Vue({
         calculateAmountMonth() {
             let total = 0;
 
-            this.budgetItems.forEach((item) => {
+            this.filterBudgetItems().forEach((item) => {
                 if (item.typeBudget === 'gain') {
                     total += Number(item.amount);
                 }
@@ -101,5 +118,28 @@ new Vue({
 
             this.closeDeleteModal();
         },
+
+        clearFilter() {
+            this.typeBudgetFilter = '',
+            this.datePickerFilter = (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
+            this.descriptionFilter = ''
+        },
+
+        filterBudgetItems() {
+            let budgetItemsFiltered = this.budgetItems;
+
+            const datePickerFilterSplited = this.datePickerFilter.split('-');
+            budgetItemsFiltered = this.budgetItems.filter(item => item.date === `${datePickerFilterSplited[1]}/${datePickerFilterSplited[0]}`);
+
+            if (this.typeBudgetFilter) {
+                budgetItemsFiltered = budgetItemsFiltered.filter(item => item.typeBudget === this.typeBudgetFilter);
+            }
+
+            if (this.descriptionFilter) {
+                budgetItemsFiltered = budgetItemsFiltered.filter(item => item.description.toLowerCase().includes(this.descriptionFilter.toLowerCase()));
+            }
+
+            return budgetItemsFiltered;
+        }
     }
 });

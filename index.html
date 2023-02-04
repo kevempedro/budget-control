@@ -19,9 +19,11 @@
             <v-main>
                 <v-container>
                     <v-row>
+                        <!-- Início - Informações para o cadastro -->
                         <v-col cols="12">
                             <v-text-field
                                 v-model="description"
+                                clearable
                                 id="description"
                                 name="description"
                                 label="Descrição"
@@ -31,6 +33,7 @@
 
                             <v-text-field
                                 v-model="amount"
+                                clearable
                                 id="amount"
                                 name="amount"
                                 label="Valor"
@@ -71,7 +74,76 @@
                             >
                                 Registrar
                             </v-btn>
+                            <!-- Fim - Informações para o cadastro -->
 
+                            <!-- Início - Filtros -->
+                            <div class="mt-12">
+                                <v-expansion-panels>
+                                    <v-expansion-panel>
+                                        <v-expansion-panel-header>
+                                            Filtros
+                                        </v-expansion-panel-header>
+
+                                        <v-expansion-panel-content>
+                                            <div class="d-flex align-start justify-space-between">
+                                                <v-date-picker
+                                                    v-model="datePickerFilter"
+                                                    type="month"
+                                                >
+                                                </v-date-picker>
+
+                                                <v-text-field
+                                                    class="mx-10"
+                                                    v-model="descriptionFilter"
+                                                    clearable
+                                                    id="descriptionFilter"
+                                                    name="descriptionFilter"
+                                                    label="Descrição"
+                                                    type="text"
+                                                >
+                                                </v-text-field>
+
+                                                <v-radio-group
+                                                    v-model="typeBudgetFilter"
+                                                    column
+                                                >
+                                                    <v-radio
+                                                        label="Ganho"
+                                                        color="success"
+                                                        value="gain"
+                                                    >
+                                                    </v-radio>
+
+                                                    <v-radio
+                                                        label="Despesa"
+                                                        color="error"
+                                                        value="cost"
+                                                    >
+                                                    </v-radio>
+
+                                                    <v-radio
+                                                        label="Nenhum"
+                                                        color="grey"
+                                                        value=""
+                                                    >
+                                                    </v-radio>
+                                                </v-radio-group>
+                                            </div>
+
+                                            <v-btn
+                                                class="mt-5"
+                                                color="primary"
+                                                @click="clearFilter()"
+                                            >
+                                                Limpar Filtros
+                                            </v-btn>
+                                        </v-expansion-panel-content>
+                                    </v-expansion-panel>
+                                </v-expansion-panels>
+                            </div>
+                            <!-- Fim - Filtros -->
+
+                            <!-- Início - Informações Gerais -->
                             <div class="d-flex align-center justify-space-between mt-12">
                                 <div>
                                     <strong>Total Ganhos</strong>
@@ -91,12 +163,14 @@
                                     <p>R$ {{ calculateCosts() }}</p>
                                 </div>
                             </div>
+                            <!-- Fim - Informações Gerais -->
 
+                            <!-- Início - Listagem dos registros -->
                             <v-card
                                 class="mt-5"
                                 :class="item.typeBudget === 'gain' ? 'card__gain' : 'card__cost'"
                                 :style="item.typeBudget === 'gain' ? 'border: 1px solid green;' : 'border: 1px solid red;'"
-                                v-for="item in budgetItems"
+                                v-for="item in filterBudgetItems()"
                             >
                                 <v-card-title>{{ item.date }}</v-card-title>
 
@@ -121,7 +195,9 @@
                                 </v-card-actions>
                             </v-card>
                         </v-col>
+                        <!-- Fim - Listagem dos registros -->
 
+                        <!-- Início - Modal de confirmação de exclusão do registro -->
                         <v-dialog
                             v-model="deleteDialog.isOpen"
                             persistent
@@ -158,6 +234,7 @@
                                 </v-card-actions>
                             </v-card>
                         </v-dialog>
+                        <!-- Fim - Modal de confirmação de exclusão do registro -->
                     </v-row>
                 </v-container>
             </v-main>
