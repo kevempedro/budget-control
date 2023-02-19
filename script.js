@@ -5,10 +5,15 @@ new Vue({
     data () {
         return {
             deleteDialog: { isOpen: false, id: 0 },
+            updateDialog: { isOpen: false, id: 0 },
             description: '',
+            descriptionUpdate: '',
             amount: null,
+            amountUpdate: null,
             typeBudget: 'gain',
+            typeBudgetUpdate: '',
             datePicker: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
+            datePickerUpdate: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
             budgetItems: JSON.parse(localStorage.getItem('budgetItems')) || [],
             typeBudgetFilter: '',
             datePickerFilter: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
@@ -31,8 +36,12 @@ new Vue({
     },
 
     methods: {
-        disabledButton() {
+        disabledRegisterButton() {
             return !this.description || !this.amount;
+        },
+
+        disabledUpdateButton() {
+            return !this.descriptionUpdate || !this.amountUpdate;
         },
 
         openDeleteModal(id) {
@@ -42,8 +51,33 @@ new Vue({
             };
         },
 
+        openUpdateModal(id) {
+            this.updateDialog = {
+                isOpen: true,
+                id
+            };
+
+            this.budgetItems = JSON.parse(localStorage.getItem('budgetItems')) || [];
+
+            const item = this.budgetItems.find(item => (item.id === this.updateDialog.id));
+
+            if (item) {
+                this.descriptionUpdate = item.description;
+                this.amountUpdate = item.amount;
+                this.typeBudgetUpdate = item.typeBudget;
+                this.datePickerUpdate = item.date;
+            }
+        },
+
         closeDeleteModal() {
             this.deleteDialog = {
+                isOpen: false,
+                id: 0
+            };
+        },
+
+        closeUpdateModal() {
+            this.updateDialog = {
                 isOpen: false,
                 id: 0
             };
@@ -117,6 +151,33 @@ new Vue({
             }
 
             this.closeDeleteModal();
+        },
+
+        UpdateItemInBudget() {
+            this.budgetItems = JSON.parse(localStorage.getItem('budgetItems')) || [];
+
+            const itemIndex = this.budgetItems.findIndex(item => (item.id === this.updateDialog.id));
+
+            if (itemIndex > -1) {
+                const datePickerUpdateSplited = this.datePickerUpdate.split('-');
+
+                const budgetItemsUpated = Object.assign(
+                    {},
+                    this.budgetItems[itemIndex],
+                    {
+                        description: this.descriptionUpdate,
+                        amount: this.amountUpdate,
+                        typeBudget: this.typeBudgetUpdate,
+                        datePicker: `${datePickerUpdateSplited[1]}/${datePickerUpdateSplited[0]}`
+                    }
+                );
+
+                this.budgetItems[itemIndex] = budgetItemsUpated;
+
+                localStorage.setItem('budgetItems', JSON.stringify(this.budgetItems));
+            }
+
+            this.closeUpdateModal();
         },
 
         clearFilter() {
