@@ -61,11 +61,13 @@ new Vue({
 
             const item = this.budgetItems.find(item => (item.id === this.updateDialog.id));
 
+            const currentDateSplited = item.date.split('/');
+
             if (item) {
                 this.descriptionUpdate = item.description;
                 this.amountUpdate = item.amount;
                 this.typeBudgetUpdate = item.typeBudget;
-                this.datePickerUpdate = item.date;
+                this.datePickerUpdate = `${currentDateSplited[1]}-${currentDateSplited[0]}`;
             }
         },
 
@@ -168,7 +170,7 @@ new Vue({
                         description: this.descriptionUpdate,
                         amount: this.amountUpdate,
                         typeBudget: this.typeBudgetUpdate,
-                        datePicker: `${datePickerUpdateSplited[1]}/${datePickerUpdateSplited[0]}`
+                        date: `${datePickerUpdateSplited[1]}/${datePickerUpdateSplited[0]}`
                     }
                 );
 
