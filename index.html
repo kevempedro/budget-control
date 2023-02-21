@@ -60,6 +60,13 @@
                                 </v-radio>
 
                                 <v-radio
+                                    label="Investimento"
+                                    color="info"
+                                    value="investment"
+                                >
+                                </v-radio>
+
+                                <v-radio
                                     label="Despesa"
                                     color="error"
                                     value="cost"
@@ -115,6 +122,13 @@
                                                     </v-radio>
 
                                                     <v-radio
+                                                        label="Investimento"
+                                                        color="info"
+                                                        value="investment"
+                                                    >
+                                                    </v-radio>
+
+                                                    <v-radio
                                                         label="Despesa"
                                                         color="error"
                                                         value="cost"
@@ -146,21 +160,27 @@
                             <!-- Início - Informações Gerais -->
                             <div class="d-flex align-center justify-space-between mt-12">
                                 <div>
-                                    <strong>Total Ganhos</strong>
+                                    <strong style="color: #4caf50;">Total Ganhos</strong>
 
-                                    <p>R$ {{ calculateGains() }}</p>
+                                    <p style="color: #9e9e9e;">R$ {{ calculateGains() }}</p>
+                                </div>
+
+                                <div>
+                                    <strong style="color: #2196f3;">Total Investimentos</strong>
+
+                                    <p style="color: #9e9e9e;">R$ {{ calculateInvestments() }}</p>
+                                </div>
+
+                                <div>
+                                    <strong style="color: #ff5252;">Total Despesas</strong>
+
+                                    <p style="color: #9e9e9e;">R$ {{ calculateCosts() }}</p>
                                 </div>
 
                                 <div>
                                     <strong>Fechamento do Mês</strong>
 
-                                    <p>R$ {{ calculateAmountMonth() }}</p>
-                                </div>
-
-                                <div>
-                                    <strong>Total Despesas</strong>
-
-                                    <p>R$ {{ calculateCosts() }}</p>
+                                    <p style="color: #9e9e9e;">R$ {{ calculateAmountMonth() }}</p>
                                 </div>
                             </div>
                             <!-- Fim - Informações Gerais -->
@@ -168,8 +188,8 @@
                             <!-- Início - Listagem dos registros -->
                             <v-card
                                 class="mt-5"
-                                :class="item.typeBudget === 'gain' ? 'card__gain' : 'card__cost'"
-                                :style="item.typeBudget === 'gain' ? 'border: 1px solid green;' : 'border: 1px solid red;'"
+                                :class="returnBorderCardClass(item.typeBudget)"
+                                :style="`border: 1px solid ${returnCardBorderColor(item.typeBudget)}`"
                                 v-for="item in filterBudgetItems()"
                             >
                                 <v-card-title>{{ item.date }}</v-card-title>
@@ -177,7 +197,7 @@
                                 <v-card-text class="card__text">
                                     <p>{{ item.description }}</p>
 
-                                    <p class="card__text__amount">{{ item.typeBudget === 'gain' ? '+' : '-' }} R${{ item.amount }}</p>
+                                    <p class="card__text__amount">{{ item.typeBudget === 'gain' || item.typeBudget === 'investment' ? '+' : '-' }} R${{ item.amount }}</p>
                                 </v-card-text>
 
                                 <v-card-actions>
@@ -285,6 +305,13 @@
                                                             label="Ganho"
                                                             color="success"
                                                             value="gain"
+                                                        >
+                                                        </v-radio>
+
+                                                        <v-radio
+                                                            label="Investimento"
+                                                            color="info"
+                                                            value="investment"
                                                         >
                                                         </v-radio>
 

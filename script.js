@@ -97,6 +97,18 @@ new Vue({
             return parseFloat(total).toFixed(2);
         },
 
+        calculateInvestments() {
+            let total = 0;
+
+            this.filterBudgetItems().forEach((item) => {
+                if (item.typeBudget === 'investment') {
+                    total += Number(item.amount);
+                }
+            });
+
+            return parseFloat(total).toFixed(2);
+        },
+
         calculateCosts() {
             let total = 0;
 
@@ -114,6 +126,10 @@ new Vue({
 
             this.filterBudgetItems().forEach((item) => {
                 if (item.typeBudget === 'gain') {
+                    total += Number(item.amount);
+                }
+
+                if (item.typeBudget === 'investment') {
                     total += Number(item.amount);
                 }
 
@@ -203,6 +219,32 @@ new Vue({
             }
 
             return budgetItemsFiltered;
+        },
+
+        returnCardBorderColor(typeBudget) {
+            switch(typeBudget) {
+                case 'gain':
+                    return '#4caf50';
+                case 'cost':
+                    return '#ff5252';
+                case 'investment':
+                    return '#2196f3'
+                default:
+                    return '#9e9e9e';
+            }
+        },
+
+        returnBorderCardClass(typeBudget) {
+            switch(typeBudget) {
+                case 'gain':
+                    return 'card__gain';
+                case 'cost':
+                    return 'card__cost';
+                case 'investment':
+                    return 'card__investment';
+                default:
+                    return '';
+            }
         }
     }
 });

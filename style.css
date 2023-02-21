@@ -7,15 +7,20 @@
 }
 
 .card__gain .v-card__text p,
+.card__investment .v-card__text p,
 .card__cost .v-card__text p {
     margin: 0;
     padding: 0;
 }
 
 .card__gain .card__text .card__text__amount {
-    color: green;
+    color: #4caf50 ;
+}
+
+.card__investment .card__text .card__text__amount {
+    color: #2196f3;
 }
 
 .card__cost .card__text .card__text__amount {
-    color: red;
+    color: #ff5252 ;
 }
