@@ -24,3 +24,19 @@
 .card__cost .card__text .card__text__amount {
     color: #ff5252 ;
 }
+
+::-webkit-scrollbar {
+    width: 9px;
+    background-color: #A8B6C2;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-track {
+    border-radius: 5px;
+    background-color: #EDF1F4;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #A8B6C2;
+    border-radius: 5px;
+}

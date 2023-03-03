@@ -37,7 +37,7 @@
   },
   {
     "id": 6,
-    "description": "Viagem - Porto Seguro",
+    "description": "Viagem - Porto Seguro - 2x10",
     "amount": "186.00",
     "date": "02/2023",
     "typeBudget": "cost"
@@ -142,7 +142,7 @@
   },
   {
     "id": 21,
-    "description": "Viagem - Porto Seguro",
+    "description": "Viagem - Porto Seguro - 3x10",
     "amount": "186.00",
     "date": "03/2023",
     "typeBudget": "cost"
@@ -202,5 +202,12 @@
     "amount": "176.25",
     "date": "03/2023",
     "typeBudget": "cost"
+  },
+  {
+    "id": 30,
+    "description": "Investimento - Tesouro Direto",
+    "amount": "600.00",
+    "date": "03/2023",
+    "typeBudget": "investment"
   }
 ]
