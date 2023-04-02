@@ -192,7 +192,19 @@
                                 :style="`border: 1px solid ${returnCardBorderColor(item.typeBudget)}`"
                                 v-for="item in filterBudgetItems()"
                             >
-                                <v-card-title>{{ item.date }}</v-card-title>
+                                <v-card-title class="d-flex justify-space-between align-center">
+                                    {{ item.date }}
+
+                                    <v-checkbox
+                                        v-if="item.typeBudget === 'cost'"
+                                        v-model="item.payed"
+                                        label="Pago"
+                                        color="success"
+                                        value=""
+                                        @click="checkPayed({ id: item.id, payed: item.payed })"
+                                    >
+                                    </v-checkbox>
+                                </v-card-title>
 
                                 <v-card-text class="card__text">
                                     <p>{{ item.description }}</p>

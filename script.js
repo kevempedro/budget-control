@@ -146,13 +146,20 @@ new Vue({
 
             this.budgetItems = JSON.parse(localStorage.getItem('budgetItems')) || [];
 
-            this.budgetItems.push({
+            let payload = {
                 id: this.budgetItems.length + 1,
                 description: this.description,
                 amount: parseFloat(this.amount).toFixed(2),
                 date: `${datePickerSplited[1]}/${datePickerSplited[0]}`,
                 typeBudget: this.typeBudget
-            });
+            };
+
+            if (payload.typeBudget === 'cost') {
+                payload = { ...payload, payed: false };
+            }
+
+            this.budgetItems.push(payload);
+
 
             localStorage.setItem('budgetItems', JSON.stringify(this.budgetItems));
         },
@@ -259,6 +266,17 @@ new Vue({
                     return 'card__investment';
                 default:
                     return '';
+            }
+        },
+
+        checkPayed(item) {
+            const itemIndex = this.budgetItems.findIndex(element => (element.id === item.id));
+            const itemFinded = this.budgetItems.find(element => (element.id === item.id));
+
+            if (itemIndex > -1) {
+                this.budgetItems[itemIndex] = { ...itemFinded, payed: item.payed };
+
+                localStorage.setItem('budgetItems', JSON.stringify(this.budgetItems));
             }
         }
     }
