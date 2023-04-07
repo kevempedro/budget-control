@@ -92,7 +92,7 @@
                                         </v-expansion-panel-header>
 
                                         <v-expansion-panel-content>
-                                            <div class="d-flex align-start justify-space-between">
+                                            <div class="d-flex flex-column flex-md-row align-start justify-space-between">
                                                 <v-date-picker
                                                     v-model="datePickerFilter"
                                                     type="month"
@@ -100,7 +100,8 @@
                                                 </v-date-picker>
 
                                                 <v-text-field
-                                                    class="mx-10"
+                                                    style="width: 100%;"
+                                                    class="mx-md-10 mt-6 mt-md-0"
                                                     v-model="descriptionFilter"
                                                     clearable
                                                     id="descriptionFilter"
@@ -158,7 +159,7 @@
                             <!-- Fim - Filtros -->
 
                             <!-- Início - Informações Gerais -->
-                            <div class="d-flex align-center justify-space-between mt-12">
+                            <div class="d-flex flex-column flex-sm-row align-start align-sm-center justify-space-between mt-12">
                                 <div>
                                     <strong style="color: #4caf50;">Total Ganhos</strong>
 
