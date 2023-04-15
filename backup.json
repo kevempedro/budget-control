@@ -230,7 +230,7 @@
   {
     "id": 30,
     "description": "Investimento - Tesouro Direto",
-    "amount": "600.00",
+    "amount": "596.93",
     "date": "03/2023",
     "typeBudget": "investment"
   },
@@ -278,7 +278,7 @@
     "amount": "186.00",
     "date": "04/2023",
     "typeBudget": "cost",
-    "payed": false
+    "payed": true
   },
   {
     "id": 37,
@@ -310,7 +310,7 @@
     "amount": "370.33",
     "date": "04/2023",
     "typeBudget": "cost",
-    "payed": false
+    "payed": true
   },
   {
     "id": 41,
@@ -331,10 +331,10 @@
   {
     "id": 43,
     "description": "Fatura cartão - Picpay",
-    "amount": "102.36",
+    "amount": "352.36",
     "date": "04/2023",
     "typeBudget": "cost",
-    "payed": false
+    "payed": true
   },
   {
     "id": 44,
@@ -342,6 +342,20 @@
     "amount": "236.38",
     "date": "04/2023",
     "typeBudget": "cost",
-    "payed": false
+    "payed": true
+  },
+  {
+    "id": 45,
+    "description": "Investimento - Tesouro Direto",
+    "amount": "400.00",
+    "date": "04/2023",
+    "typeBudget": "investment"
+  },
+  {
+    "id": 46,
+    "description": "PPR +A Educação",
+    "amount": "1395.28",
+    "date": "04/2023",
+    "typeBudget": "gain"
   }
 ]
