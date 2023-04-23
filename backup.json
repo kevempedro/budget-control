@@ -294,7 +294,7 @@
     "amount": "85.00",
     "date": "04/2023",
     "typeBudget": "cost",
-    "payed": false
+    "payed": true
   },
   {
     "id": 39,
@@ -318,7 +318,7 @@
     "amount": "80.00",
     "date": "04/2023",
     "typeBudget": "cost",
-    "payed": false
+    "payed": true
   },
   {
     "id": 42,
@@ -355,6 +355,13 @@
     "id": 46,
     "description": "PPR +A Educação",
     "amount": "1395.28",
+    "date": "04/2023",
+    "typeBudget": "gain"
+  },
+  {
+    "id": 47,
+    "description": "Venda FIAT UNO - Entrada de R$3.000,00",
+    "amount": "3000.00",
     "date": "04/2023",
     "typeBudget": "gain"
   }
