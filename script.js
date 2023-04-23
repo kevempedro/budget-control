@@ -94,7 +94,7 @@ new Vue({
                 }
             });
 
-            return parseFloat(total).toFixed(2);
+            return total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
         },
 
         calculateInvestments() {
@@ -106,7 +106,7 @@ new Vue({
                 }
             });
 
-            return parseFloat(total).toFixed(2);
+            return total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
         },
 
         calculateCosts() {
@@ -118,7 +118,7 @@ new Vue({
                 }
             });
 
-            return parseFloat(total).toFixed(2);
+            return total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
         },
 
         calculateAmountMonth() {
@@ -138,7 +138,7 @@ new Vue({
                 }
             });
 
-            return parseFloat(total).toFixed(2);
+            return total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
         },
 
         registerBudget() {
