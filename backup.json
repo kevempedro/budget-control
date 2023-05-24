@@ -364,5 +364,113 @@
     "amount": "3000.00",
     "date": "04/2023",
     "typeBudget": "gain"
+  },
+  {
+    "id": 48,
+    "description": "Salário",
+    "amount": "4354.79",
+    "date": "05/2023",
+    "typeBudget": "gain"
+  },
+  {
+    "id": 49,
+    "description": "Cofrinho - Viagem Porto Seguro",
+    "amount": "400.00",
+    "date": "05/2023",
+    "typeBudget": "investment"
+  },
+  {
+    "id": 50,
+    "description": "Tia Ana",
+    "amount": "200.00",
+    "date": "05/2023",
+    "typeBudget": "cost",
+    "payed": true
+  },
+  {
+    "id": 51,
+    "description": "Energia Solar",
+    "amount": "258.00",
+    "date": "05/2023",
+    "typeBudget": "cost",
+    "payed": true
+  },
+  {
+    "id": 52,
+    "description": "Iphone",
+    "amount": "589.00",
+    "date": "05/2023",
+    "typeBudget": "cost",
+    "payed": true
+  },
+  {
+    "id": 53,
+    "description": "Viagem - Porto Seguro - 5x10",
+    "amount": "186.00",
+    "date": "05/2023",
+    "typeBudget": "cost",
+    "payed": true
+  },
+  {
+    "id": 54,
+    "description": "Faculdade - Vitor",
+    "amount": "600.00",
+    "date": "05/2023",
+    "typeBudget": "cost",
+    "payed": true
+  },
+  {
+    "id": 55,
+    "description": "Academia",
+    "amount": "85.00",
+    "date": "05/2023",
+    "typeBudget": "cost",
+    "payed": true
+  },
+  {
+    "id": 56,
+    "description": "Pneus Carro Fiat Uno - 4x4",
+    "amount": "370.33",
+    "date": "05/2023",
+    "typeBudget": "cost",
+    "payed": true
+  },
+  {
+    "id": 57,
+    "description": "Muay Thai",
+    "amount": "80.00",
+    "date": "05/2023",
+    "typeBudget": "cost",
+    "payed": true
+  },
+  {
+    "id": 58,
+    "description": "Seguro XRE 300 - 1x3",
+    "amount": "362.36",
+    "date": "05/2023",
+    "typeBudget": "cost",
+    "payed": true
+  },
+  {
+    "id": 59,
+    "description": "Investimento - Tesouro Direto",
+    "amount": "600.00",
+    "date": "05/2023",
+    "typeBudget": "investment"
+  },
+  {
+    "id": 60,
+    "description": "Fatura cartão - Picpay",
+    "amount": "321.10",
+    "date": "05/2023",
+    "typeBudget": "cost",
+    "payed": true
+  },
+  {
+    "id": 61,
+    "description": "Venda FIAT UNO - 1x8",
+    "amount": "500.00",
+    "date": "05/2023",
+    "typeBudget": "gain"
   }
 ]
