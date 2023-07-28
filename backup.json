@@ -588,5 +588,129 @@
     "date": "06/2023",
     "typeBudget": "cost",
     "payed": true
+  },
+  {
+    "id": 77,
+    "description": "Salário",
+    "amount": "4352.59",
+    "date": "07/2023",
+    "typeBudget": "gain"
+  },
+  {
+    "id": 78,
+    "description": "Venda FIAT UNO - 3x8",
+    "amount": "500.00",
+    "date": "07/2023",
+    "typeBudget": "gain"
+  },
+  {
+    "id": 79,
+    "description": "Cofrinho - Viagem Porto Seguro",
+    "amount": "400.00",
+    "date": "07/2023",
+    "typeBudget": "investment"
+  },
+  {
+    "id": 80,
+    "description": "Investimento - Tesouro Direto",
+    "amount": "600.00",
+    "date": "07/2023",
+    "typeBudget": "investment"
+  },
+  {
+    "id": 81,
+    "description": "Tia Ana",
+    "amount": "200.00",
+    "date": "07/2023",
+    "typeBudget": "cost",
+    "payed": true
+  },
+  {
+    "id": 82,
+    "description": "Energia Solar",
+    "amount": "258.00",
+    "date": "07/2023",
+    "typeBudget": "cost",
+    "payed": true
+  },
+  {
+    "id": 83,
+    "description": "Iphone",
+    "amount": "589.00",
+    "date": "07/2023",
+    "typeBudget": "cost",
+    "payed": true
+  },
+  {
+    "id": 84,
+    "description": "Viagem - Porto Seguro - 7x10",
+    "amount": "186.00",
+    "date": "07/2023",
+    "typeBudget": "cost",
+    "payed": true
+  },
+  {
+    "id": 85,
+    "description": "Faculdade - Vitor",
+    "amount": "600.00",
+    "date": "07/2023",
+    "typeBudget": "cost",
+    "payed": true
+  },
+  {
+    "id": 86,
+    "description": "Academia",
+    "amount": "95.00",
+    "date": "07/2023",
+    "typeBudget": "cost",
+    "payed": true
+  },
+  {
+    "id": 87,
+    "description": "Terapia",
+    "amount": "80.00",
+    "date": "07/2023",
+    "typeBudget": "cost",
+    "payed": true
+  },
+  {
+    "id": 88,
+    "description": "Seguro XRE 300 - 3x3",
+    "amount": "362.34",
+    "date": "07/2023",
+    "typeBudget": "cost",
+    "payed": true
+  },
+  {
+    "id": 89,
+    "description": "Fatura cartão - Picpay",
+    "amount": "279.76",
+    "date": "07/2023",
+    "typeBudget": "cost",
+    "payed": true
+  },
+  {
+    "id": 90,
+    "description": "Fatura cartão - Inter PJ",
+    "amount": "165.00",
+    "date": "07/2023",
+    "typeBudget": "cost",
+    "payed": true
+  },
+  {
+    "id": 91,
+    "description": "Compra Lote - Parque das Aguas",
+    "amount": "688.86",
+    "date": "07/2023",
+    "typeBudget": "cost",
+    "payed": true
+  },
+  {
+    "id": 92,
+    "description": "Revisão XRE 300",
+    "amount": "405.00",
+    "date": "07/2023",
+    "typeBudget": "cost",
+    "payed": true
   }
 ]
