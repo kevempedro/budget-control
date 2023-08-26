@@ -712,5 +712,113 @@
     "date": "07/2023",
     "typeBudget": "cost",
     "payed": true
+  },
+  {
+    "id": 93,
+    "description": "Salário",
+    "amount": "4352.59",
+    "date": "08/2023",
+    "typeBudget": "gain"
+  },
+  {
+    "id": 94,
+    "description": "Venda FIAT UNO - 4x8",
+    "amount": "500.00",
+    "date": "08/2023",
+    "typeBudget": "gain"
+  },
+  {
+    "id": 95,
+    "description": "Cofrinho - Viagem Porto Seguro",
+    "amount": "400.00",
+    "date": "08/2023",
+    "typeBudget": "investment"
+  },
+  {
+    "id": 96,
+    "description": "Investimento - Tesouro Direto",
+    "amount": "600.00",
+    "date": "08/2023",
+    "typeBudget": "investment"
+  },
+  {
+    "id": 97,
+    "description": "Tia Ana",
+    "amount": "200.00",
+    "date": "08/2023",
+    "typeBudget": "cost",
+    "payed": true
+  },
+  {
+    "id": 98,
+    "description": "Energia Solar",
+    "amount": "258.00",
+    "date": "08/2023",
+    "typeBudget": "cost",
+    "payed": true
+  },
+  {
+    "id": 99,
+    "description": "Viagem - Porto Seguro - 8x10",
+    "amount": "186.00",
+    "date": "08/2023",
+    "typeBudget": "cost",
+    "payed": true
+  },
+  {
+    "id": 100,
+    "description": "Faculdade - Vitor",
+    "amount": "600.00",
+    "date": "08/2023",
+    "typeBudget": "cost",
+    "payed": true
+  },
+  {
+    "id": 101,
+    "description": "Academia",
+    "amount": "95.00",
+    "date": "08/2023",
+    "typeBudget": "cost",
+    "payed": true
+  },
+  {
+    "id": 102,
+    "description": "Compra Lote - Parque das Aguas",
+    "amount": "688.86",
+    "date": "08/2023",
+    "typeBudget": "cost",
+    "payed": true
+  },
+  {
+    "id": 103,
+    "description": "Fatura cartão - Inter PJ",
+    "amount": "385.91",
+    "date": "08/2023",
+    "typeBudget": "cost",
+    "payed": true
+  },
+  {
+    "id": 104,
+    "description": "Secador de cabelo",
+    "amount": "120.00",
+    "date": "08/2023",
+    "typeBudget": "cost",
+    "payed": true
+  },
+  {
+    "id": 105,
+    "description": "Fatura cartão - Picpay",
+    "amount": "165.19",
+    "date": "08/2023",
+    "typeBudget": "cost",
+    "payed": true
+  },
+  {
+    "id": 106,
+    "description": "Cuecas e Meias - 1x4",
+    "amount": "91",
+    "date": "08/2023",
+    "typeBudget": "cost",
+    "payed": true
   }
 ]
