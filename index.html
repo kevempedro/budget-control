@@ -76,8 +76,9 @@
 
                             <v-btn
                                 color="primary"
-                                :disabled="disabledRegisterButton()"
-                                @click="registerBudget()"
+                                :disabled="disabledRegisterButton"
+                                :loading="loadingRegisterBudget"
+                                @click="registerBudget"
                             >
                                 Registrar
                             </v-btn>
@@ -148,7 +149,7 @@
                                             <v-btn
                                                 class="mt-5"
                                                 color="primary"
-                                                @click="clearFilter()"
+                                                @click="clearFilter"
                                             >
                                                 Limpar Filtros
                                             </v-btn>
@@ -252,7 +253,7 @@
                                     <v-btn
                                         color="red darken-1"
                                         text
-                                        @click="closeDeleteModal()"
+                                        @click="closeDeleteModal"
                                     >
                                         Cancelar
                                     </v-btn>
@@ -260,7 +261,8 @@
                                     <v-btn
                                         color="green darken-1"
                                         text
-                                        @click="removeItemFromBudget()"
+                                        :loading="loadingDeleteBudget"
+                                        @click="removeItemFromBudget"
                                     >
                                         Excluir
                                     </v-btn>
@@ -362,8 +364,9 @@
                                         <v-btn
                                             color="green darken-1"
                                             text
-                                            :disabled="disabledUpdateButton()"
-                                            @click="UpdateItemInBudget()"
+                                            :disabled="disabledUpdateButton"
+                                            :loading="loadingUpdateBudget"
+                                            @click="UpdateItemInBudget"
                                         >
                                             Salvar
                                         </v-btn>
@@ -381,6 +384,33 @@
     <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
 
-    <script src="./script.js"></script>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-analytics.js";
+        import { getDatabase  } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+            apiKey: "AIzaSyAtnEYuv1143o0moZlasJJyW6AiCBQ8OAU",
+            authDomain: "budget-control-6341c.firebaseapp.com",
+            databaseURL: "https://budget-control-6341c-default-rtdb.firebaseio.com",
+            projectId: "budget-control-6341c",
+            storageBucket: "budget-control-6341c.appspot.com",
+            messagingSenderId: "878743482937",
+            appId: "1:878743482937:web:c420845c4545a20ed993e8",
+            measurementId: "G-NY4X5YSBPT"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const database = getDatabase(app);
+    </script>
+
+    <script type="module" src="./script.js"></script>
 </body>
 </html>

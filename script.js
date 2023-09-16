@@ -1,3 +1,5 @@
+import { getDatabase, ref, child, get, set, update, remove  } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js";
+
 new Vue({
     el: '#app',
     vuetify: new Vuetify(),
@@ -14,10 +16,15 @@ new Vue({
             typeBudgetUpdate: '',
             datePicker: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
             datePickerUpdate: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
-            budgetItems: JSON.parse(localStorage.getItem('budgetItems')) || [],
+            budgetItems: [],
             typeBudgetFilter: '',
             datePickerFilter: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
-            descriptionFilter: ''
+            descriptionFilter: '',
+            dataBase: getDatabase(),
+            tableName: 'budgets',
+            loadingRegisterBudget: false,
+            loadingUpdateBudget: false,
+            loadingDeleteBudget: false
         };
     },
 
@@ -35,15 +42,21 @@ new Vue({
         }
     },
 
-    methods: {
+    created() {
+        this.getBudgetItems();
+    },
+
+    computed: {
         disabledRegisterButton() {
             return !this.description || !this.amount;
         },
 
         disabledUpdateButton() {
             return !this.descriptionUpdate || !this.amountUpdate;
-        },
+        }
+    },
 
+    methods: {
         openDeleteModal(id) {
             this.deleteDialog = {
                 isOpen: true,
@@ -51,19 +64,17 @@ new Vue({
             };
         },
 
-        openUpdateModal(id) {
+        async openUpdateModal(id) {
             this.updateDialog = {
                 isOpen: true,
                 id
             };
 
-            this.budgetItems = JSON.parse(localStorage.getItem('budgetItems')) || [];
-
-            const item = this.budgetItems.find(item => (item.id === this.updateDialog.id));
-
-            const currentDateSplited = item.date.split('/');
+            const item = await this.getBudgetItemById(id);
 
             if (item) {
+                const currentDateSplited = item.date.split('/');
+
                 this.descriptionUpdate = item.description;
                 this.amountUpdate = item.amount;
                 this.typeBudgetUpdate = item.typeBudget;
@@ -83,6 +94,12 @@ new Vue({
                 isOpen: false,
                 id: 0
             };
+        },
+
+        clearFilter() {
+            this.typeBudgetFilter = '',
+            this.datePickerFilter = (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
+            this.descriptionFilter = ''
         },
 
         calculateGains() {
@@ -141,13 +158,43 @@ new Vue({
             return total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
         },
 
+        getBudgetItems() {
+            get(child(ref(this.dataBase), this.tableName))
+            .then((snapshot) => {
+                if (snapshot.exists()) {
+                    this.budgetItems = snapshot.val();
+                } else {
+                    console.log("Erro ao retornar os registros");
+                }
+            }).catch((error) => {
+                console.error(error);
+            });
+        },
+
+        async getBudgetItemById(id) {
+            let data = null;
+
+            await get(child(ref(this.dataBase), `${this.tableName}/${id}`))
+            .then((snapshot) => {
+                if (snapshot.exists()) {
+                    data = snapshot.val();
+                } else {
+                    console.log("Erro ao retornar o registro");
+                }
+            }).catch((error) => {
+                console.error(error);
+            });
+
+            return data;
+        },
+
         registerBudget() {
+            this.loadingRegisterBudget = true;
+
             const datePickerSplited = this.datePicker.split('-');
 
-            this.budgetItems = JSON.parse(localStorage.getItem('budgetItems')) || [];
-
             let payload = {
-                id: this.budgetItems.length + 1,
+                id: this.budgetItems.length,
                 description: this.description,
                 amount: parseFloat(this.amount).toFixed(2),
                 date: `${datePickerSplited[1]}/${datePickerSplited[0]}`,
@@ -158,57 +205,77 @@ new Vue({
                 payload = { ...payload, payed: false };
             }
 
-            this.budgetItems.push(payload);
+            set(ref(this.dataBase, `${this.tableName}/${this.budgetItems.length}`), payload)
+            .then(() => {
+                console.log('Registro criado com sucesso');
 
+                this.description = '';
+                this.amount = null;
+                this.typeBudget = 'gain';
 
-            localStorage.setItem('budgetItems', JSON.stringify(this.budgetItems));
+                this.getBudgetItems();
+              })
+              .catch(() => {
+                console.log('Erro ao criar o registro');
+            })
+            .finally(() => {
+                this.loadingRegisterBudget = false;
+            });
         },
 
         removeItemFromBudget() {
-            this.budgetItems = JSON.parse(localStorage.getItem('budgetItems')) || [];
+            this.loadingDeleteBudget = true;
 
-            const itemIndex = this.budgetItems.findIndex(item => (item.id === this.deleteDialog.id));
+            remove(ref(this.dataBase, `${this.tableName}/${this.deleteDialog.id}`))
+            .then(() => {
+                console.log('Registro removido com sucesso');
 
-            if (itemIndex > -1) {
-                this.budgetItems.splice(itemIndex, 1);
-
-                localStorage.setItem('budgetItems', JSON.stringify(this.budgetItems));
-            }
-
-            this.closeDeleteModal();
+                this.getBudgetItems();
+            })
+            .catch(() => {
+                console.log('Erro ao remover o registro');
+            })
+            .finally(() => {
+                this.loadingDeleteBudget = false;
+                this.closeDeleteModal();
+            });
         },
 
         UpdateItemInBudget() {
-            this.budgetItems = JSON.parse(localStorage.getItem('budgetItems')) || [];
+            this.loadingUpdateBudget = true;
 
-            const itemIndex = this.budgetItems.findIndex(item => (item.id === this.updateDialog.id));
+            const datePickerUpdateSplited = this.datePickerUpdate.split('-');
 
-            if (itemIndex > -1) {
-                const datePickerUpdateSplited = this.datePickerUpdate.split('-');
+            const payload =  {
+                description: this.descriptionUpdate,
+                amount: this.amountUpdate,
+                typeBudget: this.typeBudgetUpdate,
+                date: `${datePickerUpdateSplited[1]}/${datePickerUpdateSplited[0]}`
+            };
 
-                const budgetItemsUpated = Object.assign(
-                    {},
-                    this.budgetItems[itemIndex],
-                    {
-                        description: this.descriptionUpdate,
-                        amount: this.amountUpdate,
-                        typeBudget: this.typeBudgetUpdate,
-                        date: `${datePickerUpdateSplited[1]}/${datePickerUpdateSplited[0]}`
-                    }
-                );
+            update(ref(this.dataBase, `${this.tableName}/${this.updateDialog.id}`), payload)
+            .then(() => {
+                console.log('Registro atualizado com sucesso');
 
-                this.budgetItems[itemIndex] = budgetItemsUpated;
-
-                localStorage.setItem('budgetItems', JSON.stringify(this.budgetItems));
-            }
-
-            this.closeUpdateModal();
+                this.getBudgetItems();
+              })
+              .catch(() => {
+                console.log('Erro ao atualizar o registro');
+            })
+            .finally(() => {
+                this.loadingUpdateBudget = false;
+                this.closeUpdateModal();
+            });
         },
 
-        clearFilter() {
-            this.typeBudgetFilter = '',
-            this.datePickerFilter = (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
-            this.descriptionFilter = ''
+        checkPayed(item) {
+            update(ref(this.dataBase, `${this.tableName}/${item.id}`), { payed: item.payed })
+            .then(() => {
+                console.log('Registro atualizado com sucesso');
+              })
+              .catch(() => {
+                console.log('Erro ao atualizar o registro');
+            });
         },
 
         filterBudgetItems() {
@@ -266,17 +333,6 @@ new Vue({
                     return 'card__investment';
                 default:
                     return '';
-            }
-        },
-
-        checkPayed(item) {
-            const itemIndex = this.budgetItems.findIndex(element => (element.id === item.id));
-            const itemFinded = this.budgetItems.find(element => (element.id === item.id));
-
-            if (itemIndex > -1) {
-                this.budgetItems[itemIndex] = { ...itemFinded, payed: item.payed };
-
-                localStorage.setItem('budgetItems', JSON.stringify(this.budgetItems));
             }
         }
     }
