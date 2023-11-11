@@ -24,7 +24,11 @@ new Vue({
             tableName: 'budgets',
             loadingRegisterBudget: false,
             loadingUpdateBudget: false,
-            loadingDeleteBudget: false
+            loadingDeleteBudget: false,
+            amountOfTheCurrentYear: 0,
+            currentYear: new Date().getFullYear(),
+            years: ['2023', '2024', '2025'],
+            yearSelected: ''
         };
     },
 
@@ -43,6 +47,7 @@ new Vue({
     },
 
     created() {
+        this.yearSelected = this.currentYear
         this.getBudgetItems();
     },
 
@@ -156,6 +161,52 @@ new Vue({
             });
 
             return total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+        },
+
+        resultsOfTheYear() {
+            const budgetItemsInCurrentYear = this.budgetItems.filter(budget => budget.date.includes(`/${this.yearSelected.toString()}`));
+
+            this.amountOfTheCurrentYear = budgetItemsInCurrentYear.reduce((acc, budget) => {
+                acc += Number(budget.amount)
+
+                return acc;
+            }, 0)
+
+            return [
+                {
+                    title: 'Ganhos',
+                    color: '#4caf50',
+                    total: budgetItemsInCurrentYear.reduce((acc, budget) => {
+                        if (budget.typeBudget === 'gain') {
+                            acc += Number(budget.amount)
+                        }
+
+                        return acc;
+                    }, 0)
+                },
+                {
+                    title: 'Investimentos',
+                    color: '#2196f3',
+                    total: budgetItemsInCurrentYear.reduce((acc, budget) => {
+                        if (budget.typeBudget === 'investment') {
+                            acc += Number(budget.amount);
+                        }
+
+                        return acc;
+                    }, 0)
+                },
+                {
+                    title: 'Despesas',
+                    color: '#ff5252',
+                    total: budgetItemsInCurrentYear.reduce((acc, budget) => {
+                        if (budget.typeBudget === 'cost') {
+                            acc += Number(budget.amount)
+                        }
+
+                        return acc;
+                    }, 0)
+                }
+            ];
         },
 
         getBudgetItems() {
