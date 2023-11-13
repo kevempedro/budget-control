@@ -50,7 +50,7 @@
                                 </v-date-picker>
 
                                 <div class="order-first order-sm-last" style="height: max-content;">
-                                    <h3>Resultados do ano de {{ currentYear }}</h3>
+                                    <h3>Resultados do ano de {{ yearSelected }}</h3>
 
                                     <v-select
                                         v-model="yearSelected"
@@ -64,6 +64,10 @@
                                             :key="index"
                                             class="d-flex align-center flex-column"
                                         >
+                                            <p class="ma-0 text-center mb-2">
+                                                {{ budget.title }}
+                                            </p>
+
                                             <v-progress-circular
                                                 :rotate="360"
                                                 :size="100"
@@ -74,8 +78,8 @@
                                                 {{ ((budget.total / amountOfTheCurrentYear) * 100).toFixed(2) }}
                                             </v-progress-circular>
 
-                                            <p class="ma-0 mt-2 text-center">
-                                                {{ budget.title }} {{ budget.total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) }}
+                                            <p class="ma-0 text-center mt-2">
+                                                {{ budget.total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) }}
                                             </p>
                                         </div>
                                     </div>

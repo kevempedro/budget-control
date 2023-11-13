@@ -1124,7 +1124,7 @@
     "typeBudget": "cost"
   },
   {
-    "amount": "461.63",
+    "amount": "476.62",
     "date": "11/2023",
     "description": "Fatura cartão - Picpay",
     "id": 147,
@@ -1160,5 +1160,13 @@
     "description": "13º Salário - Antecipado",
     "id": 151,
     "typeBudget": "gain"
+  },
+  {
+    "amount": "162.40",
+    "date": "11/2023",
+    "description": "Remédios para o exame de Colonoscopia",
+    "id": 152,
+    "payed": true,
+    "typeBudget": "cost"
   }
 ]
