@@ -58,7 +58,11 @@
                                         label="Ano"
                                     ></v-select>
 
-                                    <div class="d-flex mt-4" style="gap: 20px;">
+                                    <div
+                                        v-if="resultsOfTheYear()[0].total > 0"
+                                        class="d-flex mt-4"
+                                        style="gap: 20px;"
+                                    >
                                         <div
                                             v-for="(budget, index) in resultsOfTheYear()"
                                             :key="index"
@@ -83,6 +87,10 @@
                                             </p>
                                         </div>
                                     </div>
+
+                                    <p v-else class="ma-0 text-center mt-2">
+                                        Nenhum registro encontrado para o ano de {{ yearSelected }}
+                                    </p>
                                 </div>
                             </div>
 
@@ -201,19 +209,19 @@
                             <!-- Início - Informações Gerais -->
                             <div class="d-flex flex-column flex-sm-row align-start align-sm-center justify-space-between mt-12">
                                 <div>
-                                    <strong style="color: #4caf50;">Total Ganhos</strong>
+                                    <strong style="color: #4caf50;">Ganhos</strong>
 
                                     <p style="color: #9e9e9e;">{{ calculateGains() }}</p>
                                 </div>
 
                                 <div>
-                                    <strong style="color: #2196f3;">Total Investimentos</strong>
+                                    <strong style="color: #2196f3;">Investimentos</strong>
 
                                     <p style="color: #9e9e9e;">{{ calculateInvestments() }}</p>
                                 </div>
 
                                 <div>
-                                    <strong style="color: #ff5252;">Total Despesas</strong>
+                                    <strong style="color: #ff5252;">Despesas</strong>
 
                                     <p style="color: #9e9e9e;">{{ calculateCosts() }}</p>
                                 </div>
