@@ -28,7 +28,9 @@ new Vue({
             amountOfTheCurrentYear: 0,
             currentYear: new Date().getFullYear(),
             years: ['2023', '2024', '2025'],
-            yearSelected: ''
+            yearSelected: '',
+            showSnackbarError: false,
+            snackbarErrorText: ''
         };
     },
 
@@ -178,7 +180,7 @@ new Vue({
                     color: '#4caf50',
                     total: budgetItemsInCurrentYear.reduce((acc, budget) => {
                         if (budget.typeBudget === 'gain') {
-                            acc += Number(budget.amount)
+                            acc += Number(budget.amount);
                         }
 
                         return acc;
@@ -200,13 +202,17 @@ new Vue({
                     color: '#ff5252',
                     total: budgetItemsInCurrentYear.reduce((acc, budget) => {
                         if (budget.typeBudget === 'cost') {
-                            acc += Number(budget.amount)
+                            acc += Number(budget.amount);
                         }
 
                         return acc;
                     }, 0)
                 }
             ];
+        },
+
+        resultsOfTheYearHasAnyRegister() {
+            return this.resultsOfTheYear().find(register => register.total > 0);
         },
 
         getBudgetItems() {
@@ -240,38 +246,57 @@ new Vue({
         },
 
         registerBudget() {
-            this.loadingRegisterBudget = true;
+            try {
+                this.loadingRegisterBudget = true;
+                this.showSnackbarError = false;
 
-            const datePickerSplited = this.datePicker.split('-');
+                const descriptionSlited = this.description.split(';');
+                const amountSlited = this.amount.split(';');
 
-            let payload = {
-                id: this.budgetItems.length,
-                description: this.description,
-                amount: parseFloat(this.amount).toFixed(2),
-                date: `${datePickerSplited[1]}/${datePickerSplited[0]}`,
-                typeBudget: this.typeBudget
-            };
+                const hasAnyDescriptionEmpty = descriptionSlited.find(description => description.trim() === '') !== undefined;
+                const hasAnyAmountEmpty = amountSlited.find(amount => amount.trim() === '')!== undefined;
 
-            if (payload.typeBudget === 'cost') {
-                payload = { ...payload, payed: false };
-            }
+                if ((descriptionSlited.length !== amountSlited.length) || hasAnyDescriptionEmpty || hasAnyAmountEmpty) {
+                    this.showSnackbarError = true;
+                    this.snackbarErrorText = 'Informe a mesma quantidade de descrições e valores';
 
-            set(ref(this.dataBase, `${this.tableName}/${this.budgetItems.length}`), payload)
-            .then(() => {
-                console.log('Registro criado com sucesso');
+                    return;
+                }
+
+                const datePickerSplited = this.datePicker.split('-');
+
+                for (let i = 0; i < descriptionSlited.length; i++) {
+                    const currentId = (i === 0) ? this.budgetItems.length : this.budgetItems.length + i
+
+                    let payload = {
+                        id: currentId,
+                        description: descriptionSlited[i].trim(),
+                        amount: parseFloat(amountSlited[i].replace(/\./g, '').replace(',', '.')).toString(),
+                        date: `${datePickerSplited[1]}/${datePickerSplited[0]}`,
+                        typeBudget: this.typeBudget
+                    };
+
+                    if (payload.typeBudget === 'cost') {
+                        payload = { ...payload, payed: false };
+                    }
+
+                    set(ref(this.dataBase, `${this.tableName}/${currentId}`), payload)
+                    .then(() => {
+                        this.getBudgetItems();
+                    })
+                    .catch(() => {
+                        console.log('Erro ao criar o registro');
+                    });
+                }
+            } catch (err) {
+                console.log(err);
+            } finally {
+                this.loadingRegisterBudget = false;
 
                 this.description = '';
                 this.amount = null;
                 this.typeBudget = 'gain';
-
-                this.getBudgetItems();
-              })
-              .catch(() => {
-                console.log('Erro ao criar o registro');
-            })
-            .finally(() => {
-                this.loadingRegisterBudget = false;
-            });
+            }
         },
 
         removeItemFromBudget() {
@@ -279,8 +304,6 @@ new Vue({
 
             remove(ref(this.dataBase, `${this.tableName}/${this.deleteDialog.id}`))
             .then(() => {
-                console.log('Registro removido com sucesso');
-
                 this.getBudgetItems();
             })
             .catch(() => {
@@ -306,8 +329,6 @@ new Vue({
 
             update(ref(this.dataBase, `${this.tableName}/${this.updateDialog.id}`), payload)
             .then(() => {
-                console.log('Registro atualizado com sucesso');
-
                 this.getBudgetItems();
               })
               .catch(() => {

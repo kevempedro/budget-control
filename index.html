@@ -37,7 +37,7 @@
                                 id="amount"
                                 name="amount"
                                 label="Valor"
-                                type="number"
+                                type="text"
                                 prefix="R$"
                             >
                             </v-text-field>
@@ -59,7 +59,7 @@
                                     ></v-select>
 
                                     <div
-                                        v-if="resultsOfTheYear()[0].total > 0"
+                                        v-if="resultsOfTheYearHasAnyRegister()"
                                         class="d-flex mt-4"
                                         style="gap: 20px;"
                                     >
@@ -422,6 +422,27 @@
                             </v-dialog>
                         </v-row>
                         <!-- Fim - Modal de edição do registro -->
+
+
+                        <!-- Início - Snackbar de mensagens de erro -->
+                        <v-snackbar
+                            v-model="showSnackbarError"
+                            left
+                        >
+                            {{ snackbarErrorText }}
+
+                            <template v-slot:action="{ attrs }">
+                                <v-btn
+                                    color="primary"
+                                    text
+                                    v-bind="attrs"
+                                    @click="showSnackbarError = false"
+                                >
+                                    Fechar
+                                </v-btn>
+                            </template>
+                        </v-snackbar>
+                        <!-- Fim - Snackbar de mensagens de erro -->
                     </v-row>
                 </v-container>
             </v-main>
