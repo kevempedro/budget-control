@@ -1,4 +1,6 @@
-import { getDatabase, ref, child, get, set, update, remove  } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js";
+import { getDatabase, ref, child, get, set, update, remove  } from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js';
+
+import { getMonthByNumber } from './utils.js';
 
 new Vue({
     el: '#app',
@@ -154,7 +156,7 @@ new Vue({
                 }
 
                 if (item.typeBudget === 'investment') {
-                    total += Number(item.amount);
+                    total -= Number(item.amount);
                 }
 
                 if (item.typeBudget === 'cost') {
@@ -209,6 +211,95 @@ new Vue({
                     }, 0)
                 }
             ];
+        },
+
+        bestMonths() {
+            const budgetItemsInCurrentYear = this.budgetItems.filter(budget => budget.date.includes(`/${this.yearSelected.toString()}`));
+
+            const budgetItemsGroupedByDate = budgetItemsInCurrentYear.reduce((acc, obj) => {
+                const found = acc.find(item => item.date.split('/')[0] === obj.date.split('/')[0]);
+
+                if (found) {
+                  found.data.push(obj);
+                } else {
+                  acc.push({ date: obj.date.split('/')[0], data: [obj] });
+                }
+
+                return acc;
+            }, []);
+
+            const gain = [];
+            const investment = [];
+            const cost = [];
+
+            budgetItemsGroupedByDate.forEach(element => {
+                const total = element.data.reduce((acc, budget) => {
+                    if (budget.typeBudget === 'gain') {
+                        acc += Number(budget.amount);
+                    }
+
+                    return acc;
+                }, 0);
+
+                gain.push({
+                    type: 'gain',
+                    month: element.date,
+                    total
+                });
+            });
+
+            budgetItemsGroupedByDate.forEach(element => {
+                const total = element.data.reduce((acc, budget) => {
+                    if (budget.typeBudget === 'investment') {
+                        acc += Number(budget.amount);
+                    }
+
+                    return acc;
+                }, 0);
+
+                investment.push({
+                    type: 'investment',
+                    month: element.date,
+                    total
+                });
+            });
+
+            budgetItemsGroupedByDate.forEach(element => {
+                const total = element.data.reduce((acc, budget) => {
+                    if (budget.typeBudget === 'cost') {
+                        acc += Number(budget.amount);
+                    }
+
+                    return acc;
+                }, 0);
+
+                cost.push({
+                    type: 'cost',
+                    month: element.date,
+                    total
+                });
+            });
+
+            return [
+
+                gain.reduce((previous, current) => {
+                    return parseFloat(previous.total) > parseFloat(current.total) ? previous : current;
+                }),
+
+                investment.reduce((previous, current) => {
+                    return parseFloat(previous.total) > parseFloat(current.total) ? previous : current;
+                }),
+
+                cost.reduce((previous, current) => {
+                        return parseFloat(previous.total) > parseFloat(current.total) ? previous : current;
+                })
+            ];
+        },
+
+        getMonthByNumber(month) {
+            const monthNumber = Number(month.replace('0', '')) - 1;
+
+            return getMonthByNumber(monthNumber);
         },
 
         resultsOfTheYearHasAnyRegister() {

@@ -49,6 +49,7 @@
                                 >
                                 </v-date-picker>
 
+                                <!-- Início - Resultados do ano -->
                                 <div class="order-first order-sm-last" style="height: max-content;">
                                     <h3>Resultados do ano de {{ yearSelected }}</h3>
 
@@ -60,9 +61,9 @@
 
                                     <div
                                         v-if="resultsOfTheYearHasAnyRegister()"
-                                        class="d-flex mt-4"
-                                        style="gap: 20px;"
+                                        class="d-flex flex-column mt-4"
                                     >
+                                    <div class="d-flex justify-space-between"  style="gap: 20px;">
                                         <div
                                             v-for="(budget, index) in resultsOfTheYear()"
                                             :key="index"
@@ -88,12 +89,40 @@
                                         </div>
                                     </div>
 
+                                        <h3 class="mt-10">Meses de destaque</h3>
+
+                                        <div class="d-flex justify-space-between mt-6"  style="gap: 20px;">
+                                            <div
+                                                v-for="(element, index) in bestMonths()"
+                                                :key="index"
+                                                class="month-result-container d-flex align-center flex-column"
+                                                :class="element.type"
+                                            >
+                                                <v-icon>
+                                                    {{
+                                                        element.type === 'gain' ? 'mdi-cash-plus' : ''
+                                                    }}
+                                                    {{
+                                                        element.type === 'investment' ? 'mdi-piggy-bank-outline' : ''
+                                                    }}
+                                                    {{
+                                                        element.type === 'cost' ? 'mdi-cash-minus' : ''
+                                                    }}
+                                                </v-icon>
+
+                                                <p class="ma-0 mt-2 text-center">
+                                                    <strong>{{ getMonthByNumber(element.month) }}</strong> - {{ element.total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) }}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                     <p v-else class="ma-0 text-center mt-2">
                                         Nenhum registro encontrado para o ano de {{ yearSelected }}
                                     </p>
                                 </div>
+                                <!-- Fim - Resultados do ano -->
                             </div>
-
 
                             <v-radio-group
                                 v-model="typeBudget"
@@ -240,6 +269,7 @@
                                 :class="returnBorderCardClass(item.typeBudget)"
                                 :style="`border: 1px solid ${returnCardBorderColor(item.typeBudget)}`"
                                 v-for="item in filterBudgetItems()"
+                                :key="item.id"
                             >
                                 <v-card-title class="d-flex justify-space-between align-center">
                                     {{ item.date }}
@@ -258,7 +288,20 @@
                                 <v-card-text class="card__text">
                                     <p>{{ item.description }}</p>
 
-                                    <p class="card__text__amount">{{ item.typeBudget === 'gain' || item.typeBudget === 'investment' ? '+' : '-' }} {{ Number(item.amount).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) }}</p>
+                                    <p class="card__text__amount mt-2">
+                                        <v-icon>
+                                            {{
+                                                item.typeBudget === 'gain' ? 'mdi-cash-plus' : ''
+                                            }}
+                                            {{
+                                                item.typeBudget === 'investment' ? 'mdi-piggy-bank-outline' : ''
+                                            }}
+                                            {{
+                                                item.typeBudget === 'cost' ? 'mdi-cash-minus' : ''
+                                            }}
+                                        </v-icon>
+
+                                        {{ Number(item.amount).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) }}</p>
                                 </v-card-text>
 
                                 <v-card-actions>
@@ -449,36 +492,31 @@
         </v-app>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+    <script src='https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js'></script>
+    <script src='https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js'></script>
 
-    <script type="module">
-        // Import the functions you need from the SDKs you need
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
-        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-analytics.js";
-        import { getDatabase  } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js";
-        // TODO: Add SDKs for Firebase products that you want to use
-        // https://firebase.google.com/docs/web/setup#available-libraries
+    <script type='module'>
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js';
+        import { getAnalytics } from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-analytics.js';
+        import { getDatabase  } from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js';
 
-        // Your web app's Firebase configuration
-        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
         const firebaseConfig = {
-            apiKey: "AIzaSyAtnEYuv1143o0moZlasJJyW6AiCBQ8OAU",
-            authDomain: "budget-control-6341c.firebaseapp.com",
-            databaseURL: "https://budget-control-6341c-default-rtdb.firebaseio.com",
-            projectId: "budget-control-6341c",
-            storageBucket: "budget-control-6341c.appspot.com",
-            messagingSenderId: "878743482937",
-            appId: "1:878743482937:web:c420845c4545a20ed993e8",
-            measurementId: "G-NY4X5YSBPT"
+            apiKey: 'AIzaSyAtnEYuv1143o0moZlasJJyW6AiCBQ8OAU',
+            authDomain: 'budget-control-6341c.firebaseapp.com',
+            databaseURL: 'https://budget-control-6341c-default-rtdb.firebaseio.com',
+            projectId: 'budget-control-6341c',
+            storageBucket: 'budget-control-6341c.appspot.com',
+            messagingSenderId: '878743482937',
+            appId: '1:878743482937:web:c420845c4545a20ed993e8',
+            measurementId: 'G-NY4X5YSBPT'
         };
 
-        // Initialize Firebase
+        // Iniciando Firebase
         const app = initializeApp(firebaseConfig);
         const analytics = getAnalytics(app);
         const database = getDatabase(app);
     </script>
 
-    <script type="module" src="./script.js"></script>
+    <script type='module' src='./script.js'></script>
 </body>
 </html>

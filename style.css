@@ -13,16 +13,60 @@
     padding: 0;
 }
 
-.card__gain .card__text .card__text__amount {
-    color: #4caf50 ;
+.card__gain .card__text .card__text__amount,
+.card__gain .card__text .card__text__amount .v-icon {
+    color: #4caf50;
 }
 
-.card__investment .card__text .card__text__amount {
+.card__gain .card__text .card__text__amount .v-icon {
+    background: #d1ebd2;
+    border-radius: 50%;
+    padding: 5px;
+}
+
+.card__investment .card__text .card__text__amount,
+.card__investment .card__text .card__text__amount .v-icon {
     color: #2196f3;
 }
 
-.card__cost .card__text .card__text__amount {
+.card__investment .card__text .card__text__amount .v-icon {
+    background: #cbe4f7;
+    border-radius: 50%;
+    padding: 5px;
+}
+
+
+.card__cost .card__text .card__text__amount,
+.card__cost .card__text .card__text__amount .v-icon {
     color: #ff5252 ;
+}
+
+.card__cost .card__text .card__text__amount .v-icon {
+    color: #ff5252 ;
+    background: #fde9e9;
+    border-radius: 50%;
+    padding: 5px;
+}
+
+.month-result-container.gain .v-icon {
+    color: #4caf50;
+    background: #d1ebd2;
+    border-radius: 50%;
+    padding: 10px;
+}
+
+.month-result-container.investment .v-icon {
+    color: #2196f3;
+    background: #cbe4f7;
+    border-radius: 50%;
+    padding: 10px;
+}
+
+.month-result-container.cost .v-icon {
+    color: #ff5252;
+    background: #fde9e9;
+    border-radius: 50%;
+    padding: 10px;
 }
 
 ::-webkit-scrollbar {
