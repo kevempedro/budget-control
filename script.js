@@ -1,6 +1,6 @@
 import { getDatabase, ref, child, get, set, update, remove  } from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js';
 
-import { getMonthByNumber } from './utils.js';
+import { getMonthByNumber, getFullMonthByNumber } from './utils.js';
 
 new Vue({
     el: '#app',
@@ -32,7 +32,8 @@ new Vue({
             years: ['2023', '2024', '2025'],
             yearSelected: '',
             showSnackbarError: false,
-            snackbarErrorText: ''
+            snackbarErrorText: '',
+            mdSize: '12'
         };
     },
 
@@ -165,6 +166,14 @@ new Vue({
             });
 
             return total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+        },
+
+        changeMdSize() {
+            if (this.mdSize === '12') {
+                this.mdSize = '6';
+            } else {
+                this.mdSize = '12';
+            }
         },
 
         resultsOfTheYear() {
@@ -300,6 +309,12 @@ new Vue({
             const monthNumber = Number(month.replace('0', '')) - 1;
 
             return getMonthByNumber(monthNumber);
+        },
+
+        getFullMonthByNumber(month) {
+            const monthNumber = Number(month.replace('0', '')) - 1;
+
+            return getFullMonthByNumber(monthNumber);
         },
 
         resultsOfTheYearHasAnyRegister() {

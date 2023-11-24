@@ -111,7 +111,7 @@
                                                 </v-icon>
 
                                                 <p class="ma-0 mt-2 text-center">
-                                                    <strong>{{ getMonthByNumber(element.month) }}</strong> - {{ element.total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) }}
+                                                    <strong>{{ getMonthByNumber(element.month) }}</strong> {{ element.total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) }}
                                                 </p>
                                             </div>
                                         </div>
@@ -165,7 +165,16 @@
                                 <v-expansion-panels>
                                     <v-expansion-panel>
                                         <v-expansion-panel-header>
-                                            Filtros
+                                            <div>
+                                                <v-icon
+                                                    class="mr-2"
+                                                    style="background:#dfdede;border-radius:50%;padding:5px;"
+                                                >
+                                                    mdi-filter-variant
+                                                </v-icon>
+
+                                                FILTROS
+                                            </div>
                                         </v-expansion-panel-header>
 
                                         <v-expansion-panel-content>
@@ -264,60 +273,101 @@
                             <!-- Fim - Informações Gerais -->
 
                             <!-- Início - Listagem dos registros -->
-                            <v-card
-                                class="mt-5"
-                                :class="returnBorderCardClass(item.typeBudget)"
-                                :style="`border: 1px solid ${returnCardBorderColor(item.typeBudget)}`"
-                                v-for="item in filterBudgetItems()"
-                                :key="item.id"
-                            >
-                                <v-card-title class="d-flex justify-space-between align-center">
-                                    {{ item.date }}
+                            <div v-if="$vuetify.breakpoint.mdAndUp" class="d-flex mb-5">
+                                <v-tooltip right>
+                                    <template v-slot:activator="{ on, attrs }">
+                                        <v-btn
+                                            class="mr-4"
+                                            icon
+                                            color="#535353"
+                                            @click="changeMdSize"
+                                            v-bind="attrs"
+                                            v-on="on"
+                                        >
+                                            <v-icon>
+                                                {{ mdSize === '6' ? 'mdi-format-list-bulleted-square' : 'mdi-grid-large' }}
+                                            </v-icon>
+                                        </v-btn>
+                                    </template>
 
-                                    <v-checkbox
-                                        v-if="item.typeBudget === 'cost'"
-                                        v-model="item.payed"
-                                        label="Pago"
-                                        color="success"
-                                        value=""
-                                        @click="checkPayed({ id: item.id, payed: item.payed })"
+                                    <span>{{ mdSize === '6' ? 'Modo lista' : 'Modo grid' }}</span>
+                                </v-tooltip>
+                            </div>
+
+                            <v-row>
+                                <v-col
+                                    v-if="filterBudgetItems().length > 0"
+                                    :cols="12"
+                                    :md="mdSize"
+                                    v-for="item in filterBudgetItems()"
+                                    :key="item.id"
+                                >
+                                    <v-card
+                                        :class="returnBorderCardClass(item.typeBudget)"
+                                        :style="`border: 1px solid ${returnCardBorderColor(item.typeBudget)}`"
                                     >
-                                    </v-checkbox>
-                                </v-card-title>
+                                        <v-card-title class="d-flex justify-space-between align-center">
+                                            {{ item.date }}
 
-                                <v-card-text class="card__text">
-                                    <p>{{ item.description }}</p>
+                                            <v-checkbox
+                                                v-if="item.typeBudget === 'cost'"
+                                                v-model="item.payed"
+                                                label="Pago"
+                                                color="success"
+                                                value=""
+                                                @click="checkPayed({ id: item.id, payed: item.payed })"
+                                            >
+                                            </v-checkbox>
+                                        </v-card-title>
 
-                                    <p class="card__text__amount mt-2">
-                                        <v-icon>
-                                            {{
-                                                item.typeBudget === 'gain' ? 'mdi-cash-plus' : ''
-                                            }}
-                                            {{
-                                                item.typeBudget === 'investment' ? 'mdi-piggy-bank-outline' : ''
-                                            }}
-                                            {{
-                                                item.typeBudget === 'cost' ? 'mdi-cash-minus' : ''
-                                            }}
-                                        </v-icon>
+                                        <v-card-text class="card__text">
+                                            <p>{{ item.description }}</p>
 
-                                        {{ Number(item.amount).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) }}</p>
-                                </v-card-text>
+                                            <p class="card__text__amount mt-2">
+                                                <v-icon>
+                                                    {{
+                                                        item.typeBudget === 'gain' ? 'mdi-cash-plus' : ''
+                                                    }}
+                                                    {{
+                                                        item.typeBudget === 'investment' ? 'mdi-piggy-bank-outline' : ''
+                                                    }}
+                                                    {{
+                                                        item.typeBudget === 'cost' ? 'mdi-cash-minus' : ''
+                                                    }}
+                                                </v-icon>
 
-                                <v-card-actions>
-                                    <v-btn icon @click="openUpdateModal(item.id)">
-                                        <v-icon>
-                                            mdi-pencil
-                                        </v-icon>
-                                    </v-btn>
+                                                {{ Number(item.amount).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) }}</p>
+                                        </v-card-text>
 
-                                    <v-btn icon @click="openDeleteModal(item.id)">
-                                        <v-icon>
-                                            mdi-trash-can
-                                        </v-icon>
-                                    </v-btn>
-                                </v-card-actions>
-                            </v-card>
+                                        <v-card-actions>
+                                            <v-btn icon @click="openUpdateModal(item.id)">
+                                                <v-icon>
+                                                    mdi-pencil
+                                                </v-icon>
+                                            </v-btn>
+
+                                            <v-btn icon @click="openDeleteModal(item.id)">
+                                                <v-icon>
+                                                    mdi-trash-can
+                                                </v-icon>
+                                            </v-btn>
+                                        </v-card-actions>
+                                    </v-card>
+                                </v-col>
+                            </v-row>
+
+                            <div
+                                class="d-flex flex-column mt-10"
+                                v-if="filterBudgetItems().length <= 0"
+                            >
+                                <v-icon size="45">
+                                    mdi-emoticon-dead-outline
+                                </v-icon>
+
+                                <p class="text-center ma-0">
+                                    Nenhum registro encontrado para o mes de <strong>{{ getFullMonthByNumber(datePickerFilter.split('-')[1]) }} de {{ datePickerFilter.split('-')[0] }}</strong>
+                                </p>
+                            </div>
                         </v-col>
                         <!-- Fim - Listagem dos registros -->
 

@@ -1,10 +1,10 @@
 const getMonthByNumber = (monthNumber) => {
-    const months =[
+    const months = [
         'Jan',
         'Fev',
         'Mar',
         'Abr',
-       ' Mai',
+        'Mai',
         'Jun',
         'Jul',
         'Ago',
@@ -15,8 +15,28 @@ const getMonthByNumber = (monthNumber) => {
     ];
 
     return months[monthNumber].toUpperCase();
-}
+};
+
+const getFullMonthByNumber = (monthNumber) => {
+    const months = [
+        'Janeiro',
+        'Fevereiro',
+        'Março',
+        'Abril',
+        'Maio',
+        'Junho',
+        'Julho',
+        'Agosto',
+        'Setembro',
+        'Outubro',
+        'Novembro',
+        'Dezembro'
+    ];
+
+    return months[monthNumber].toUpperCase();
+};
 
 export {
-    getMonthByNumber
+    getMonthByNumber,
+    getFullMonthByNumber
 };
