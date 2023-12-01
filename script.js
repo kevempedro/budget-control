@@ -1,6 +1,7 @@
 import { getDatabase, ref, child, get, set, update, remove  } from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js';
 
 import { getMonthByNumber, getFullMonthByNumber } from './utils.js';
+import budgetTypesEnum from './enums/budgetTypes.enum.js';
 
 new Vue({
     el: '#app',
@@ -14,7 +15,7 @@ new Vue({
             descriptionUpdate: '',
             amount: null,
             amountUpdate: null,
-            typeBudget: 'gain',
+            typeBudget: budgetTypesEnum.GAIN,
             typeBudgetUpdate: '',
             datePicker: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
             datePickerUpdate: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
@@ -33,7 +34,8 @@ new Vue({
             yearSelected: '',
             showSnackbarError: false,
             snackbarErrorText: '',
-            mdSize: '12'
+            mdSize: '12',
+            budgetTypesEnumData: budgetTypesEnum
         };
     },
 
@@ -116,7 +118,7 @@ new Vue({
             let total = 0;
 
             this.filterBudgetItems().forEach((item) => {
-                if (item.typeBudget === 'gain') {
+                if (item.typeBudget === budgetTypesEnum.GAIN) {
                     total += Number(item.amount);
                 }
             });
@@ -128,7 +130,7 @@ new Vue({
             let total = 0;
 
             this.filterBudgetItems().forEach((item) => {
-                if (item.typeBudget === 'investment') {
+                if (item.typeBudget === budgetTypesEnum.INVESTMENT) {
                     total += Number(item.amount);
                 }
             });
@@ -140,7 +142,7 @@ new Vue({
             let total = 0;
 
             this.filterBudgetItems().forEach((item) => {
-                if (item.typeBudget === 'cost') {
+                if (item.typeBudget === budgetTypesEnum.COST) {
                     total += Number(item.amount);
                 }
             });
@@ -152,15 +154,15 @@ new Vue({
             let total = 0;
 
             this.filterBudgetItems().forEach((item) => {
-                if (item.typeBudget === 'gain') {
+                if (item.typeBudget === budgetTypesEnum.GAIN) {
                     total += Number(item.amount);
                 }
 
-                if (item.typeBudget === 'investment') {
+                if (item.typeBudget === budgetTypesEnum.INVESTMENT) {
                     total -= Number(item.amount);
                 }
 
-                if (item.typeBudget === 'cost') {
+                if (item.typeBudget === budgetTypesEnum.COST) {
                     total -= Number(item.amount);
                 }
             });
@@ -190,7 +192,7 @@ new Vue({
                     title: 'Ganhos',
                     color: '#4caf50',
                     total: budgetItemsInCurrentYear.reduce((acc, budget) => {
-                        if (budget.typeBudget === 'gain') {
+                        if (budget.typeBudget === budgetTypesEnum.GAIN) {
                             acc += Number(budget.amount);
                         }
 
@@ -201,7 +203,7 @@ new Vue({
                     title: 'Investimentos',
                     color: '#2196f3',
                     total: budgetItemsInCurrentYear.reduce((acc, budget) => {
-                        if (budget.typeBudget === 'investment') {
+                        if (budget.typeBudget === budgetTypesEnum.INVESTMENT) {
                             acc += Number(budget.amount);
                         }
 
@@ -212,7 +214,7 @@ new Vue({
                     title: 'Despesas',
                     color: '#ff5252',
                     total: budgetItemsInCurrentYear.reduce((acc, budget) => {
-                        if (budget.typeBudget === 'cost') {
+                        if (budget.typeBudget === budgetTypesEnum.COST) {
                             acc += Number(budget.amount);
                         }
 
@@ -243,7 +245,7 @@ new Vue({
 
             budgetItemsGroupedByDate.forEach(element => {
                 const total = element.data.reduce((acc, budget) => {
-                    if (budget.typeBudget === 'gain') {
+                    if (budget.typeBudget === budgetTypesEnum.GAIN) {
                         acc += Number(budget.amount);
                     }
 
@@ -251,7 +253,7 @@ new Vue({
                 }, 0);
 
                 gain.push({
-                    type: 'gain',
+                    type: budgetTypesEnum.GAIN,
                     month: element.date,
                     total
                 });
@@ -259,7 +261,7 @@ new Vue({
 
             budgetItemsGroupedByDate.forEach(element => {
                 const total = element.data.reduce((acc, budget) => {
-                    if (budget.typeBudget === 'investment') {
+                    if (budget.typeBudget === budgetTypesEnum.INVESTMENT) {
                         acc += Number(budget.amount);
                     }
 
@@ -267,7 +269,7 @@ new Vue({
                 }, 0);
 
                 investment.push({
-                    type: 'investment',
+                    type: budgetTypesEnum.INVESTMENT,
                     month: element.date,
                     total
                 });
@@ -275,7 +277,7 @@ new Vue({
 
             budgetItemsGroupedByDate.forEach(element => {
                 const total = element.data.reduce((acc, budget) => {
-                    if (budget.typeBudget === 'cost') {
+                    if (budget.typeBudget === budgetTypesEnum.COST) {
                         acc += Number(budget.amount);
                     }
 
@@ -283,7 +285,7 @@ new Vue({
                 }, 0);
 
                 cost.push({
-                    type: 'cost',
+                    type: budgetTypesEnum.COST,
                     month: element.date,
                     total
                 });
@@ -382,7 +384,7 @@ new Vue({
                         typeBudget: this.typeBudget
                     };
 
-                    if (payload.typeBudget === 'cost') {
+                    if (payload.typeBudget === budgetTypesEnum.COST) {
                         payload = { ...payload, payed: false };
                     }
 
@@ -401,7 +403,7 @@ new Vue({
 
                 this.description = '';
                 this.amount = null;
-                this.typeBudget = 'gain';
+                this.typeBudget = budgetTypesEnum.GAIN;
             }
         },
 
@@ -490,11 +492,11 @@ new Vue({
 
         returnCardBorderColor(typeBudget) {
             switch(typeBudget) {
-                case 'gain':
+                case budgetTypesEnum.GAIN:
                     return '#4caf50';
-                case 'cost':
+                case budgetTypesEnum.COST:
                     return '#ff5252';
-                case 'investment':
+                case budgetTypesEnum.INVESTMENT:
                     return '#2196f3'
                 default:
                     return '#9e9e9e';
@@ -503,11 +505,11 @@ new Vue({
 
         returnBorderCardClass(typeBudget) {
             switch(typeBudget) {
-                case 'gain':
+                case budgetTypesEnum.GAIN:
                     return 'card__gain';
-                case 'cost':
+                case budgetTypesEnum.COST:
                     return 'card__cost';
-                case 'investment':
+                case budgetTypesEnum.INVESTMENT:
                     return 'card__investment';
                 default:
                     return '';

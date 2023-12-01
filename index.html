@@ -100,13 +100,13 @@
                                             >
                                                 <v-icon>
                                                     {{
-                                                        element.type === 'gain' ? 'mdi-cash-plus' : ''
+                                                        element.type === budgetTypesEnumData.GAIN ? 'mdi-cash-plus' : ''
                                                     }}
                                                     {{
-                                                        element.type === 'investment' ? 'mdi-piggy-bank-outline' : ''
+                                                        element.type === budgetTypesEnumData.INVESTMENT ? 'mdi-piggy-bank-outline' : ''
                                                     }}
                                                     {{
-                                                        element.type === 'cost' ? 'mdi-cash-minus' : ''
+                                                        element.type === budgetTypesEnumData.COST ? 'mdi-cash-minus' : ''
                                                     }}
                                                 </v-icon>
 
@@ -310,7 +310,7 @@
                                             {{ item.date }}
 
                                             <v-checkbox
-                                                v-if="item.typeBudget === 'cost'"
+                                                v-if="item.typeBudget === budgetTypesEnumData.COST"
                                                 v-model="item.payed"
                                                 label="Pago"
                                                 color="success"
@@ -326,13 +326,13 @@
                                             <p class="card__text__amount mt-2">
                                                 <v-icon>
                                                     {{
-                                                        item.typeBudget === 'gain' ? 'mdi-cash-plus' : ''
+                                                        item.typeBudget === budgetTypesEnumData.GAIN ? 'mdi-cash-plus' : ''
                                                     }}
                                                     {{
-                                                        item.typeBudget === 'investment' ? 'mdi-piggy-bank-outline' : ''
+                                                        item.typeBudget === budgetTypesEnumData.INVESTMENT ? 'mdi-piggy-bank-outline' : ''
                                                     }}
                                                     {{
-                                                        item.typeBudget === 'cost' ? 'mdi-cash-minus' : ''
+                                                        item.typeBudget === budgetTypesEnumData.COST ? 'mdi-cash-minus' : ''
                                                     }}
                                                 </v-icon>
 
@@ -365,7 +365,7 @@
                                 </v-icon>
 
                                 <p class="text-center ma-0">
-                                    Nenhum registro encontrado para o mes de <strong>{{ getFullMonthByNumber(datePickerFilter.split('-')[1]) }} de {{ datePickerFilter.split('-')[0] }}</strong>
+                                    Nenhum registro encontrado para o mês de <strong>{{ getFullMonthByNumber(datePickerFilter.split('-')[1]) }} de {{ datePickerFilter.split('-')[0] }}</strong>
                                 </p>
                             </div>
                         </v-col>
