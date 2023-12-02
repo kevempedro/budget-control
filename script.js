@@ -20,6 +20,8 @@ new Vue({
             datePicker: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
             datePickerUpdate: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
             budgetItems: [],
+            budgetItemsFiltered: [],
+            budgetItemsCaculation: [],
             typeBudgetFilter: '',
             datePickerFilter: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
             descriptionFilter: '',
@@ -35,27 +37,45 @@ new Vue({
             showSnackbarError: false,
             snackbarErrorText: '',
             mdSize: '12',
-            budgetTypesEnumData: budgetTypesEnum
+            budgetTypesEnumData: budgetTypesEnum,
+            pagination: 1,
+            totalPagination: 0,
+            itemsPerPage: 10,
         };
+    },
+
+    created() {
+        this.yearSelected = this.currentYear;
+        this.getBudgetItems();
     },
 
     watch: {
         typeBudgetFilter() {
             this.filterBudgetItems();
+
+            this.setPagination;
         },
 
         datePickerFilter() {
             this.filterBudgetItems();
+
+            this.setPagination;
         },
 
         descriptionFilter() {
             this.filterBudgetItems();
-        }
-    },
 
-    created() {
-        this.yearSelected = this.currentYear
-        this.getBudgetItems();
+            this.setPagination;
+        },
+
+        pagination() {
+            this.filterBudgetItems();
+
+            const totalItemsToShow = (this.itemsPerPage * this.pagination);
+            this.budgetItemsFiltered = this.budgetItemsFiltered.slice(((totalItemsToShow - this.itemsPerPage)),
+                totalItemsToShow)
+            ;
+        }
     },
 
     computed: {
@@ -65,6 +85,15 @@ new Vue({
 
         disabledUpdateButton() {
             return !this.descriptionUpdate || !this.amountUpdate;
+        },
+
+        setPagination() {
+            this.pagination = 1;
+            this.totalPagination = 0;
+            this.itemsPerPage = 10;
+
+            this.totalPagination = Math.ceil((this.budgetItemsFiltered.length / this.itemsPerPage));
+            this.budgetItemsFiltered = this.budgetItemsFiltered.slice(0, this.itemsPerPage);
         }
     },
 
@@ -117,7 +146,7 @@ new Vue({
         calculateGains() {
             let total = 0;
 
-            this.filterBudgetItems().forEach((item) => {
+            this.budgetItemsCaculation.forEach((item) => {
                 if (item.typeBudget === budgetTypesEnum.GAIN) {
                     total += Number(item.amount);
                 }
@@ -129,7 +158,7 @@ new Vue({
         calculateInvestments() {
             let total = 0;
 
-            this.filterBudgetItems().forEach((item) => {
+            this.budgetItemsCaculation.forEach((item) => {
                 if (item.typeBudget === budgetTypesEnum.INVESTMENT) {
                     total += Number(item.amount);
                 }
@@ -141,7 +170,7 @@ new Vue({
         calculateCosts() {
             let total = 0;
 
-            this.filterBudgetItems().forEach((item) => {
+            this.budgetItemsCaculation.forEach((item) => {
                 if (item.typeBudget === budgetTypesEnum.COST) {
                     total += Number(item.amount);
                 }
@@ -153,7 +182,7 @@ new Vue({
         calculateAmountMonth() {
             let total = 0;
 
-            this.filterBudgetItems().forEach((item) => {
+            this.budgetItemsCaculation.forEach((item) => {
                 if (item.typeBudget === budgetTypesEnum.GAIN) {
                     total += Number(item.amount);
                 }
@@ -328,6 +357,10 @@ new Vue({
             .then((snapshot) => {
                 if (snapshot.exists()) {
                     this.budgetItems = snapshot.val();
+                    console.log('aqui -> ', this.budgetItems)
+                    this.filterBudgetItems();
+
+                    this.setPagination;
                 } else {
                     console.log("Erro ao retornar os registros");
                 }
@@ -459,20 +492,23 @@ new Vue({
         },
 
         filterBudgetItems() {
-            let budgetItemsFiltered = this.budgetItems;
+            this.budgetItemsFiltered = [];
+            this.budgetItemsFiltered = this.budgetItems;
 
             const datePickerFilterSplited = this.datePickerFilter.split('-');
-            budgetItemsFiltered = this.budgetItems.filter(item => item.date === `${datePickerFilterSplited[1]}/${datePickerFilterSplited[0]}`);
+            this.budgetItemsFiltered = this.budgetItems.filter(item => item.date === `${datePickerFilterSplited[1]}/${datePickerFilterSplited[0]}`);
+
+            this.budgetItemsCaculation = this.budgetItemsFiltered;
 
             if (this.typeBudgetFilter) {
-                budgetItemsFiltered = budgetItemsFiltered.filter(item => item.typeBudget === this.typeBudgetFilter);
+                this.budgetItemsFiltered = this.budgetItemsFiltered.filter(item => item.typeBudget === this.typeBudgetFilter);
             }
 
             if (this.descriptionFilter) {
-                budgetItemsFiltered = budgetItemsFiltered.filter(item => item.description.toLowerCase().includes(this.descriptionFilter.toLowerCase()));
+                this.budgetItemsFiltered = this.budgetItemsFiltered.filter(item => item.description.toLowerCase().includes(this.descriptionFilter.toLowerCase()));
             }
 
-            budgetItemsFiltered.sort(function(a, b) {
+            this.budgetItemsFiltered.sort(function(a, b) {
                 const typeBudgetA = a.typeBudget.toUpperCase();
                 const typeBudgetB = b.typeBudget.toUpperCase();
 
@@ -486,8 +522,6 @@ new Vue({
 
                 return 0;
             });
-
-            return budgetItemsFiltered;
         },
 
         returnCardBorderColor(typeBudget) {

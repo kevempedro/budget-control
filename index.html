@@ -98,17 +98,36 @@
                                                 class="month-result-container d-flex align-center flex-column"
                                                 :class="element.type"
                                             >
-                                                <v-icon>
-                                                    {{
-                                                        element.type === budgetTypesEnumData.GAIN ? 'mdi-cash-plus' : ''
-                                                    }}
-                                                    {{
-                                                        element.type === budgetTypesEnumData.INVESTMENT ? 'mdi-piggy-bank-outline' : ''
-                                                    }}
-                                                    {{
-                                                        element.type === budgetTypesEnumData.COST ? 'mdi-cash-minus' : ''
-                                                    }}
-                                                </v-icon>
+                                                <v-tooltip right>
+                                                    <template v-slot:activator="{ on, attrs }">      
+                                                        <v-icon 
+                                                            v-bind="attrs"
+                                                            v-on="on"
+                                                        >
+                                                            {{
+                                                                element.type === budgetTypesEnumData.GAIN ? 'mdi-cash-plus' : ''
+                                                            }}
+                                                            {{
+                                                                element.type === budgetTypesEnumData.INVESTMENT ? 'mdi-piggy-bank-outline' : ''
+                                                            }}
+                                                            {{
+                                                                element.type === budgetTypesEnumData.COST ? 'mdi-cash-minus' : ''
+                                                            }}
+                                                        </v-icon>
+                                                    </template>
+            
+                                                    <span>
+                                                        {{
+                                                            element.type === budgetTypesEnumData.GAIN ? 'Ganhos' : ''
+                                                        }}
+                                                        {{
+                                                            element.type === budgetTypesEnumData.INVESTMENT ? 'Investimentos' : ''
+                                                        }}
+                                                        {{
+                                                            element.type === budgetTypesEnumData.COST ? 'Despesas' : ''
+                                                        }}
+                                                    </span>
+                                                </v-tooltip>
 
                                                 <p class="ma-0 mt-2 text-center">
                                                     <strong>{{ getMonthByNumber(element.month) }}</strong> {{ element.total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) }}
@@ -296,10 +315,10 @@
 
                             <v-row>
                                 <v-col
-                                    v-if="filterBudgetItems().length > 0"
+                                    v-if="budgetItemsFiltered.length > 0"
                                     :cols="12"
                                     :md="mdSize"
-                                    v-for="item in filterBudgetItems()"
+                                    v-for="item in budgetItemsFiltered"
                                     :key="item.id"
                                 >
                                     <v-card
@@ -358,7 +377,7 @@
 
                             <div
                                 class="d-flex flex-column mt-10"
-                                v-if="filterBudgetItems().length <= 0"
+                                v-if="budgetItemsFiltered.length <= 0"
                             >
                                 <v-icon size="45">
                                     mdi-emoticon-dead-outline
@@ -368,6 +387,13 @@
                                     Nenhum registro encontrado para o mês de <strong>{{ getFullMonthByNumber(datePickerFilter.split('-')[1]) }} de {{ datePickerFilter.split('-')[0] }}</strong>
                                 </p>
                             </div>
+
+                            <v-pagination
+                                v-else
+                                class="mt-6"
+                                v-model="pagination"
+                                :length="totalPagination"
+                            >
                         </v-col>
                         <!-- Fim - Listagem dos registros -->
 

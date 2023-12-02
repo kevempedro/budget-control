@@ -26,7 +26,7 @@
   {
     "amount": "258.00",
     "date": "02/2023",
-    "description": "Energia Solar",
+    "description": "Energia Solar - 13x56",
     "id": 4,
     "payed": true,
     "typeBudget": "cost"
@@ -143,7 +143,7 @@
   {
     "amount": "258.00",
     "date": "03/2023",
-    "description": "Energia Solar",
+    "description": "Energia Solar - 14x56",
     "id": 19,
     "payed": true,
     "typeBudget": "cost"
@@ -259,7 +259,7 @@
   {
     "amount": "258.00",
     "date": "04/2023",
-    "description": "Energia Solar",
+    "description": "Energia Solar - 15x56",
     "id": 34,
     "payed": true,
     "typeBudget": "cost"
@@ -390,7 +390,7 @@
   {
     "amount": "258.00",
     "date": "05/2023",
-    "description": "Energia Solar",
+    "description": "Energia Solar - 16x56",
     "id": 51,
     "payed": true,
     "typeBudget": "cost"
@@ -512,7 +512,7 @@
   {
     "amount": "258.00",
     "date": "06/2023",
-    "description": "Energia Solar",
+    "description": "Energia Solar - 17x56",
     "id": 67,
     "payed": true,
     "typeBudget": "cost"
@@ -628,7 +628,7 @@
   {
     "amount": "258.00",
     "date": "07/2023",
-    "description": "Energia Solar",
+    "description": "Energia Solar - 18x56",
     "id": 82,
     "payed": true,
     "typeBudget": "cost"
@@ -752,7 +752,7 @@
   {
     "amount": "258.00",
     "date": "08/2023",
-    "description": "Energia Solar",
+    "description": "Energia Solar - 19x56",
     "id": 98,
     "payed": true,
     "typeBudget": "cost"
@@ -860,7 +860,7 @@
   {
     "amount": "258.00",
     "date": "09/2023",
-    "description": "Energia Solar",
+    "description": "Energia Solar - 20x56",
     "id": 112,
     "payed": true,
     "typeBudget": "cost"
@@ -968,7 +968,7 @@
   {
     "amount": "258.00",
     "date": "10/2023",
-    "description": "Energia Solar",
+    "description": "Energia Solar - 21x56",
     "id": 126,
     "payed": true,
     "typeBudget": "cost"
@@ -1046,7 +1046,7 @@
     "typeBudget": "gain"
   },
   {
-    "amount": "500.00",
+    "amount": "300.00",
     "date": "11/2023",
     "description": "Venda FIAT UNO - 7x7",
     "id": 137,
@@ -1070,7 +1070,7 @@
   {
     "amount": "258.00",
     "date": "11/2023",
-    "description": "Energia Solar",
+    "description": "Energia Solar - 22x56",
     "id": 140,
     "payed": true,
     "typeBudget": "cost"
@@ -1088,7 +1088,7 @@
     "date": "11/2023",
     "description": "Academia",
     "id": 142,
-    "payed": false,
+    "payed": true,
     "typeBudget": "cost"
   },
   {
@@ -1128,7 +1128,7 @@
     "date": "11/2023",
     "description": "Fatura cartão - Picpay",
     "id": 147,
-    "payed": false,
+    "payed": true,
     "typeBudget": "cost"
   },
   {
@@ -1157,7 +1157,7 @@
   {
     "amount": "2797.28",
     "date": "11/2023",
-    "description": "13º Salário - Antecipado",
+    "description": "13º Salário - primeira parcela",
     "id": 151,
     "typeBudget": "gain"
   },
@@ -1166,6 +1166,144 @@
     "date": "11/2023",
     "description": "Remédios para o exame de Colonoscopia",
     "id": 152,
+    "payed": true,
+    "typeBudget": "cost"
+  },
+  {
+    "amount": "200.00",
+    "date": "11/2023",
+    "description": "Investimento - Tesouro IPCA",
+    "id": 153,
+    "typeBudget": "investment"
+  },
+  {
+    "amount": "250.00",
+    "date": "11/2023",
+    "description": "Vitor - Perfume Malbec Black",
+    "id": 154,
+    "payed": true,
+    "typeBudget": "cost"
+  },
+  {
+    "amount": "200.00",
+    "date": "12/2023",
+    "description": "Tia Ana",
+    "id": 155,
+    "payed": true,
+    "typeBudget": "cost"
+  },
+  {
+    "amount": "258.00",
+    "date": "12/2023",
+    "description": "Energia Solar - 23x56",
+    "id": 156,
+    "payed": true,
+    "typeBudget": "cost"
+  },
+  {
+    "amount": "600.00",
+    "date": "12/2023",
+    "description": "Faculdade - Vitor",
+    "id": 157,
+    "payed": true,
+    "typeBudget": "cost"
+  },
+  {
+    "amount": "95.00",
+    "date": "12/2023",
+    "description": "Academia",
+    "id": 158,
+    "payed": false,
+    "typeBudget": "cost"
+  },
+  {
+    "amount": "688.86",
+    "date": "12/2023",
+    "description": "Compra Lote - Parque das Aguas",
+    "id": 159,
+    "payed": true,
+    "typeBudget": "cost"
+  },
+  {
+    "amount": "166.00",
+    "date": "12/2023",
+    "description": "Óculos Chilli Beans - 3x4",
+    "id": 160,
+    "payed": true,
+    "typeBudget": "cost"
+  },
+  {
+    "amount": "1094.68",
+    "date": "12/2023",
+    "description": "PC Gamer - 1x12",
+    "id": 161,
+    "payed": true,
+    "typeBudget": "cost"
+  },
+  {
+    "amount": "700.00",
+    "date": "12/2023",
+    "description": "Investimento - Tesouro Direto",
+    "id": 162,
+    "typeBudget": "investment"
+  },
+  {
+    "amount": "400",
+    "date": "12/2023",
+    "description": "Investimento - Tesouro IPCA",
+    "id": 163,
+    "typeBudget": "investment"
+  },
+  {
+    "amount": "116.89",
+    "date": "12/2023",
+    "description": "Aluguel casa Ouro Preto - 1x4",
+    "id": 164,
+    "payed": true,
+    "typeBudget": "cost"
+  },
+  {
+    "amount": "262.19",
+    "date": "12/2023",
+    "description": "Fatura cartão - Picpay",
+    "id": 165,
+    "payed": false,
+    "typeBudget": "cost"
+  },
+  {
+    "amount": "117.4",
+    "date": "12/2023",
+    "description": "Fatura cartão - Inter PJ",
+    "id": 166,
+    "payed": false,
+    "typeBudget": "cost"
+  },
+  {
+    "amount": "700",
+    "date": "12/2023",
+    "description": "Cofrinho - BGS 2024",
+    "id": 167,
+    "typeBudget": "investment"
+  },
+  {
+    "amount": "1000",
+    "date": "12/2023",
+    "description": "Venda - PS4",
+    "id": 168,
+    "typeBudget": "gain"
+  },
+  {
+    "amount": "4277.82",
+    "date": "12/2023",
+    "description": "Salário",
+    "id": 169,
+    "typeBudget": "gain"
+  },
+  {
+    "amount": "411.32",
+    "date": "12/2023",
+    "description": "Instalação de câmeras - 1x3",
+    "id": 170,
     "payed": true,
     "typeBudget": "cost"
   }
