@@ -4,13 +4,15 @@ import { getFullMonthByNumber } from './utils.js';
 import budgetTypesEnum from './enums/budgetTypes.enum.js';
 
 import Report from './components/report/script.js';
+import BudgetCard from './components/budget-card/script.js';
 
 new Vue({
     el: '#app',
     vuetify: new Vuetify(),
 
     components: {
-        'report-component': Report
+        'report-component': Report,
+        'budget-card-component': BudgetCard,
     },
 
     data () {
@@ -384,32 +386,6 @@ new Vue({
 
                 return 0;
             });
-        },
-
-        returnCardBorderColor(typeBudget) {
-            switch(typeBudget) {
-                case budgetTypesEnum.GAIN:
-                    return '#4caf50';
-                case budgetTypesEnum.COST:
-                    return '#ff5252';
-                case budgetTypesEnum.INVESTMENT:
-                    return '#2196f3'
-                default:
-                    return '#9e9e9e';
-            }
-        },
-
-        returnBorderCardClass(typeBudget) {
-            switch(typeBudget) {
-                case budgetTypesEnum.GAIN:
-                    return 'card__gain';
-                case budgetTypesEnum.COST:
-                    return 'card__cost';
-                case budgetTypesEnum.INVESTMENT:
-                    return 'card__investment';
-                default:
-                    return '';
-            }
         }
     }
 });

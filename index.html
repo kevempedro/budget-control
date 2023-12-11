@@ -10,6 +10,8 @@
     <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
 
     <link href="./style.css" rel="stylesheet">
+    <link href="./components/report/style.css" rel="stylesheet">
+    <link href="./components/budget-card/style.css" rel="stylesheet">
 
     <title>Controle de Orçamento</title>
 </head>
@@ -232,57 +234,12 @@
                                     v-for="item in budgetItemsFiltered"
                                     :key="item.id"
                                 >
-                                    <v-card
-                                        :class="returnBorderCardClass(item.typeBudget)"
-                                        :style="`border: 1px solid ${returnCardBorderColor(item.typeBudget)}`"
-                                    >
-                                        <v-card-title class="d-flex justify-space-between align-center">
-                                            {{ item.date }}
-
-                                            <v-checkbox
-                                                v-if="item.typeBudget === budgetTypesEnumData.COST"
-                                                v-model="item.payed"
-                                                label="Pago"
-                                                color="success"
-                                                value=""
-                                                @click="checkPayed({ id: item.id, payed: item.payed })"
-                                            >
-                                            </v-checkbox>
-                                        </v-card-title>
-
-                                        <v-card-text class="card__text">
-                                            <p>{{ item.description }}</p>
-
-                                            <p class="card__text__amount mt-2">
-                                                <v-icon>
-                                                    {{
-                                                        item.typeBudget === budgetTypesEnumData.GAIN ? 'mdi-cash-plus' : ''
-                                                    }}
-                                                    {{
-                                                        item.typeBudget === budgetTypesEnumData.INVESTMENT ? 'mdi-piggy-bank-outline' : ''
-                                                    }}
-                                                    {{
-                                                        item.typeBudget === budgetTypesEnumData.COST ? 'mdi-cash-minus' : ''
-                                                    }}
-                                                </v-icon>
-
-                                                {{ Number(item.amount).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) }}</p>
-                                        </v-card-text>
-
-                                        <v-card-actions>
-                                            <v-btn icon @click="openUpdateModal(item.id)">
-                                                <v-icon>
-                                                    mdi-pencil
-                                                </v-icon>
-                                            </v-btn>
-
-                                            <v-btn icon @click="openDeleteModal(item.id)">
-                                                <v-icon>
-                                                    mdi-trash-can
-                                                </v-icon>
-                                            </v-btn>
-                                        </v-card-actions>
-                                    </v-card>
+                                <budget-card-component
+                                    :item="item"
+                                    @open-update-modal="openUpdateModal"
+                                    @open-delete-modal="openDeleteModal"
+                                >
+                                </budget-card-component>
                                 </v-col>
                             </v-row>
 
