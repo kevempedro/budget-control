@@ -1,5 +1,3 @@
-import budgetTypesEnum from '../../enums/budgetTypes.enum.js';
-
 import html from './html-page.js';
 
 const DeleteDialog = {

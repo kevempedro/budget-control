@@ -6,6 +6,7 @@ import budgetTypesEnum from './enums/budgetTypes.enum.js';
 import Report from './components/report/script.js';
 import BudgetCard from './components/budget-card/script.js';
 import DeleteDialog from './components/delete-dialog/script.js';
+import UpdateDialog from './components/update-dialog/script.js';
 
 new Vue({
     el: '#app',
@@ -14,21 +15,18 @@ new Vue({
     components: {
         'report-component': Report,
         'budget-card-component': BudgetCard,
-        'delete-dialog-component': DeleteDialog
+        'delete-dialog-component': DeleteDialog,
+        'update-dialog-component': UpdateDialog
     },
 
     data () {
         return {
             deleteDialog: { isOpen: false, id: 0 },
-            updateDialog: { isOpen: false, id: 0 },
+            updateDialog: { isOpen: false, id: 0, item: {} },
             description: '',
-            descriptionUpdate: '',
             amount: null,
-            amountUpdate: null,
             typeBudget: budgetTypesEnum.GAIN,
-            typeBudgetUpdate: '',
             datePicker: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
-            datePickerUpdate: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
             budgetItems: [],
             budgetItemsFiltered: [],
             budgetItemsCaculation: [],
@@ -81,16 +79,18 @@ new Vue({
             this.budgetItemsFiltered = this.budgetItemsFiltered.slice(((totalItemsToShow - this.itemsPerPage)),
                 totalItemsToShow)
             ;
+
+            const targetDiv = this.$refs.paginationAnchor;
+            window.scrollTo({
+                top: targetDiv.offsetTop,
+                behavior: 'smooth' // Adiciona um efeito de rolagem suave
+            });
         }
     },
 
     computed: {
         disabledRegisterButton() {
             return !this.description || !this.amount;
-        },
-
-        disabledUpdateButton() {
-            return !this.descriptionUpdate || !this.amountUpdate;
         },
 
         setPagination() {
@@ -112,20 +112,14 @@ new Vue({
         },
 
         async openUpdateModal(id) {
-            this.updateDialog = {
-                isOpen: true,
-                id
-            };
-
             const item = await this.getBudgetItemById(id);
 
             if (item) {
-                const currentDateSplited = item.date.split('/');
-
-                this.descriptionUpdate = item.description;
-                this.amountUpdate = item.amount;
-                this.typeBudgetUpdate = item.typeBudget;
-                this.datePickerUpdate = `${currentDateSplited[1]}-${currentDateSplited[0]}`;
+                this.updateDialog = {
+                    isOpen: true,
+                    id,
+                    item
+                };
             }
         },
 
@@ -139,7 +133,8 @@ new Vue({
         closeUpdateModal() {
             this.updateDialog = {
                 isOpen: false,
-                id: 0
+                id: 0,
+                item: {}
             };
         },
 
@@ -322,17 +317,8 @@ new Vue({
             });
         },
 
-        UpdateItemInBudget() {
+        updateBudget(payload) {
             this.loadingUpdateBudget = true;
-
-            const datePickerUpdateSplited = this.datePickerUpdate.split('-');
-
-            const payload =  {
-                description: this.descriptionUpdate,
-                amount: this.amountUpdate,
-                typeBudget: this.typeBudgetUpdate,
-                date: `${datePickerUpdateSplited[1]}/${datePickerUpdateSplited[0]}`
-            };
 
             update(ref(this.dataBase, `${this.tableName}/${this.updateDialog.id}`), payload)
             .then(() => {

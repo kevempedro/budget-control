@@ -93,6 +93,8 @@
                             <!-- Fim - Informações para o cadastro -->
 
                             <!-- Início - Filtros -->
+                            <div ref="paginationAnchor"></div>
+
                             <div class="mt-12">
                                 <v-expansion-panels>
                                     <v-expansion-panel>
@@ -177,7 +179,7 @@
                             <!-- Fim - Filtros -->
 
                             <!-- Início - Informações Gerais -->
-                            <div class="d-flex flex-column flex-sm-row align-start align-sm-center justify-space-between mt-12">
+                            <div class="d-flex flex-column flex-sm-row align-start align-sm-center justify-space-between mt-12 mb-2">
                                 <div>
                                     <strong style="color: #4caf50;">Ganhos</strong>
 
@@ -277,106 +279,14 @@
 
                         <!-- Início - Modal de edição do registro -->
                         <v-row justify="center">
-                            <v-dialog
-                              v-model="updateDialog.isOpen"
-                              persistent
-                              max-width="600px"
+                            <update-dialog-component
+                                :is-open="updateDialog.isOpen"
+                                :item="updateDialog.item"
+                                :loading-update-budget="loadingUpdateBudget"
+                                @on-update-budget="updateBudget"
+                                @close-update-modal="closeUpdateModal"
                             >
-                                <v-card>
-                                    <v-card-title>
-                                        <span class="text-h5">Atualizar Registro</span>
-                                    </v-card-title>
-
-                                    <v-card-text>
-                                        <v-container>
-                                            <v-row>
-                                                <v-col cols="12">
-                                                    <v-text-field
-                                                        v-model="descriptionUpdate"
-                                                        clearable
-                                                        id="descriptionUpdate"
-                                                        name="descriptionUpdate"
-                                                        label="Descrição"
-                                                        type="text"
-                                                    >
-                                                    </v-text-field>
-                                                </v-col>
-
-                                                <v-col cols="12">
-                                                    <v-text-field
-                                                        v-model="amountUpdate"
-                                                        clearable
-                                                        id="amountUpdate"
-                                                        name="amountUpdate"
-                                                        label="Valor"
-                                                        type="number"
-                                                        prefix="R$"
-                                                    >
-                                                    </v-text-field>
-                                                </v-col>
-
-                                                <v-col cols="12">
-                                                    <v-radio-group
-                                                        v-model="typeBudgetUpdate"
-                                                        column
-                                                    >
-                                                        <v-radio
-                                                            label="Ganho"
-                                                            color="success"
-                                                            value="gain"
-                                                        >
-                                                        </v-radio>
-
-                                                        <v-radio
-                                                            label="Investimento"
-                                                            color="info"
-                                                            value="investment"
-                                                        >
-                                                        </v-radio>
-
-                                                        <v-radio
-                                                            label="Despesa"
-                                                            color="error"
-                                                            value="cost"
-                                                        >
-                                                        </v-radio>
-                                                    </v-radio-group>
-                                                </v-col>
-
-                                                <v-col cols="12">
-                                                    <v-date-picker
-                                                        v-model="datePickerUpdate"
-                                                        type="month"
-                                                    >
-                                                    </v-date-picker>
-                                                </v-col>
-                                            </v-row>
-                                        </v-container>
-                                    </v-card-text>
-
-                                    <v-card-actions>
-                                        <v-spacer></v-spacer>
-
-                                        <v-btn
-                                            color="red darken-1"
-                                            text
-                                            @click="closeUpdateModal()"
-                                        >
-                                            Fechar
-                                        </v-btn>
-
-                                        <v-btn
-                                            color="green darken-1"
-                                            text
-                                            :disabled="disabledUpdateButton"
-                                            :loading="loadingUpdateBudget"
-                                            @click="UpdateItemInBudget"
-                                        >
-                                            Salvar
-                                        </v-btn>
-                                    </v-card-actions>
-                                </v-card>
-                            </v-dialog>
+                            </update-dialog-component>
                         </v-row>
                         <!-- Fim - Modal de edição do registro -->
 
