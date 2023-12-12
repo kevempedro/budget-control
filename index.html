@@ -266,43 +266,13 @@
                         <!-- Fim - Listagem dos registros -->
 
                         <!-- Início - Modal de confirmação de exclusão do registro -->
-                        <v-dialog
-                            v-model="deleteDialog.isOpen"
-                            persistent
-                            max-width="290"
+                        <delete-dialog-component
+                            :is-open="deleteDialog.isOpen"
+                            :loading-delete-budget="loadingDeleteBudget"
+                            @on-delete-budget="deleteBudget"
+                            @close-delete-modal="closeDeleteModal"
                         >
-                            <v-card>
-                                <v-card-title class="text-h5">
-                                    Atenção
-                                </v-card-title>
-
-                                <v-card-text>
-                                    Realmente deseja excluir esse registro?
-                                </v-card-text>
-
-                                <v-card-actions>
-
-                                    <v-spacer></v-spacer>
-
-                                    <v-btn
-                                        color="red darken-1"
-                                        text
-                                        @click="closeDeleteModal"
-                                    >
-                                        Cancelar
-                                    </v-btn>
-
-                                    <v-btn
-                                        color="green darken-1"
-                                        text
-                                        :loading="loadingDeleteBudget"
-                                        @click="removeItemFromBudget"
-                                    >
-                                        Excluir
-                                    </v-btn>
-                                </v-card-actions>
-                            </v-card>
-                        </v-dialog>
+                        </delete-dialog-component>
                         <!-- Fim - Modal de confirmação de exclusão do registro -->
 
                         <!-- Início - Modal de edição do registro -->

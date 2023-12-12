@@ -5,6 +5,7 @@ import budgetTypesEnum from './enums/budgetTypes.enum.js';
 
 import Report from './components/report/script.js';
 import BudgetCard from './components/budget-card/script.js';
+import DeleteDialog from './components/delete-dialog/script.js';
 
 new Vue({
     el: '#app',
@@ -13,6 +14,7 @@ new Vue({
     components: {
         'report-component': Report,
         'budget-card-component': BudgetCard,
+        'delete-dialog-component': DeleteDialog
     },
 
     data () {
@@ -304,7 +306,7 @@ new Vue({
             }
         },
 
-        removeItemFromBudget() {
+        deleteBudget() {
             this.loadingDeleteBudget = true;
 
             remove(ref(this.dataBase, `${this.tableName}/${this.deleteDialog.id}`))
