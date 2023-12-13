@@ -26,6 +26,10 @@ const BudgetCard = {
             this.$emit('open-delete-modal', id);
         },
 
+        onCheckPayed(payload) {
+            this.$emit('on-check-payed', payload);
+        },
+
         returnBorderCardClass(typeBudget) {
             switch(typeBudget) {
                 case budgetTypesEnum.GAIN:

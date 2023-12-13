@@ -14,7 +14,7 @@ const getMonthByNumber = (monthNumber) => {
         'Dez'
     ];
 
-    return months[monthNumber].toUpperCase();
+    return months[monthNumber];
 };
 
 const getFullMonthByNumber = (monthNumber) => {
@@ -33,7 +33,7 @@ const getFullMonthByNumber = (monthNumber) => {
         'Dezembro'
     ];
 
-    return months[monthNumber].toUpperCase();
+    return months[monthNumber];
 };
 
 export {

@@ -4,7 +4,8 @@ const UpdateDialog = {
     name: 'UpdateDialog',
     props: {
         isOpen: {
-            required: true
+            required: true,
+            default: false
         },
         item: {
             required: true,

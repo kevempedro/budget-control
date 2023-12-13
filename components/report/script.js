@@ -1,5 +1,5 @@
 import budgetTypesEnum from '../../enums/budgetTypes.enum.js';
-import { getMonthByNumber } from '../../utils.js';
+import { getFullMonthByNumber } from '../../utils.js';
 
 import html from './html-page.js';
 
@@ -162,10 +162,10 @@ const Report = {
     },
 
     methods: {
-        getMonthByNumber(month) {
+        getFullMonthByNumber(month) {
             const monthNumber = Number(month.replace('0', '')) - 1;
 
-            return getMonthByNumber(monthNumber);
+            return getFullMonthByNumber(monthNumber);
         },
     }
 };

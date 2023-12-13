@@ -4,7 +4,7 @@ const html = `
             {{ item.date }}
 
             <v-checkbox v-if="item.typeBudget === budgetTypesEnumData.COST" v-model="item.payed" label="Pago"
-                color="success" value="" @click="checkPayed({ id: item.id, payed: item.payed })">
+                color="success" value="" @click="onCheckPayed({ id: item.id, payed: item.payed })">
             </v-checkbox>
         </v-card-title>
 

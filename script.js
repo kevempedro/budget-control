@@ -7,6 +7,7 @@ import Report from './components/report/script.js';
 import BudgetCard from './components/budget-card/script.js';
 import DeleteDialog from './components/delete-dialog/script.js';
 import UpdateDialog from './components/update-dialog/script.js';
+import Snackbar from './components/snackbar/script.js';
 
 new Vue({
     el: '#app',
@@ -16,7 +17,8 @@ new Vue({
         'report-component': Report,
         'budget-card-component': BudgetCard,
         'delete-dialog-component': DeleteDialog,
-        'update-dialog-component': UpdateDialog
+        'update-dialog-component': UpdateDialog,
+        'snackbar-component': Snackbar
     },
 
     data () {
@@ -265,6 +267,16 @@ new Vue({
                     return;
                 }
 
+                const hasAnyAmountString = amountSlited.find(amount => !Number(amount));
+
+                if (hasAnyAmountString) {
+                    this.showSnackbarError = true;
+                    this.snackbarErrorText = 'Informe apenas números no valor';
+
+                    return;
+                }
+
+
                 const datePickerSplited = this.datePicker.split('-');
 
                 for (let i = 0; i < descriptionSlited.length; i++) {
@@ -285,6 +297,10 @@ new Vue({
                     set(ref(this.dataBase, `${this.tableName}/${currentId}`), payload)
                     .then(() => {
                         this.getBudgetItems();
+
+                        this.description = '';
+                        this.amount = null;
+                        this.typeBudget = budgetTypesEnum.GAIN;
                     })
                     .catch(() => {
                         console.log('Erro ao criar o registro');
@@ -294,10 +310,6 @@ new Vue({
                 console.log(err);
             } finally {
                 this.loadingRegisterBudget = false;
-
-                this.description = '';
-                this.amount = null;
-                this.typeBudget = budgetTypesEnum.GAIN;
             }
         },
 

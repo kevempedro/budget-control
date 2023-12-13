@@ -4,7 +4,8 @@ const DeleteDialog = {
     name: 'DeleteDialog',
     props: {
         isOpen: {
-            required: true
+            required: true,
+            default: false
         },
         loadingDeleteBudget: {
             required: true,

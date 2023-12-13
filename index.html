@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <link rel="icon" href="./assets/icons/tab-icon.png" type="image/x-icon">
+
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/@mdi/font@6.x/css/materialdesignicons.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
@@ -45,52 +47,54 @@
                             </v-text-field>
 
                             <div class="d-flex justify-space-between flex-column flex-sm-row mt-10" style="gap: 20px;">
-                                <v-date-picker
-                                    v-model="datePicker"
-                                    type="month"
-                                >
-                                </v-date-picker>
+                                <div>
+                                    <v-date-picker
+                                        v-model="datePicker"
+                                        type="month"
+                                    >
+                                    </v-date-picker>
+
+                                    <v-radio-group
+                                        v-model="typeBudget"
+                                        column
+                                    >
+                                        <v-radio
+                                            label="Ganho"
+                                            color="success"
+                                            value="gain"
+                                        >
+                                        </v-radio>
+
+                                        <v-radio
+                                            label="Investimento"
+                                            color="info"
+                                            value="investment"
+                                        >
+                                        </v-radio>
+
+                                        <v-radio
+                                            label="Despesa"
+                                            color="error"
+                                            value="cost"
+                                        >
+                                        </v-radio>
+                                    </v-radio-group>
+
+                                    <v-btn
+                                        color="primary"
+                                        :disabled="disabledRegisterButton"
+                                        :loading="loadingRegisterBudget"
+                                        @click="registerBudget"
+                                    >
+                                        Registrar
+                                    </v-btn>
+                                </div>
+                                <!-- Fim - Informações para o cadastro -->
 
                                 <!-- Início - Resultados do ano -->
                                 <report-component :budget-items="budgetItems"></report-component>
                                 <!-- Fim - Resultados do ano -->
                             </div>
-
-                            <v-radio-group
-                                v-model="typeBudget"
-                                column
-                            >
-                                <v-radio
-                                    label="Ganho"
-                                    color="success"
-                                    value="gain"
-                                >
-                                </v-radio>
-
-                                <v-radio
-                                    label="Investimento"
-                                    color="info"
-                                    value="investment"
-                                >
-                                </v-radio>
-
-                                <v-radio
-                                    label="Despesa"
-                                    color="error"
-                                    value="cost"
-                                >
-                                </v-radio>
-                            </v-radio-group>
-
-                            <v-btn
-                                color="primary"
-                                :disabled="disabledRegisterButton"
-                                :loading="loadingRegisterBudget"
-                                @click="registerBudget"
-                            >
-                                Registrar
-                            </v-btn>
-                            <!-- Fim - Informações para o cadastro -->
 
                             <!-- Início - Filtros -->
                             <div ref="paginationAnchor"></div>
@@ -240,6 +244,7 @@
                                     :item="item"
                                     @open-update-modal="openUpdateModal"
                                     @open-delete-modal="openDeleteModal"
+                                    @on-check-payed="checkPayed"
                                 >
                                 </budget-card-component>
                                 </v-col>
@@ -292,23 +297,12 @@
 
 
                         <!-- Início - Snackbar de mensagens de erro -->
-                        <v-snackbar
-                            v-model="showSnackbarError"
-                            left
+                        <snackbar-component
+                            :show-snackbar-error="showSnackbarError"
+                            :snackbar-error-text="snackbarErrorText"
+                            @close-snackbar="showSnackbarError = false"
                         >
-                            {{ snackbarErrorText }}
-
-                            <template v-slot:action="{ attrs }">
-                                <v-btn
-                                    color="primary"
-                                    text
-                                    v-bind="attrs"
-                                    @click="showSnackbarError = false"
-                                >
-                                    Fechar
-                                </v-btn>
-                            </template>
-                        </v-snackbar>
+                        </snackbar-component>
                         <!-- Fim - Snackbar de mensagens de erro -->
                     </v-row>
                 </v-container>
