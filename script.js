@@ -8,6 +8,7 @@ import BudgetCard from './components/budget-card/script.js';
 import DeleteDialog from './components/delete-dialog/script.js';
 import UpdateDialog from './components/update-dialog/script.js';
 import Snackbar from './components/snackbar/script.js';
+import Filter from './components/filter/script.js';
 
 new Vue({
     el: '#app',
@@ -18,7 +19,8 @@ new Vue({
         'budget-card-component': BudgetCard,
         'delete-dialog-component': DeleteDialog,
         'update-dialog-component': UpdateDialog,
-        'snackbar-component': Snackbar
+        'snackbar-component': Snackbar,
+        'filter-component': Filter
     },
 
     data () {
@@ -47,7 +49,7 @@ new Vue({
             budgetTypesEnumData: budgetTypesEnum,
             pagination: 1,
             totalPagination: 0,
-            itemsPerPage: 10,
+            itemsPerPage: 10
         };
     },
 
@@ -56,24 +58,6 @@ new Vue({
     },
 
     watch: {
-        typeBudgetFilter() {
-            this.filterBudgetItems();
-
-            this.setPagination;
-        },
-
-        datePickerFilter() {
-            this.filterBudgetItems();
-
-            this.setPagination;
-        },
-
-        descriptionFilter() {
-            this.filterBudgetItems();
-
-            this.setPagination;
-        },
-
         pagination() {
             this.filterBudgetItems();
 
@@ -85,7 +69,7 @@ new Vue({
             const targetDiv = this.$refs.paginationAnchor;
             window.scrollTo({
                 top: targetDiv.offsetTop,
-                behavior: 'smooth' // Adiciona um efeito de rolagem suave
+                behavior: 'smooth'
             });
         }
     },
@@ -140,10 +124,15 @@ new Vue({
             };
         },
 
-        clearFilter() {
-            this.typeBudgetFilter = '',
-            this.datePickerFilter = (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
-            this.descriptionFilter = ''
+        applyFilter(item) {
+            const { datePickerFilter, descriptionFilter, typeBudgetFilter } = item;
+
+            this.datePickerFilter = datePickerFilter,
+            this.descriptionFilter = descriptionFilter,
+            this.typeBudgetFilter = typeBudgetFilter
+
+            this.filterBudgetItems();
+            this.setPagination;
         },
 
         calculateGains() {
