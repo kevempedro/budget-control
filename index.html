@@ -189,12 +189,22 @@
                                 </p>
                             </div>
 
-                            <v-pagination
-                                v-else
-                                class="mt-6"
-                                v-model="pagination"
-                                :length="totalPagination"
-                            >
+
+                            <div v-else class="d-flex mt-6">
+                                <v-select
+                                    class="per-page-select"
+                                    label="Por página"
+                                    v-model="itemsPerPage"
+                                    :items="pages"
+                                >
+                                </v-select>
+
+                                <v-pagination
+                                    v-model="pagination"
+                                    :length="totalPagination"
+                                >
+                                </v-pagination>
+                            </div>
                         </v-col>
                         <!-- Fim - Listagem dos registros -->
 

@@ -7,6 +7,10 @@
     width: max-content;
 }
 
+.per-page-select .v-input__control .v-input__slot {
+    width: 100px;
+}
+
 ::-webkit-scrollbar {
     width: 9px;
     background-color: #A8B6C2;

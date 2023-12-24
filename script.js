@@ -49,7 +49,8 @@ new Vue({
             budgetTypesEnumData: budgetTypesEnum,
             pagination: 1,
             totalPagination: 0,
-            itemsPerPage: 10
+            pages: [10, 20, 30, 40, 50],
+            itemsPerPage: 10,
         };
     },
 
@@ -71,6 +72,11 @@ new Vue({
                 top: targetDiv.offsetTop,
                 behavior: 'smooth'
             });
+        },
+
+        itemsPerPage() {
+            this.filterBudgetItems();
+            this.setPagination
         }
     },
 
@@ -82,7 +88,6 @@ new Vue({
         setPagination() {
             this.pagination = 1;
             this.totalPagination = 0;
-            this.itemsPerPage = 10;
 
             this.totalPagination = Math.ceil((this.budgetItemsFiltered.length / this.itemsPerPage));
             this.budgetItemsFiltered = this.budgetItemsFiltered.slice(0, this.itemsPerPage);
