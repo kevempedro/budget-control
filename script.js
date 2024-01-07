@@ -261,7 +261,7 @@ new Vue({
                     return;
                 }
 
-                const hasAnyAmountString = amountSlited.find(amount => !Number(amount));
+                const hasAnyAmountString = amountSlited.find(amount => !Number(amount.replace(',', '.')));
 
                 if (hasAnyAmountString) {
                     this.showSnackbarError = true;

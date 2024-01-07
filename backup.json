@@ -1213,7 +1213,7 @@
     "date": "12/2023",
     "description": "Academia",
     "id": 158,
-    "payed": false,
+    "payed": true,
     "typeBudget": "cost"
   },
   {
@@ -1263,19 +1263,19 @@
     "typeBudget": "cost"
   },
   {
-    "amount": "262.19",
+    "amount": "277.18",
     "date": "12/2023",
     "description": "Fatura cartão - Picpay",
     "id": 165,
-    "payed": false,
+    "payed": true,
     "typeBudget": "cost"
   },
   {
-    "amount": "117.4",
+    "amount": "112.50",
     "date": "12/2023",
     "description": "Fatura cartão - Inter PJ",
     "id": 166,
-    "payed": false,
+    "payed": true,
     "typeBudget": "cost"
   },
   {
@@ -1304,6 +1304,159 @@
     "date": "12/2023",
     "description": "Instalação de câmeras - 1x3",
     "id": 170,
+    "payed": true,
+    "typeBudget": "cost"
+  },
+  {
+    "amount": "1633.93",
+    "date": "12/2023",
+    "description": "Férias de 07/12/2023",
+    "id": 171,
+    "typeBudget": "gain"
+  },
+  {
+    "amount": "1702.11",
+    "date": "12/2023",
+    "description": "13º Salário de 15/12/2023",
+    "id": 172,
+    "typeBudget": "gain"
+  },
+  {
+    "amount": "2653.63",
+    "date": "12/2023",
+    "description": "Férias de 21/12/2023",
+    "id": 173,
+    "typeBudget": "gain"
+  },
+  {
+    "amount": "1761.37",
+    "date": "12/2023",
+    "description": "Amortização - Lote Parque das Águas",
+    "id": 174,
+    "payed": true,
+    "typeBudget": "cost"
+  },
+  {
+    "amount": "200",
+    "date": "12/2023",
+    "description": "Limpeza de dente",
+    "id": 175,
+    "payed": true,
+    "typeBudget": "cost"
+  },
+  {
+    "amount": "135",
+    "date": "12/2023",
+    "description": "Massagem terapêutica",
+    "id": 176,
+    "payed": true,
+    "typeBudget": "cost"
+  },
+  {
+    "amount": "67",
+    "date": "12/2023",
+    "description": "Internet - VIVO",
+    "id": 177,
+    "payed": true,
+    "typeBudget": "cost"
+  },
+  {
+    "amount": "2659.66",
+    "date": "01/2024",
+    "description": "Salário",
+    "id": 178,
+    "typeBudget": "gain"
+  },
+  {
+    "amount": "400",
+    "date": "01/2024",
+    "description": "Investimento - Tesouro Direto",
+    "id": 179,
+    "typeBudget": "investment"
+  },
+  {
+    "amount": "200",
+    "date": "01/2024",
+    "description": "Investimento - Tesouro IPCA",
+    "id": 180,
+    "typeBudget": "investment"
+  },
+  {
+    "amount": "700",
+    "date": "01/2024",
+    "description": "Cofrinho - BGS 2024",
+    "id": 181,
+    "typeBudget": "investment"
+  },
+  {
+    "amount": "200",
+    "date": "01/2024",
+    "description": "Tia Ana",
+    "id": 182,
+    "payed": true,
+    "typeBudget": "cost"
+  },
+  {
+    "amount": "258",
+    "date": "01/2024",
+    "description": "Energia Solar - 24x56",
+    "id": 183,
+    "payed": true,
+    "typeBudget": "cost"
+  },
+  {
+    "amount": "95",
+    "date": "01/2024",
+    "description": "Academia",
+    "id": 184,
+    "payed": false,
+    "typeBudget": "cost"
+  },
+  {
+    "amount": "703.32",
+    "date": "01/2024",
+    "description": "Compra Lote - Parque das Aguas",
+    "id": 185,
+    "payed": true,
+    "typeBudget": "cost"
+  },
+  {
+    "amount": "166",
+    "date": "01/2024",
+    "description": "Óculos Chilli Beans - 4x4",
+    "id": 186,
+    "payed": true,
+    "typeBudget": "cost"
+  },
+  {
+    "amount": "1094.68",
+    "date": "01/2024",
+    "description": "PC Gamer - 2x12",
+    "id": 187,
+    "payed": true,
+    "typeBudget": "cost"
+  },
+  {
+    "amount": "116.69",
+    "date": "01/2024",
+    "description": "Aluguel casa Ouro Preto - 2x4",
+    "id": 188,
+    "payed": true,
+    "typeBudget": "cost"
+  },
+  {
+    "amount": "429.96",
+    "date": "01/2024",
+    "description": "Fatura cartão - Picpay",
+    "id": 189,
+    "payed": false,
+    "typeBudget": "cost"
+  },
+  {
+    "amount": "112.50",
+    "date": "01/2024",
+    "description": "Fatura cartão - Inter PJ",
+    "id": 190,
     "payed": true,
     "typeBudget": "cost"
   }
