@@ -129,7 +129,30 @@
                                 </div>
 
                                 <div>
-                                    <strong>Fechamento do Mês</strong>
+                                    <div class="d-flex">
+                                        <strong>
+                                            Fechamento do mês
+                                        </strong>
+
+                                        <v-tooltip bottom>
+                                            <template v-slot:activator="{ on, attrs }">
+                                                <v-icon
+                                                    size="20"
+                                                    color="#535353"
+                                                    style="cursor: pointer;"
+                                                    class="ms-1"
+                                                    v-bind="attrs"
+                                                    v-on="on"
+                                                >
+                                                    mdi-help-circle-outline
+                                                </v-icon>
+                                            </template>
+
+                                            <span>
+                                                No fechamento do mês, o cálculo envolve apenas subtrair as despesas dos ganhos, sem que os investimentos tenham influência.
+                                            </span>
+                                        </v-tooltip>
+                                    </div>
 
                                     <p style="color: #9e9e9e;">{{ calculateAmountMonth() }}</p>
                                 </div>

@@ -184,9 +184,9 @@ new Vue({
                     total += Number(item.amount);
                 }
 
-                if (item.typeBudget === budgetTypesEnum.INVESTMENT) {
-                    total -= Number(item.amount);
-                }
+                // if (item.typeBudget === budgetTypesEnum.INVESTMENT) {
+                //     total -= Number(item.amount);
+                // }
 
                 if (item.typeBudget === budgetTypesEnum.COST) {
                     total -= Number(item.amount);
