@@ -12,19 +12,14 @@ const Report = {
     },
     data () {
         return {
-            years: ['2023', '2024', '2025'],
-            yearSelected: '',
-            currentYear: new Date().getFullYear(),
+            years: [2023, 2024, 2025],
+            yearSelected: new Date().getFullYear(),
             amountOfTheCurrentYear: 0,
             budgetTypesEnumData: budgetTypesEnum
         };
     },
 
     template: html,
-
-    created() {
-        this.yearSelected = this.currentYear;
-    },
 
     computed: {
         resultsOfTheYearHasAnyRegister() {
