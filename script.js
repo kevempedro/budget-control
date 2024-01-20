@@ -373,7 +373,18 @@ new Vue({
             }
 
             if (this.descriptionFilter) {
-                this.budgetItemsFiltered = this.budgetItemsFiltered.filter(item => item.description.toLowerCase().includes(this.descriptionFilter.toLowerCase()));
+                this.budgetItemsFiltered = this.budgetItemsFiltered.filter(
+                    item => (
+                        item.description
+                        .toLowerCase()
+                        .trim()
+                        .includes(
+                            this.descriptionFilter
+                            .toLowerCase()
+                            .trim()
+                        )
+                    )
+                );
             }
 
             this.budgetItemsFiltered.sort(function(a, b) {
