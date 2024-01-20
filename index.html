@@ -134,7 +134,10 @@
                                             Fechamento do mês
                                         </strong>
 
-                                        <v-tooltip bottom>
+                                        <v-tooltip
+                                            bottom
+                                            color="info"
+                                        >
                                             <template v-slot:activator="{ on, attrs }">
                                                 <v-icon
                                                     size="20"
@@ -161,7 +164,10 @@
 
                             <!-- Início - Listagem dos registros -->
                             <div v-if="$vuetify.breakpoint.mdAndUp" class="d-flex mb-5">
-                                <v-tooltip right>
+                                <v-tooltip
+                                    right
+                                    color="info"
+                                >
                                     <template v-slot:activator="{ on, attrs }">
                                         <v-btn
                                             class="mr-4"
@@ -257,9 +263,9 @@
 
                         <!-- Início - Snackbar de mensagens de erro -->
                         <snackbar-component
-                            :show-snackbar-error="showSnackbarError"
-                            :snackbar-error-text="snackbarErrorText"
-                            @close-snackbar="showSnackbarError = false"
+                            :show-snackbar="showSnack"
+                            :snackbar-text="snackbarText"
+                            @close-snackbar="showSnack = false"
                         >
                         </snackbar-component>
                         <!-- Fim - Snackbar de mensagens de erro -->

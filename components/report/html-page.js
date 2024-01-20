@@ -13,7 +13,7 @@ const html = `
 
                     <v-progress-circular :rotate="360" :size="100" :width="15"
                         :value="((budget.total / amountOfTheCurrentYear) * 100)" :color="budget.color">
-                        {{ ((budget.total / amountOfTheCurrentYear) * 100).toFixed(2) }}
+                        {{ ((budget.total / amountOfTheCurrentYear) * 100).toFixed(2) }}%
                     </v-progress-circular>
 
                     <p class="ma-0 text-center mt-2">
@@ -34,7 +34,10 @@ const html = `
                         {{ getFullMonthByNumber(element.month) }}
                     </p>
 
-                    <v-tooltip right>
+                    <v-tooltip
+                        top
+                        color="info"
+                    >
                         <template v-slot:activator="{ on, attrs }">
                             <v-icon v-bind="attrs" v-on="on">
                                 {{

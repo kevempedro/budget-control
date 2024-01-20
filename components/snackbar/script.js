@@ -3,11 +3,11 @@ import html from './html-page.js';
 const Snackbar = {
     name: 'Snackbar',
     props: {
-        showSnackbarError: {
+        showSnackbar: {
             required: true,
             default: false
         },
-        snackbarErrorText: {
+        snackbarText: {
             required: true,
             default: ''
         }

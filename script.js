@@ -34,7 +34,7 @@ new Vue({
             budgetItems: [],
             budgetItemsFiltered: [],
             budgetItemsCaculation: [],
-            typeBudgetFilter: '',
+            typeBudgetsFilter: [],
             datePickerFilter: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
             descriptionFilter: '',
             dataBase: getDatabase(),
@@ -43,8 +43,8 @@ new Vue({
             loadingUpdateBudget: false,
             loadingDeleteBudget: false,
             years: ['2023', '2024', '2025'],
-            showSnackbarError: false,
-            snackbarErrorText: '',
+            showSnack: false,
+            snackbarText: '',
             mdSize: '12',
             budgetTypesEnumData: budgetTypesEnum,
             pagination: 1,
@@ -130,11 +130,11 @@ new Vue({
         },
 
         applyFilter(item) {
-            const { datePickerFilter, descriptionFilter, typeBudgetFilter } = item;
+            const { datePickerFilter, descriptionFilter, typeBudgetsFilter } = item;
 
             this.datePickerFilter = datePickerFilter,
             this.descriptionFilter = descriptionFilter,
-            this.typeBudgetFilter = typeBudgetFilter
+            this.typeBudgetsFilter = typeBudgetsFilter
 
             this.filterBudgetItems();
             this.setPagination;
@@ -246,7 +246,7 @@ new Vue({
         registerBudget() {
             try {
                 this.loadingRegisterBudget = true;
-                this.showSnackbarError = false;
+                this.showSnack = false;
 
                 const descriptionSlited = this.description.split(';');
                 const amountSlited = this.amount.split(';');
@@ -255,8 +255,8 @@ new Vue({
                 const hasAnyAmountEmpty = amountSlited.find(amount => amount.trim() === '')!== undefined;
 
                 if ((descriptionSlited.length !== amountSlited.length) || hasAnyDescriptionEmpty || hasAnyAmountEmpty) {
-                    this.showSnackbarError = true;
-                    this.snackbarErrorText = 'Informe a mesma quantidade de descrições e valores';
+                    this.showSnack = true;
+                    this.snackbarText = 'Informe a mesma quantidade de descrições e valores';
 
                     return;
                 }
@@ -264,8 +264,8 @@ new Vue({
                 const hasAnyAmountString = amountSlited.find(amount => !Number(amount.replace(',', '.')));
 
                 if (hasAnyAmountString) {
-                    this.showSnackbarError = true;
-                    this.snackbarErrorText = 'Informe apenas números no valor';
+                    this.showSnack = true;
+                    this.snackbarText = 'Informe apenas números no valor';
 
                     return;
                 }
@@ -295,6 +295,9 @@ new Vue({
                         this.description = '';
                         this.amount = null;
                         this.typeBudget = budgetTypesEnum.GAIN;
+
+                        this.showSnack = true;
+                        this.snackbarText = 'Registro cadastrado com sucesso';
                     })
                     .catch(() => {
                         console.log('Erro ao criar o registro');
@@ -313,6 +316,9 @@ new Vue({
             remove(ref(this.dataBase, `${this.tableName}/${this.deleteDialog.id}`))
             .then(() => {
                 this.getBudgetItems();
+
+                this.showSnack = true;
+                this.snackbarText = 'Registro excluido com sucesso';
             })
             .catch(() => {
                 console.log('Erro ao remover o registro');
@@ -329,6 +335,9 @@ new Vue({
             update(ref(this.dataBase, `${this.tableName}/${this.updateDialog.id}`), payload)
             .then(() => {
                 this.getBudgetItems();
+
+                this.showSnack = true;
+                this.snackbarText = 'Registro atualizado com sucesso';
               })
               .catch(() => {
                 console.log('Erro ao atualizar o registro');
@@ -342,7 +351,8 @@ new Vue({
         checkPayed(item) {
             update(ref(this.dataBase, `${this.tableName}/${item.id}`), { payed: item.payed })
             .then(() => {
-                console.log('Registro atualizado com sucesso');
+                this.showSnack = true;
+                this.snackbarText = 'Registro atualizado com sucesso';
               })
               .catch(() => {
                 console.log('Erro ao atualizar o registro');
@@ -358,8 +368,8 @@ new Vue({
 
             this.budgetItemsCaculation = this.budgetItemsFiltered;
 
-            if (this.typeBudgetFilter) {
-                this.budgetItemsFiltered = this.budgetItemsFiltered.filter(item => item.typeBudget === this.typeBudgetFilter);
+            if (this.typeBudgetsFilter.length > 0) {
+                this.budgetItemsFiltered = this.budgetItemsFiltered.filter(item => this.typeBudgetsFilter.includes(item.typeBudget));
             }
 
             if (this.descriptionFilter) {

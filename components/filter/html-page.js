@@ -5,7 +5,6 @@ const html = `
                 <div>
                     <v-icon
                         class="mr-2"
-                        style="background:#dfdede;border-radius:50%;padding:5px;"
                     >
                         mdi-filter-variant
                     </v-icon>
@@ -34,38 +33,37 @@ const html = `
                     >
                     </v-text-field>
 
-                    <v-radio-group
-                        v-model="typeBudgetFilter"
-                        column
-                    >
-                        <v-radio
-                            label="Ganho"
+                    <div class="d-flex flex-column">
+                        <v-checkbox
+                            v-model="typeBudgetsFilter"
+                            style="width:max-content;"
+                            class="ma-0"
+                            label="Ganhos"
                             color="success"
                             :value="budgetTypesEnumData.GAIN"
                         >
-                        </v-radio>
+                        </v-checkbox>
 
-                        <v-radio
-                            label="Investimento"
+                        <v-checkbox
+                            v-model="typeBudgetsFilter"
+                            style="width:max-content;"
+                            class="ma-0"
+                            label="Investimentos"
                             color="info"
                             :value="budgetTypesEnumData.INVESTMENT"
                         >
-                        </v-radio>
+                        </v-checkbox>
 
-                        <v-radio
-                            label="Despesa"
+                        <v-checkbox
+                            v-model="typeBudgetsFilter"
+                            style="width:max-content;"
+                            class="ma-0"
+                            label="Despesas"
                             color="error"
                             :value="budgetTypesEnumData.COST"
                         >
-                        </v-radio>
-
-                        <v-radio
-                            label="Nenhum"
-                            color="grey"
-                            value=""
-                        >
-                        </v-radio>
-                    </v-radio-group>
+                        </v-checkbox>
+                    </div>
                 </div>
 
                 <v-btn

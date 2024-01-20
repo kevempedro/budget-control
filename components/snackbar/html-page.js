@@ -1,6 +1,6 @@
 const html = `
-    <v-snackbar v-model="showSnackbarError" left>
-        {{ snackbarErrorText }}
+    <v-snackbar v-model="showSnackbar" left>
+        {{ snackbarText }}
 
         <template v-slot:action="{ attrs }">
             <v-btn

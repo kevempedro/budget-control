@@ -12,6 +12,7 @@ const Filter = {
             descriptionFilter: '',
             budgetTypesEnumData: budgetTypesEnum,
             typeBudgetFilter: '',
+            typeBudgetsFilter: [],
         };
     },
 
@@ -26,7 +27,7 @@ const Filter = {
             this.applyFilter();
         },
 
-        typeBudgetFilter() {
+        typeBudgetsFilter() {
             this.applyFilter();
         },
     },
@@ -36,12 +37,12 @@ const Filter = {
             this.$emit('on-apply-filter', {
                 datePickerFilter: this.datePickerFilter,
                 descriptionFilter: this.descriptionFilter,
-                typeBudgetFilter: this.typeBudgetFilter
+                typeBudgetsFilter: this.typeBudgetsFilter
             });
         },
 
         clearFilter() {
-            this.typeBudgetFilter = '',
+            this.typeBudgetsFilter = [],
             this.datePickerFilter = (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
             this.descriptionFilter = ''
         },
