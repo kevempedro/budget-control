@@ -1,4 +1,20 @@
-import { getDatabase, ref, child, get, set, update, remove  } from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js';
+import {
+    getDatabase,
+    ref,
+    child,
+    get,
+    set,
+    update,
+    remove,
+    orderByChild,
+    orderByKey,
+    equalTo,
+    query
+}from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js';
+import {
+    getAuth,
+    signOut
+} from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js';
 
 import { getFullMonthByNumber } from './utils.js';
 import budgetTypesEnum from './enums/budgetTypes.enum.js';
@@ -38,10 +54,12 @@ new Vue({
             datePickerFilter: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
             descriptionFilter: '',
             dataBase: getDatabase(),
+            authFirebase: getAuth(),
             tableName: 'budgets',
             loadingRegisterBudget: false,
             loadingUpdateBudget: false,
             loadingDeleteBudget: false,
+            loadingLogout: false,
             years: ['2023', '2024', '2025'],
             showSnack: false,
             snackbarText: '',
@@ -51,11 +69,19 @@ new Vue({
             totalPagination: 0,
             pages: [10, 20, 30, 40, 50],
             itemsPerPage: 10,
+            loginUid: ''
         };
     },
 
     created() {
-        this.getBudgetItems();
+        this.loginUid = localStorage.getItem('uid-firebase');
+
+
+        if (this.getLoginUid) {
+            this.getBudgetItems();
+        } else {
+            window.location.href = './login/index.html';
+        }
     },
 
     watch: {
@@ -91,6 +117,10 @@ new Vue({
 
             this.totalPagination = Math.ceil((this.budgetItemsFiltered.length / this.itemsPerPage));
             this.budgetItemsFiltered = this.budgetItemsFiltered.slice(0, this.itemsPerPage);
+        },
+
+        getLoginUid() {
+            return this.loginUid;
         }
     },
 
@@ -210,26 +240,51 @@ new Vue({
             return getFullMonthByNumber(monthNumber);
         },
 
+        logoutUser() {
+            this.loadingLogout = true;
+
+            signOut(this.authFirebase).then(() => {
+                if (this.getLoginUid) {
+                    localStorage.removeItem('uid-firebase');
+
+                    window.location.href = './login/index.html';
+                }
+            }).catch((error) => {
+                console.error('Erro ao deslogar usuário:', error)
+            })
+            .finally(() => {
+                this.loadingLogout = false;
+                this.closeDeleteModal();
+            });
+        },
+
         getBudgetItems() {
-            get(child(ref(this.dataBase), this.tableName))
+            const queryCondition = query(
+                ref(this.dataBase, this.tableName),
+                orderByKey(),
+                equalTo(`${this.getLoginUid}`)
+            );
+
+            get(queryCondition)
+            // get(child(ref(this.dataBase), this.tableName))
             .then((snapshot) => {
                 if (snapshot.exists()) {
-                    this.budgetItems = snapshot.val();
+                    this.budgetItems = snapshot.val()[this.getLoginUid];
                     this.filterBudgetItems();
 
                     this.setPagination;
                 } else {
-                    console.log("Erro ao retornar os registros");
+                    this.budgetItems = [];
                 }
             }).catch((error) => {
-                console.error(error);
+                console.error('Erro ao trazer os registros: ', error);
             });
         },
 
         async getBudgetItemById(id) {
             let data = null;
 
-            await get(child(ref(this.dataBase), `${this.tableName}/${id}`))
+            await get(child(ref(this.dataBase), `${this.tableName}/${this.getLoginUid}/${id}`))
             .then((snapshot) => {
                 if (snapshot.exists()) {
                     data = snapshot.val();
@@ -237,7 +292,7 @@ new Vue({
                     console.log("Erro ao retornar o registro");
                 }
             }).catch((error) => {
-                console.error(error);
+                console.error(`Erro ao trazer os registros ${id}: `, error);
             });
 
             return data;
@@ -288,7 +343,7 @@ new Vue({
                         payload = { ...payload, payed: false };
                     }
 
-                    set(ref(this.dataBase, `${this.tableName}/${currentId}`), payload)
+                    set(ref(this.dataBase, `${this.tableName}/${this.getLoginUid}/${currentId}`), payload)
                     .then(() => {
                         this.getBudgetItems();
 
@@ -299,8 +354,8 @@ new Vue({
                         this.showSnack = true;
                         this.snackbarText = 'Registro cadastrado com sucesso';
                     })
-                    .catch(() => {
-                        console.log('Erro ao criar o registro');
+                    .catch((error) => {
+                        console.error('Erro ao registrar o registro: ', error);
                     });
                 }
             } catch (err) {
@@ -313,15 +368,15 @@ new Vue({
         deleteBudget() {
             this.loadingDeleteBudget = true;
 
-            remove(ref(this.dataBase, `${this.tableName}/${this.deleteDialog.id}`))
+            remove(ref(this.dataBase, `${this.tableName}/${this.getLoginUid}/${this.deleteDialog.id}`))
             .then(() => {
                 this.getBudgetItems();
 
                 this.showSnack = true;
                 this.snackbarText = 'Registro excluido com sucesso';
             })
-            .catch(() => {
-                console.log('Erro ao remover o registro');
+            .catch((error) => {
+                console.error('Erro ao remover o registro: ', error);
             })
             .finally(() => {
                 this.loadingDeleteBudget = false;
@@ -332,15 +387,15 @@ new Vue({
         updateBudget(payload) {
             this.loadingUpdateBudget = true;
 
-            update(ref(this.dataBase, `${this.tableName}/${this.updateDialog.id}`), payload)
+            update(ref(this.dataBase, `${this.tableName}/${this.getLoginUid}/${this.updateDialog.id}`), payload)
             .then(() => {
                 this.getBudgetItems();
 
                 this.showSnack = true;
                 this.snackbarText = 'Registro atualizado com sucesso';
               })
-              .catch(() => {
-                console.log('Erro ao atualizar o registro');
+              .catch((error) => {
+                console.error('Erro ao atualizar o registro: ', error);
             })
             .finally(() => {
                 this.loadingUpdateBudget = false;
@@ -349,13 +404,13 @@ new Vue({
         },
 
         checkPayed(item) {
-            update(ref(this.dataBase, `${this.tableName}/${item.id}`), { payed: item.payed })
+            update(ref(this.dataBase, `${this.tableName}/${this.getLoginUid}/${item.id}`), { payed: item.payed })
             .then(() => {
                 this.showSnack = true;
                 this.snackbarText = 'Registro atualizado com sucesso';
               })
-              .catch(() => {
-                console.log('Erro ao atualizar o registro');
+              .catch((error) => {
+                console.error('Erro ao marcar o registro como pago: ', error);
             });
         },
 

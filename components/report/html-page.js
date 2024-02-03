@@ -11,8 +11,12 @@ const html = `
                         {{ budget.title }}
                     </p>
 
-                    <v-progress-circular :rotate="360" :size="100" :width="15"
-                        :value="((budget.total / amountOfTheCurrentYear) * 100)" :color="budget.color">
+                    <v-progress-circular
+                        :rotate="360"
+                        :size="100"
+                        :width="15"
+                        :value="((budget.total / amountOfTheCurrentYear) * 100)" :color="budget.color"
+                    >
                         {{ ((budget.total / amountOfTheCurrentYear) * 100).toFixed(2) }}%
                     </v-progress-circular>
 

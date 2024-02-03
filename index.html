@@ -20,10 +20,38 @@
 <body>
     <div id="app">
         <v-app>
-            <v-main>
+            <v-main class="mt-7">
                 <v-container>
                     <v-row>
                         <!-- Início - Informações para o cadastro -->
+                        <div
+                            class="d-flex justify-end"
+                            style="width: 100%;"
+                        >
+                        <v-tooltip
+                            bottom
+                            color="error"
+                        >
+                            <template v-slot:activator="{ on, attrs }">
+                                <v-btn
+                                    v-bind="attrs"
+                                    v-on="on"
+                                    class="pa-6"
+                                    icon
+                                    :loading="loadingLogout"
+                                    :disabled="loadingLogout"
+                                    @click="logoutUser"
+                                >
+                                    <v-icon size="30">
+                                        mdi-logout
+                                    </v-icon>
+                                </v-btn>
+                            </template>
+
+                            <span>Sair</span>
+                        </v-tooltip>
+                        </div>
+
                         <v-col cols="12">
                             <v-text-field
                                 v-model="description"
@@ -281,6 +309,7 @@
         import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js';
         import { getAnalytics } from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-analytics.js';
         import { getDatabase  } from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js';
+        import { getAuth } from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js';
 
         const firebaseConfig = {
             apiKey: 'AIzaSyAtnEYuv1143o0moZlasJJyW6AiCBQ8OAU',
@@ -293,10 +322,12 @@
             measurementId: 'G-NY4X5YSBPT'
         };
 
-        // Iniciando Firebase
+        // Início - Iniciando Firebase
         const app = initializeApp(firebaseConfig);
         const analytics = getAnalytics(app);
         const database = getDatabase(app);
+        const auth = getAuth(app);
+        // Fim - Iniciando Firebase
     </script>
 
     <script type='module' src='./script.js'></script>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" href="../assets/icons/tab-icon.png" type="image/x-icon">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@6.x/css/materialdesignicons.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+
+    <link href="./style.css" rel="stylesheet">
+
+    <title>Controle de Orçamento - Login</title>
+</head>
+<body>
+    <div id="login">
+        <v-app>
+            <v-main class="d-flex justify-center align-center">
+                <v-container>
+                    <v-row>
+                        <!-- Início - Login -->
+                        <div
+                            class="d-flex flex-column justify-center align-center"
+                            style="width: 100%;"
+                        >
+                            <h1
+                                class="mb-6"
+                            >
+                                Login
+                            </h1>
+
+                            <v-text-field
+                                v-model="email"
+                                type="email"
+                                label="E-mail"
+                                clearable
+                                style="width: 50%;"
+                            >
+                            </v-text-field>
+
+                            <v-text-field
+                                v-model="password"
+                                class="mt-6"
+                                :type="showPassword ? 'text' : 'password'"
+                                label="Senha"
+                                clearable
+                                :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
+                                @click:append="showPassword = !showPassword"
+                                style="width: 50%;"
+                            >
+                            </v-text-field>
+
+                            <v-btn
+                                color="primary"
+                                class="mt-6"
+                                :loading="loadingLoginButton"
+                                :disabled="disabledLoginButton"
+                                @click="loginUser"
+                            >
+                                Fazer login
+                            </v-btn>
+                        </div>
+                        <!-- Fim - Login -->
+
+                        <!-- Início - Snackbar de mensagens de erro -->
+                        <snackbar-component
+                          :show-snackbar="showSnack"
+                          :snackbar-text="snackbarText"
+                          @close-snackbar="showSnack = false"
+                        >
+                        </snackbar-component>
+                        <!-- Fim - Snackbar de mensagens de erro -->
+                    </v-row>
+                </v-container>
+            </v-main>
+        </v-app>
+    </div>
+
+    <script src='https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js'></script>
+    <script src='https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js'></script>
+
+    <script type='module'>
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js';
+        import { getAuth } from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js';
+
+        const firebaseConfig = {
+            apiKey: 'AIzaSyAtnEYuv1143o0moZlasJJyW6AiCBQ8OAU',
+            authDomain: 'budget-control-6341c.firebaseapp.com',
+            databaseURL: 'https://budget-control-6341c-default-rtdb.firebaseio.com',
+            projectId: 'budget-control-6341c',
+            storageBucket: 'budget-control-6341c.appspot.com',
+            messagingSenderId: '878743482937',
+            appId: '1:878743482937:web:c420845c4545a20ed993e8',
+            measurementId: 'G-NY4X5YSBPT'
+        };
+
+        // Início - Iniciando Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        // Fim - Iniciando Firebase
+    </script>
+
+    <script type='module' src='./script.js'></script>
+</body>
+</html>

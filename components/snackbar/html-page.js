@@ -1,5 +1,5 @@
 const html = `
-    <v-snackbar v-model="showSnackbar" left>
+    <v-snackbar v-model="showSnackbar" left :timeout="-1">
         {{ snackbarText }}
 
         <template v-slot:action="{ attrs }">
