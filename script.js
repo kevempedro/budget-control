@@ -16,7 +16,7 @@ import {
     signOut
 } from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js';
 
-import { getFullMonthByNumber } from './utils.js';
+import { getFullMonthByNumber, uuidv4 } from './utils.js';
 import budgetTypesEnum from './enums/budgetTypes.enum.js';
 
 import Report from './components/report/script.js';
@@ -84,6 +84,37 @@ new Vue({
         }
     },
 
+    computed: {
+        disabledRegisterButton() {
+            return !this.description || !this.amount;
+        },
+
+        setPagination() {
+            this.pagination = 1;
+            this.totalPagination = 0;
+
+            this.totalPagination = Math.ceil((this.budgetItemsFiltered.length / this.itemsPerPage));
+            this.budgetItemsFiltered = this.budgetItemsFiltered.slice(0, this.itemsPerPage);
+        },
+
+        getLoginUid() {
+            return this.loginUid;
+        },
+
+        costsLeftTopay() {
+            const datePickerFilterSplited = this.datePickerFilter.split('-');
+
+            const costs = this.budgetItems.filter(item => (
+                item.typeBudget === budgetTypesEnum.COST &&
+                item.date === `${datePickerFilterSplited[1]}/${datePickerFilterSplited[0]}`
+            ));
+
+            const costsPayed = costs.filter(item => item.payed);
+
+            return `${costsPayed.length}/${costs.length} pagas`;
+        }
+    },
+
     watch: {
         pagination() {
             this.filterBudgetItems();
@@ -106,24 +137,6 @@ new Vue({
         }
     },
 
-    computed: {
-        disabledRegisterButton() {
-            return !this.description || !this.amount;
-        },
-
-        setPagination() {
-            this.pagination = 1;
-            this.totalPagination = 0;
-
-            this.totalPagination = Math.ceil((this.budgetItemsFiltered.length / this.itemsPerPage));
-            this.budgetItemsFiltered = this.budgetItemsFiltered.slice(0, this.itemsPerPage);
-        },
-
-        getLoginUid() {
-            return this.loginUid;
-        }
-    },
-
     methods: {
         openDeleteModal(id) {
             this.deleteDialog = {
@@ -133,13 +146,13 @@ new Vue({
         },
 
         async openUpdateModal(id) {
-            const item = await this.getBudgetItemById(id);
+            const { data } = await this.getBudgetItemById(id);
 
-            if (item) {
+            if (data) {
                 this.updateDialog = {
                     isOpen: true,
                     id,
-                    item
+                    item: data
                 };
             }
         },
@@ -262,7 +275,7 @@ new Vue({
             const queryCondition = query(
                 ref(this.dataBase, this.tableName),
                 orderByKey(),
-                equalTo(`${this.getLoginUid}`)
+                equalTo(this.getLoginUid)
             );
 
             get(queryCondition)
@@ -283,11 +296,28 @@ new Vue({
 
         async getBudgetItemById(id) {
             let data = null;
+            let index = null;
 
-            await get(child(ref(this.dataBase), `${this.tableName}/${this.getLoginUid}/${id}`))
+            const queryCondition = query(
+                ref(this.dataBase, `${this.tableName}/${this.getLoginUid}`),
+                orderByChild('id'),
+                equalTo(id)
+            );
+
+            // await get(child(ref(this.dataBase), `${this.tableName}/${this.getLoginUid}/${id}`))
+            await get(queryCondition)
             .then((snapshot) => {
                 if (snapshot.exists()) {
-                    data = snapshot.val();
+                    const arrayOfValue = Object.values(snapshot.val());
+                    const arrayOfKey = Object.keys(snapshot.val());
+
+                    data = arrayOfValue.reduce((obj, item) => {
+                        return { ...obj, ...item };
+                    }, {});
+
+                    index = arrayOfKey.reduce((obj, item) => {
+                        return item
+                    }, {});
                 } else {
                     console.log("Erro ao retornar o registro");
                 }
@@ -295,7 +325,7 @@ new Vue({
                 console.error(`Erro ao trazer os registros ${id}: `, error);
             });
 
-            return data;
+            return { data, index };
         },
 
         registerBudget() {
@@ -325,18 +355,20 @@ new Vue({
                     return;
                 }
 
-
                 const datePickerSplited = this.datePicker.split('-');
+                const currentBudgets = this.budgetItems.filter(item => item.date === `${datePickerSplited[1]}/${datePickerSplited[0]}`);
 
                 for (let i = 0; i < descriptionSlited.length; i++) {
-                    const currentId = (i === 0) ? this.budgetItems.length : this.budgetItems.length + i
+                    const currentId = (i === 0) ? this.budgetItems.length : this.budgetItems.length + i;
+                    const currentOrder =  currentBudgets.length + (i + 1);
 
                     let payload = {
-                        id: currentId,
+                        id: uuidv4(),
                         description: descriptionSlited[i].trim(),
                         amount: parseFloat(amountSlited[i].replace(/\./g, '').replace(',', '.')).toString(),
                         date: `${datePickerSplited[1]}/${datePickerSplited[0]}`,
-                        typeBudget: this.typeBudget
+                        typeBudget: this.typeBudget,
+                        order: currentOrder
                     };
 
                     if (payload.typeBudget === budgetTypesEnum.COST) {
@@ -365,10 +397,11 @@ new Vue({
             }
         },
 
-        deleteBudget() {
+        async deleteBudget() {
             this.loadingDeleteBudget = true;
+            const { index } = await this.getBudgetItemById(this.deleteDialog.id)
 
-            remove(ref(this.dataBase, `${this.tableName}/${this.getLoginUid}/${this.deleteDialog.id}`))
+            remove(ref(this.dataBase, `${this.tableName}/${this.getLoginUid}/${index}`))
             .then(() => {
                 this.getBudgetItems();
 
@@ -384,10 +417,11 @@ new Vue({
             });
         },
 
-        updateBudget(payload) {
+        async updateBudget(payload) {
             this.loadingUpdateBudget = true;
+            const { index } = await this.getBudgetItemById(this.updateDialog.id)
 
-            update(ref(this.dataBase, `${this.tableName}/${this.getLoginUid}/${this.updateDialog.id}`), payload)
+            update(ref(this.dataBase, `${this.tableName}/${this.getLoginUid}/${index}`), payload)
             .then(() => {
                 this.getBudgetItems();
 
@@ -403,8 +437,10 @@ new Vue({
             });
         },
 
-        checkPayed(item) {
-            update(ref(this.dataBase, `${this.tableName}/${this.getLoginUid}/${item.id}`), { payed: item.payed })
+        async checkPayed(item) {
+            const { index } = await this.getBudgetItemById(item.id)
+
+            update(ref(this.dataBase, `${this.tableName}/${this.getLoginUid}/${index}`), { payed: item.payed })
             .then(() => {
                 this.showSnack = true;
                 this.snackbarText = 'Registro atualizado com sucesso';

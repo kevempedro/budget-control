@@ -3,7 +3,7 @@ const html = `
         <v-card-title class="d-flex justify-space-between align-center">
             {{ item.date }}
 
-            <v-checkbox v-if="item.typeBudget === budgetTypesEnumData.COST" v-model="item.payed" label="Pago"
+            <v-checkbox v-if="item.typeBudget === budgetTypesEnumData.COST" v-model="item.payed" label="Paga"
                 color="grey" value="" @click="onCheckPayed({ id: item.id, payed: item.payed })">
             </v-checkbox>
         </v-card-title>

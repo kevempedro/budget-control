@@ -1,1463 +1,1801 @@
-[
-  {
-    "amount": "3451.84",
-    "date": "02/2023",
-    "description": "Salário",
-    "id": 1,
-    "typeBudget": "gain"
-  },
-  {
-    "amount": "209.00",
-    "date": "02/2023",
-    "datePicker": "03/2023",
-    "description": "Moto",
-    "id": 2,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "200.00",
-    "date": "02/2023",
-    "description": "Tia Ana",
-    "id": 3,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "258.00",
-    "date": "02/2023",
-    "description": "Energia Solar - 13x56",
-    "id": 4,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "589.00",
-    "date": "02/2023",
-    "description": "Iphone",
-    "id": 5,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "186.00",
-    "date": "02/2023",
-    "description": "Viagem - Porto Seguro - 2x10",
-    "id": 6,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "400.00",
-    "date": "02/2023",
-    "description": "Cofrinho - Viagem Porto Seguro",
-    "id": 8,
-    "typeBudget": "investment"
-  },
-  {
-    "amount": "200.00",
-    "date": "02/2023",
-    "description": "Investimento - Tesouro Direto",
-    "id": 9,
-    "typeBudget": "investment"
-  },
-  {
-    "amount": "600.00",
-    "date": "02/2023",
-    "description": "Faculdade - Vitor",
-    "id": 10,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "85.00",
-    "date": "02/2023",
-    "description": "Academia",
-    "id": 11,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "27.90",
-    "date": "02/2023",
-    "description": "Assinatura Disney Plus",
-    "id": 12,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "118.33",
-    "date": "02/2023",
-    "description": "Revisão da XRE 300 - 1x3",
-    "id": 14,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "10.00",
-    "date": "02/2023",
-    "description": "Mangueira para o ar condicionado",
-    "id": 15,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "370.33",
-    "date": "02/2023",
-    "description": "Pneus Carro Fiat Uno - 1x4",
-    "id": 15,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "192.66",
-    "date": "02/2023",
-    "description": "Fatura cartão - Picpay",
-    "id": 16,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "80.00",
-    "date": "02/2023",
-    "description": "Muay Thai",
-    "id": 16,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "4354.79",
-    "date": "03/2023",
-    "description": "Salário",
-    "id": 17,
-    "typeBudget": "gain"
-  },
-  {
-    "amount": "200.00",
-    "date": "03/2023",
-    "description": "Tia Ana",
-    "id": 18,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "258.00",
-    "date": "03/2023",
-    "description": "Energia Solar - 14x56",
-    "id": 19,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "589.00",
-    "date": "03/2023",
-    "description": "Iphone",
-    "id": 20,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "186.00",
-    "date": "03/2023",
-    "description": "Viagem - Porto Seguro - 3x10",
-    "id": 21,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "400.00",
-    "date": "03/2023",
-    "description": "Cofrinho - Viagem Porto Seguro",
-    "id": 22,
-    "typeBudget": "investment"
-  },
-  {
-    "amount": "600.00",
-    "date": "03/2023",
-    "description": "Faculdade - Vitor",
-    "id": 23,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "85.00",
-    "date": "03/2023",
-    "description": "Academia",
-    "id": 24,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "118.33",
-    "date": "03/2023",
-    "description": "Revisão da XRE 300 - 2x3",
-    "id": 25,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "370.33",
-    "date": "03/2023",
-    "description": "Pneus Carro Fiat Uno - 2x4",
-    "id": 26,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "80.00",
-    "date": "03/2023",
-    "description": "Muay Thai",
-    "id": 27,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "63.00",
-    "date": "03/2023",
-    "description": "Cuecas 1x2",
-    "id": 28,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "176.25",
-    "date": "03/2023",
-    "description": "Fatura cartão - Picpay",
-    "id": 29,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "596.93",
-    "date": "03/2023",
-    "description": "Investimento - Tesouro Direto",
-    "id": 30,
-    "typeBudget": "investment"
-  },
-  {
-    "amount": "4324.79",
-    "date": "04/2023",
-    "description": "Salário",
-    "id": 31,
-    "typeBudget": "gain"
-  },
-  {
-    "amount": "400.00",
-    "date": "04/2023",
-    "description": "Cofrinho - Viagem Porto Seguro",
-    "id": 32,
-    "typeBudget": "investment"
-  },
-  {
-    "amount": "200.00",
-    "date": "04/2023",
-    "description": "Tia Ana",
-    "id": 33,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "258.00",
-    "date": "04/2023",
-    "description": "Energia Solar - 15x56",
-    "id": 34,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "589.00",
-    "date": "04/2023",
-    "description": "Iphone",
-    "id": 35,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "186.00",
-    "date": "04/2023",
-    "description": "Viagem - Porto Seguro - 4x10",
-    "id": 36,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "600.00",
-    "date": "04/2023",
-    "description": "Faculdade - Vitor",
-    "id": 37,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "85.00",
-    "date": "04/2023",
-    "description": "Academia",
-    "id": 38,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "118.33",
-    "date": "04/2023",
-    "description": "Revisão da XRE 300 - 3x3",
-    "id": 39,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "370.33",
-    "date": "04/2023",
-    "description": "Pneus Carro Fiat Uno - 3x4",
-    "id": 40,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "80.00",
-    "date": "04/2023",
-    "description": "Muay Thai",
-    "id": 41,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "63.00",
-    "date": "04/2023",
-    "description": "Cuecas 2x2",
-    "id": 42,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "352.36",
-    "date": "04/2023",
-    "description": "Fatura cartão - Picpay",
-    "id": 43,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "236.38",
-    "date": "04/2023",
-    "description": "Fatura cartão - Inter PF",
-    "id": 44,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "400.00",
-    "date": "04/2023",
-    "description": "Investimento - Tesouro Direto",
-    "id": 45,
-    "typeBudget": "investment"
-  },
-  {
-    "amount": "1395.28",
-    "date": "04/2023",
-    "description": "PPR +A Educação",
-    "id": 46,
-    "typeBudget": "gain"
-  },
-  {
-    "amount": "3000.00",
-    "date": "04/2023",
-    "description": "Venda FIAT UNO - Entrada de R$3.000,00",
-    "id": 47,
-    "typeBudget": "gain"
-  },
-  {
-    "amount": "4354.79",
-    "date": "05/2023",
-    "description": "Salário",
-    "id": 48,
-    "typeBudget": "gain"
-  },
-  {
-    "amount": "400.00",
-    "date": "05/2023",
-    "description": "Cofrinho - Viagem Porto Seguro",
-    "id": 49,
-    "typeBudget": "investment"
-  },
-  {
-    "amount": "200.00",
-    "date": "05/2023",
-    "description": "Tia Ana",
-    "id": 50,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "258.00",
-    "date": "05/2023",
-    "description": "Energia Solar - 16x56",
-    "id": 51,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "589.00",
-    "date": "05/2023",
-    "description": "Iphone",
-    "id": 52,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "186.00",
-    "date": "05/2023",
-    "description": "Viagem - Porto Seguro - 5x10",
-    "id": 53,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "600.00",
-    "date": "05/2023",
-    "description": "Faculdade - Vitor",
-    "id": 54,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "85.00",
-    "date": "05/2023",
-    "description": "Academia",
-    "id": 55,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "370.33",
-    "date": "05/2023",
-    "description": "Pneus Carro Fiat Uno - 4x4",
-    "id": 56,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "80.00",
-    "date": "05/2023",
-    "description": "Muay Thai",
-    "id": 57,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "362.36",
-    "date": "05/2023",
-    "description": "Seguro XRE 300 - 1x3",
-    "id": 58,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "600.00",
-    "date": "05/2023",
-    "description": "Investimento - Tesouro Direto",
-    "id": 59,
-    "typeBudget": "investment"
-  },
-  {
-    "amount": "321.10",
-    "date": "05/2023",
-    "description": "Fatura cartão - Picpay",
-    "id": 60,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "500.00",
-    "date": "05/2023",
-    "description": "Venda FIAT UNO - 1x7",
-    "id": 61,
-    "typeBudget": "gain"
-  },
-  {
-    "amount": "4346.59",
-    "date": "06/2023",
-    "description": "Salário",
-    "id": 62,
-    "typeBudget": "gain"
-  },
-  {
-    "amount": "500.00",
-    "date": "06/2023",
-    "description": "Venda FIAT UNO - 2x7",
-    "id": 63,
-    "typeBudget": "gain"
-  },
-  {
-    "amount": "400.00",
-    "date": "06/2023",
-    "description": "Cofrinho - Viagem Porto Seguro",
-    "id": 64,
-    "typeBudget": "investment"
-  },
-  {
-    "amount": "600.00",
-    "date": "06/2023",
-    "description": "Investimento - Tesouro Direto",
-    "id": 65,
-    "typeBudget": "investment"
-  },
-  {
-    "amount": "200.00",
-    "date": "06/2023",
-    "description": "Tia Ana",
-    "id": 66,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "258.00",
-    "date": "06/2023",
-    "description": "Energia Solar - 17x56",
-    "id": 67,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "589.00",
-    "date": "06/2023",
-    "description": "Iphone",
-    "id": 68,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "186.00",
-    "date": "06/2023",
-    "description": "Viagem - Porto Seguro - 6x10",
-    "id": 69,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "600.00",
-    "date": "06/2023",
-    "description": "Faculdade - Vitor",
-    "id": 70,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "85.00",
-    "date": "06/2023",
-    "description": "Academia",
-    "id": 71,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "80.00",
-    "date": "06/2023",
-    "description": "Muay Thai",
-    "id": 72,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "362.34",
-    "date": "06/2023",
-    "description": "Seguro XRE 300 - 2x3",
-    "id": 73,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "327.61",
-    "date": "06/2023",
-    "description": "Fatura cartão - Picpay",
-    "id": 74,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "220.00",
-    "date": "06/2023",
-    "description": "Fatura cartão - Inter PJ",
-    "id": 75,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "125.00",
-    "date": "06/2023",
-    "description": "Camisa + short - Muay Thai",
-    "id": 76,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "4352.59",
-    "date": "07/2023",
-    "description": "Salário",
-    "id": 77,
-    "typeBudget": "gain"
-  },
-  {
-    "amount": "500.00",
-    "date": "07/2023",
-    "description": "Venda FIAT UNO - 3x7",
-    "id": 78,
-    "typeBudget": "gain"
-  },
-  {
-    "amount": "400.00",
-    "date": "07/2023",
-    "description": "Cofrinho - Viagem Porto Seguro",
-    "id": 79,
-    "typeBudget": "investment"
-  },
-  {
-    "amount": "600.00",
-    "date": "07/2023",
-    "description": "Investimento - Tesouro Direto",
-    "id": 80,
-    "typeBudget": "investment"
-  },
-  {
-    "amount": "200.00",
-    "date": "07/2023",
-    "description": "Tia Ana",
-    "id": 81,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "258.00",
-    "date": "07/2023",
-    "description": "Energia Solar - 18x56",
-    "id": 82,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "589.00",
-    "date": "07/2023",
-    "description": "Iphone",
-    "id": 83,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "186.00",
-    "date": "07/2023",
-    "description": "Viagem - Porto Seguro - 7x10",
-    "id": 84,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "600.00",
-    "date": "07/2023",
-    "description": "Faculdade - Vitor",
-    "id": 85,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "95.00",
-    "date": "07/2023",
-    "description": "Academia",
-    "id": 86,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "80.00",
-    "date": "07/2023",
-    "description": "Terapia",
-    "id": 87,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "362.34",
-    "date": "07/2023",
-    "description": "Seguro XRE 300 - 3x3",
-    "id": 88,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "279.76",
-    "date": "07/2023",
-    "description": "Fatura cartão - Picpay",
-    "id": 89,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "165.00",
-    "date": "07/2023",
-    "description": "Fatura cartão - Inter PJ",
-    "id": 90,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "688.86",
-    "date": "07/2023",
-    "description": "Compra Lote - Parque das Aguas",
-    "id": 91,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "405.00",
-    "date": "07/2023",
-    "description": "Revisão XRE 300",
-    "id": 92,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "4352.59",
-    "date": "08/2023",
-    "description": "Salário",
-    "id": 93,
-    "typeBudget": "gain"
-  },
-  {
-    "amount": "500.00",
-    "date": "08/2023",
-    "description": "Venda FIAT UNO - 4x7",
-    "id": 94,
-    "typeBudget": "gain"
-  },
-  {
-    "amount": "400.00",
-    "date": "08/2023",
-    "description": "Cofrinho - Viagem Porto Seguro",
-    "id": 95,
-    "typeBudget": "investment"
-  },
-  {
-    "amount": "600.00",
-    "date": "08/2023",
-    "description": "Investimento - Tesouro Direto",
-    "id": 96,
-    "typeBudget": "investment"
-  },
-  {
-    "amount": "200.00",
-    "date": "08/2023",
-    "description": "Tia Ana",
-    "id": 97,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "258.00",
-    "date": "08/2023",
-    "description": "Energia Solar - 19x56",
-    "id": 98,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "186.00",
-    "date": "08/2023",
-    "description": "Viagem - Porto Seguro - 8x10",
-    "id": 99,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "600.00",
-    "date": "08/2023",
-    "description": "Faculdade - Vitor",
-    "id": 100,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "95.00",
-    "date": "08/2023",
-    "description": "Academia",
-    "id": 101,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "688.86",
-    "date": "08/2023",
-    "description": "Compra Lote - Parque das Aguas",
-    "id": 102,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "385.91",
-    "date": "08/2023",
-    "description": "Fatura cartão - Inter PJ",
-    "id": 103,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "120.00",
-    "date": "08/2023",
-    "description": "Secador de cabelo",
-    "id": 104,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "165.19",
-    "date": "08/2023",
-    "description": "Fatura cartão - Picpay",
-    "id": 105,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "91",
-    "date": "08/2023",
-    "description": "Cuecas e Meias - 1x4",
-    "id": 106,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "4340.59",
-    "date": "09/2023",
-    "description": "Salário",
-    "id": 107,
-    "typeBudget": "gain"
-  },
-  {
-    "amount": "500.00",
-    "date": "09/2023",
-    "description": "Venda FIAT UNO - 5x7",
-    "id": 108,
-    "typeBudget": "gain"
-  },
-  {
-    "amount": "600.00",
-    "date": "09/2023",
-    "description": "Investimento - Tesouro Direto",
-    "id": 109,
-    "typeBudget": "investment"
-  },
-  {
-    "amount": "400.00",
-    "date": "09/2023",
-    "description": "Cofrinho - Viagem Porto Seguro",
-    "id": 110,
-    "typeBudget": "investment"
-  },
-  {
-    "amount": "200.00",
-    "date": "09/2023",
-    "description": "Tia Ana",
-    "id": 111,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "258.00",
-    "date": "09/2023",
-    "description": "Energia Solar - 20x56",
-    "id": 112,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "186.00",
-    "date": "09/2023",
-    "description": "Viagem - Porto Seguro - 9x10",
-    "id": 113,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "600.00",
-    "date": "09/2023",
-    "description": "Faculdade - Vitor",
-    "id": 114,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "95.00",
-    "date": "09/2023",
-    "description": "Academia",
-    "id": 115,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "688.86",
-    "date": "09/2023",
-    "description": "Compra Lote - Parque das Aguas",
-    "id": 116,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "91.00",
-    "date": "09/2023",
-    "description": "Cuecas e Meias - 2x4",
-    "id": 117,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "287.50",
-    "date": "09/2023",
-    "description": "Fatura cartão - Inter PJ",
-    "id": 118,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "243.95",
-    "date": "09/2023",
-    "description": "Fatura cartão - Picpay",
-    "id": 119,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "67.00",
-    "date": "09/2023",
-    "description": "Fatura internet - Vivo",
-    "id": 120,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "4506.79",
-    "date": "10/2023",
-    "description": "Salário",
-    "id": 121,
-    "typeBudget": "gain"
-  },
-  {
-    "amount": "500.00",
-    "date": "10/2023",
-    "description": "Venda FIAT UNO - 6x7",
-    "id": 122,
-    "typeBudget": "gain"
-  },
-  {
-    "amount": "600.00",
-    "date": "10/2023",
-    "description": "Investimento - Tesouro Direto",
-    "id": 123,
-    "typeBudget": "investment"
-  },
-  {
-    "amount": "400.00",
-    "date": "10/2023",
-    "description": "Cofrinho - Viagem Porto Seguro",
-    "id": 124,
-    "typeBudget": "investment"
-  },
-  {
-    "amount": "200.00",
-    "date": "10/2023",
-    "description": "Tia Ana",
-    "id": 125,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "258.00",
-    "date": "10/2023",
-    "description": "Energia Solar - 21x56",
-    "id": 126,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "186.00",
-    "date": "10/2023",
-    "description": "Viagem - Porto Seguro - 10x10",
-    "id": 127,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "600.00",
-    "date": "10/2023",
-    "description": "Faculdade - Vitor",
-    "id": 128,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "95.00",
-    "date": "10/2023",
-    "description": "Academia",
-    "id": 129,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "91.00",
-    "date": "10/2023",
-    "description": "Cuecas e Meias - 3x4",
-    "id": 130,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "688.86",
-    "date": "10/2023",
-    "description": "Compra Lote - Parque das Aguas",
-    "id": 131,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "130.70",
-    "date": "10/2023",
-    "description": "Fatura cartão - Picpay",
-    "id": 132,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  null,
-  {
-    "amount": "112.50",
-    "date": "10/2023",
-    "description": "Fatura cartão - Inter PJ",
-    "id": 134,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "166.00",
-    "date": "10/2023",
-    "description": "Óculos Chilli Beans - 1x4",
-    "id": 135,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "5316.50",
-    "date": "11/2023",
-    "description": "Salário",
-    "id": 136,
-    "typeBudget": "gain"
-  },
-  {
-    "amount": "300.00",
-    "date": "11/2023",
-    "description": "Venda FIAT UNO - 7x7",
-    "id": 137,
-    "typeBudget": "gain"
-  },
-  {
-    "amount": "600.00",
-    "date": "11/2023",
-    "description": "Investimento - Tesouro Direto",
-    "id": 138,
-    "typeBudget": "investment"
-  },
-  {
-    "amount": "200.00",
-    "date": "11/2023",
-    "description": "Tia Ana",
-    "id": 139,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "258.00",
-    "date": "11/2023",
-    "description": "Energia Solar - 22x56",
-    "id": 140,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "600.00",
-    "date": "11/2023",
-    "description": "Faculdade - Vitor",
-    "id": 141,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "95.00",
-    "date": "11/2023",
-    "description": "Academia",
-    "id": 142,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "91.00",
-    "date": "11/2023",
-    "description": "Cuecas e Meias - 4x4",
-    "id": 143,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "688.86",
-    "date": "11/2023",
-    "description": "Compra Lote - Parque das Aguas",
-    "id": 144,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "117.40",
-    "date": "11/2023",
-    "description": "Fatura cartão - Inter PJ",
-    "id": 145,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "166.00",
-    "date": "11/2023",
-    "description": "Óculos Chilli Beans - 2x4",
-    "id": 146,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "476.62",
-    "date": "11/2023",
-    "description": "Fatura cartão - Picpay",
-    "id": 147,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "700.00",
-    "date": "11/2023",
-    "description": "Cofrinho - BGS 2024",
-    "id": 148,
-    "typeBudget": "investment"
-  },
-  {
-    "amount": "58.00",
-    "date": "11/2023",
-    "description": "Desodorantes",
-    "id": 149,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "135.00",
-    "date": "11/2023",
-    "description": "Sessão de Terapia",
-    "id": 150,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "2797.28",
-    "date": "11/2023",
-    "description": "13º Salário - primeira parcela",
-    "id": 151,
-    "typeBudget": "gain"
-  },
-  {
-    "amount": "162.40",
-    "date": "11/2023",
-    "description": "Remédios para o exame de Colonoscopia",
-    "id": 152,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "200.00",
-    "date": "11/2023",
-    "description": "Investimento - Tesouro IPCA",
-    "id": 153,
-    "typeBudget": "investment"
-  },
-  {
-    "amount": "250.00",
-    "date": "11/2023",
-    "description": "Vitor - Perfume Malbec Black",
-    "id": 154,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "200.00",
-    "date": "12/2023",
-    "description": "Tia Ana",
-    "id": 155,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "258.00",
-    "date": "12/2023",
-    "description": "Energia Solar - 23x56",
-    "id": 156,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "600.00",
-    "date": "12/2023",
-    "description": "Faculdade - Vitor",
-    "id": 157,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "95.00",
-    "date": "12/2023",
-    "description": "Academia",
-    "id": 158,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "688.86",
-    "date": "12/2023",
-    "description": "Compra Lote - Parque das Aguas",
-    "id": 159,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "166.00",
-    "date": "12/2023",
-    "description": "Óculos Chilli Beans - 3x4",
-    "id": 160,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "1094.68",
-    "date": "12/2023",
-    "description": "PC Gamer - 1x12",
-    "id": 161,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "700.00",
-    "date": "12/2023",
-    "description": "Investimento - Tesouro Direto",
-    "id": 162,
-    "typeBudget": "investment"
-  },
-  {
-    "amount": "400",
-    "date": "12/2023",
-    "description": "Investimento - Tesouro IPCA",
-    "id": 163,
-    "typeBudget": "investment"
-  },
-  {
-    "amount": "116.89",
-    "date": "12/2023",
-    "description": "Aluguel casa Ouro Preto - 1x4",
-    "id": 164,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "277.18",
-    "date": "12/2023",
-    "description": "Fatura cartão - Picpay",
-    "id": 165,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "112.50",
-    "date": "12/2023",
-    "description": "Fatura cartão - Inter PJ",
-    "id": 166,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "700",
-    "date": "12/2023",
-    "description": "Cofrinho - BGS 2024",
-    "id": 167,
-    "typeBudget": "investment"
-  },
-  {
-    "amount": "1000",
-    "date": "12/2023",
-    "description": "Venda - PS4",
-    "id": 168,
-    "typeBudget": "gain"
-  },
-  {
-    "amount": "4277.82",
-    "date": "12/2023",
-    "description": "Salário",
-    "id": 169,
-    "typeBudget": "gain"
-  },
-  {
-    "amount": "411.32",
-    "date": "12/2023",
-    "description": "Instalação de câmeras - 1x3",
-    "id": 170,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "1633.93",
-    "date": "12/2023",
-    "description": "Férias de 07/12/2023",
-    "id": 171,
-    "typeBudget": "gain"
-  },
-  {
-    "amount": "1702.11",
-    "date": "12/2023",
-    "description": "13º Salário de 15/12/2023",
-    "id": 172,
-    "typeBudget": "gain"
-  },
-  {
-    "amount": "2653.63",
-    "date": "12/2023",
-    "description": "Férias de 21/12/2023",
-    "id": 173,
-    "typeBudget": "gain"
-  },
-  {
-    "amount": "1761.37",
-    "date": "12/2023",
-    "description": "Amortização - Lote Parque das Águas",
-    "id": 174,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "200",
-    "date": "12/2023",
-    "description": "Limpeza de dente",
-    "id": 175,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "135",
-    "date": "12/2023",
-    "description": "Massagem terapêutica",
-    "id": 176,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "67",
-    "date": "12/2023",
-    "description": "Internet - VIVO",
-    "id": 177,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "2659.66",
-    "date": "01/2024",
-    "description": "Salário",
-    "id": 178,
-    "typeBudget": "gain"
-  },
-  {
-    "amount": "400",
-    "date": "01/2024",
-    "description": "Investimento - Tesouro Direto",
-    "id": 179,
-    "typeBudget": "investment"
-  },
-  {
-    "amount": "200",
-    "date": "01/2024",
-    "description": "Investimento - Tesouro IPCA",
-    "id": 180,
-    "typeBudget": "investment"
-  },
-  {
-    "amount": "700",
-    "date": "01/2024",
-    "description": "Cofrinho - BGS 2024",
-    "id": 181,
-    "typeBudget": "investment"
-  },
-  {
-    "amount": "200",
-    "date": "01/2024",
-    "description": "Tia Ana",
-    "id": 182,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "258",
-    "date": "01/2024",
-    "description": "Energia Solar - 24x56",
-    "id": 183,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "95",
-    "date": "01/2024",
-    "description": "Academia",
-    "id": 184,
-    "payed": false,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "703.32",
-    "date": "01/2024",
-    "description": "Compra Lote - Parque das Aguas",
-    "id": 185,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "166",
-    "date": "01/2024",
-    "description": "Óculos Chilli Beans - 4x4",
-    "id": 186,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "1094.68",
-    "date": "01/2024",
-    "description": "PC Gamer - 2x12",
-    "id": 187,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "116.69",
-    "date": "01/2024",
-    "description": "Aluguel casa Ouro Preto - 2x4",
-    "id": 188,
-    "payed": true,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "429.96",
-    "date": "01/2024",
-    "description": "Fatura cartão - Picpay",
-    "id": 189,
-    "payed": false,
-    "typeBudget": "cost"
-  },
-  {
-    "amount": "112.50",
-    "date": "01/2024",
-    "description": "Fatura cartão - Inter PJ",
-    "id": 190,
-    "payed": true,
-    "typeBudget": "cost"
+{
+  "budgets": {
+    "Hr5LEjcY6xNVKvC6lOA43fZI8T83": [
+      {
+        "amount": "3451.84",
+        "date": "02/2023",
+        "description": "Salário",
+        "id": "990eb0a4-171c-4510-84fb-61e686e89ed3",
+        "order": 1,
+        "typeBudget": "gain"
+      },
+      {
+        "amount": "209.00",
+        "date": "02/2023",
+        "description": "Moto",
+        "id": "4a3c1a01-4322-4069-87c6-9434512bbbac",
+        "order": 2,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "200.00",
+        "date": "02/2023",
+        "description": "Tia Ana",
+        "id": "a2729d20-7c84-4011-865b-ea7c6ce0d7de",
+        "order": 3,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "258.00",
+        "date": "02/2023",
+        "description": "Energia Solar - 13x56",
+        "id": "38cc34b9-12a7-400b-9622-057e2098c946",
+        "order": 4,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "589.00",
+        "date": "02/2023",
+        "description": "Iphone",
+        "id": "03f0242c-17a0-4dd8-8507-860589073804",
+        "order": 5,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "186.00",
+        "date": "02/2023",
+        "description": "Viagem - Porto Seguro - 2x10",
+        "id": "3c77abb6-b316-4fb8-8e69-3be6168ebb45",
+        "order": 6,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "400.00",
+        "date": "02/2023",
+        "description": "Cofrinho - Viagem Porto Seguro",
+        "id": "d8b3f519-db61-4018-8b6f-01dac566e42a",
+        "order": 7,
+        "typeBudget": "investment"
+      },
+      {
+        "amount": "200.00",
+        "date": "02/2023",
+        "description": "Investimento - Tesouro Direto",
+        "id": "10a84469-f8ea-4c1f-8a3f-e3bd375fb033",
+        "order": 8,
+        "typeBudget": "investment"
+      },
+      {
+        "amount": "600.00",
+        "date": "02/2023",
+        "description": "Faculdade - Vitor",
+        "id": "8b5d0f03-afb8-4b82-ae1d-ac7f6e7abd5d",
+        "order": 9,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "85.00",
+        "date": "02/2023",
+        "description": "Academia",
+        "id": "42548a6d-f6ba-4c71-b5e3-4045d87942f6",
+        "order": 10,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "27.90",
+        "date": "02/2023",
+        "description": "Assinatura Disney Plus",
+        "id": "446efbb7-6f76-489d-9af3-b21d3eb80513",
+        "order": 11,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "118.33",
+        "date": "02/2023",
+        "description": "Revisão da XRE 300 - 1x3",
+        "id": "f538e6fb-f207-4b26-afe4-dceaf2b0b113",
+        "order": 12,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "10.00",
+        "date": "02/2023",
+        "description": "Mangueira para o ar condicionado",
+        "id": "0c3d3aeb-d107-4053-8094-c798d24bda06",
+        "order": 13,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "370.33",
+        "date": "02/2023",
+        "description": "Pneus Carro Fiat Uno - 1x4",
+        "id": "96acc97a-e614-44fb-8d5f-e21e6c5bf6d2",
+        "order": 14,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "192.66",
+        "date": "02/2023",
+        "description": "Fatura cartão - Picpay",
+        "id": "9459217c-c17a-441a-9f92-8a749ed8a37e",
+        "order": 15,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "80.00",
+        "date": "02/2023",
+        "description": "Muay Thai",
+        "id": "bf113191-9920-4ad6-9f0c-3da76512ce5f",
+        "order": 16,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "4354.79",
+        "date": "03/2023",
+        "description": "Salário",
+        "id": "893ad321-d867-4061-ac5f-fb6156bf633a",
+        "order": 1,
+        "typeBudget": "gain"
+      },
+      {
+        "amount": "200.00",
+        "date": "03/2023",
+        "description": "Tia Ana",
+        "id": "46b46960-dd9d-4a65-bfa0-0176b7cf2c5e",
+        "order": 2,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "258.00",
+        "date": "03/2023",
+        "description": "Energia Solar - 14x56",
+        "id": "153ce60b-2548-4e51-9979-5411e43309b5",
+        "order": 3,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "589.00",
+        "date": "03/2023",
+        "description": "Iphone",
+        "id": "e0e25a37-6bc7-451d-b7e8-ebc5ebaf416b",
+        "order": 4,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "186.00",
+        "date": "03/2023",
+        "description": "Viagem - Porto Seguro - 3x10",
+        "id": "936b918e-d98d-42da-82da-526c4b7ade66",
+        "order": 5,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "400.00",
+        "date": "03/2023",
+        "description": "Cofrinho - Viagem Porto Seguro",
+        "id": "3d655fa9-e391-4469-ad7c-8f5ca16b1838",
+        "order": 6,
+        "typeBudget": "investment"
+      },
+      {
+        "amount": "600.00",
+        "date": "03/2023",
+        "description": "Faculdade - Vitor",
+        "id": "d99e8850-f35d-497f-b58b-1b7b374b9843",
+        "order": 7,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "85.00",
+        "date": "03/2023",
+        "description": "Academia",
+        "id": "f8e571f8-b075-4141-8a6d-d97915006601",
+        "order": 8,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "118.33",
+        "date": "03/2023",
+        "description": "Revisão da XRE 300 - 2x3",
+        "id": "ba84e314-d5ac-40f0-a485-0b2b591c3bd0",
+        "order": 9,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "370.33",
+        "date": "03/2023",
+        "description": "Pneus Carro Fiat Uno - 2x4",
+        "id": "5a02dd78-cc9d-4cb6-aebf-0a0f2db70471",
+        "order": 10,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "80.00",
+        "date": "03/2023",
+        "description": "Muay Thai",
+        "id": "34a39dcd-0547-463c-9422-68a942589b13",
+        "order": 11,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "63.00",
+        "date": "03/2023",
+        "description": "Cuecas 1x2",
+        "id": "1c543c08-e9b8-4b6e-898a-0a8cdde2ee35",
+        "order": 12,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "176.25",
+        "date": "03/2023",
+        "description": "Fatura cartão - Picpay",
+        "id": "7853236e-d3db-4d85-b174-8bb022b23ef3",
+        "order": 13,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "596.93",
+        "date": "03/2023",
+        "description": "Investimento - Tesouro Direto",
+        "id": "dab37732-687f-4dd2-b1f4-8b97445c009a",
+        "order": 14,
+        "typeBudget": "investment"
+      },
+      {
+        "amount": "4324.79",
+        "date": "04/2023",
+        "description": "Salário",
+        "id": "9e6f0dc7-e0df-4869-8862-83d24f2b9120",
+        "order": 1,
+        "typeBudget": "gain"
+      },
+      {
+        "amount": "400.00",
+        "date": "04/2023",
+        "description": "Cofrinho - Viagem Porto Seguro",
+        "id": "edebac1b-92c7-4090-8027-c71509c32a6b",
+        "order": 2,
+        "typeBudget": "investment"
+      },
+      {
+        "amount": "200.00",
+        "date": "04/2023",
+        "description": "Tia Ana",
+        "id": "85f41700-11bf-4f5a-9ea5-e11db6b9a800",
+        "order": 3,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "258.00",
+        "date": "04/2023",
+        "description": "Energia Solar - 15x56",
+        "id": "348e8cb0-06d2-4236-846c-82452a6e98f2",
+        "order": 4,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "589.00",
+        "date": "04/2023",
+        "description": "Iphone",
+        "id": "86c411d6-8b0a-4a65-870f-5a7037785f19",
+        "order": 5,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "186.00",
+        "date": "04/2023",
+        "description": "Viagem - Porto Seguro - 4x10",
+        "id": "051dafde-6896-40fe-b39e-a124efc0a57d",
+        "order": 6,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "600.00",
+        "date": "04/2023",
+        "description": "Faculdade - Vitor",
+        "id": "fce27ade-500b-4483-a311-1f3ee4b1028e",
+        "order": 7,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "85.00",
+        "date": "04/2023",
+        "description": "Academia",
+        "id": "b7e8cb0c-3a38-45d4-a186-2da6bb58ea13",
+        "order": 8,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "118.33",
+        "date": "04/2023",
+        "description": "Revisão da XRE 300 - 3x3",
+        "id": "53858f80-7e83-4cf2-a0c0-ad4594f06cc8",
+        "order": 9,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "370.33",
+        "date": "04/2023",
+        "description": "Pneus Carro Fiat Uno - 3x4",
+        "id": "0b1157c1-02a4-4f4b-9d7c-9fbdcb3d6542",
+        "order": 10,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "80.00",
+        "date": "04/2023",
+        "description": "Muay Thai",
+        "id": "50357249-06d1-4d25-a950-d57b463a032c",
+        "order": 11,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "63.00",
+        "date": "04/2023",
+        "description": "Cuecas 2x2",
+        "id": "19549bb7-3c8d-4daf-b482-e1d72de7be88",
+        "order": 12,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "352.36",
+        "date": "04/2023",
+        "description": "Fatura cartão - Picpay",
+        "id": "c2b5cd13-a452-444a-89e2-7edb864e28c8",
+        "order": 13,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "236.38",
+        "date": "04/2023",
+        "description": "Fatura cartão - Inter PF",
+        "id": "c502a545-7681-4481-abb4-e7fb7b83678e",
+        "order": 14,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "400.00",
+        "date": "04/2023",
+        "description": "Investimento - Tesouro Direto",
+        "id": "3c5b643c-5a5c-46b0-9935-f8d3f6e516a1",
+        "order": 15,
+        "typeBudget": "investment"
+      },
+      {
+        "amount": "1395.28",
+        "date": "04/2023",
+        "description": "PPR +A Educação",
+        "id": "96bb320c-9996-44a1-abd3-1110c0c5c4af",
+        "order": 16,
+        "typeBudget": "gain"
+      },
+      {
+        "amount": "3000.00",
+        "date": "04/2023",
+        "description": "Venda FIAT UNO - Entrada de R$3.000,00",
+        "id": "55f7de54-3cd7-414b-9c76-b1a018998b99",
+        "order": 17,
+        "typeBudget": "gain"
+      },
+      {
+        "amount": "4354.79",
+        "date": "05/2023",
+        "description": "Salário",
+        "id": "c1aae2cb-e9d5-42d1-8347-373f0e8ca69b",
+        "order": 1,
+        "typeBudget": "gain"
+      },
+      {
+        "amount": "400.00",
+        "date": "05/2023",
+        "description": "Cofrinho - Viagem Porto Seguro",
+        "id": "b2df02b2-5828-455f-87ad-a6a5cdc2c52a",
+        "order": 2,
+        "typeBudget": "investment"
+      },
+      {
+        "amount": "200.00",
+        "date": "05/2023",
+        "description": "Tia Ana",
+        "id": "bc0a994d-c826-4dd3-a6ec-43957b405a61",
+        "order": 3,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "258.00",
+        "date": "05/2023",
+        "description": "Energia Solar - 16x56",
+        "id": "4ab4b83a-27a7-4d7b-8427-4e9773a9d6b4",
+        "order": 4,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "589.00",
+        "date": "05/2023",
+        "description": "Iphone",
+        "id": "b3db4367-810b-4ffa-80de-525f2ae02b7f",
+        "order": 5,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "186.00",
+        "date": "05/2023",
+        "description": "Viagem - Porto Seguro - 5x10",
+        "id": "4d233a53-b8c3-42b1-b8c6-15a1354b3422",
+        "order": 6,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "600.00",
+        "date": "05/2023",
+        "description": "Faculdade - Vitor",
+        "id": "6fe944d7-8d6e-4ee0-ad88-ceb065d7e0ba",
+        "order": 7,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "85.00",
+        "date": "05/2023",
+        "description": "Academia",
+        "id": "7a435d2e-e0c3-41c4-a379-0e35af0cd324",
+        "order": 8,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "370.33",
+        "date": "05/2023",
+        "description": "Pneus Carro Fiat Uno - 4x4",
+        "id": "b9fca570-9e5d-45bf-9f41-52f615684896",
+        "order": 9,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "80.00",
+        "date": "05/2023",
+        "description": "Muay Thai",
+        "id": "be214f69-a3da-47d8-9c81-2337e8456ca5",
+        "order": 10,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "362.36",
+        "date": "05/2023",
+        "description": "Seguro XRE 300 - 1x3",
+        "id": "8219ef5f-1eda-4406-810c-a9802154d68a",
+        "order": 11,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "600.00",
+        "date": "05/2023",
+        "description": "Investimento - Tesouro Direto",
+        "id": "c07ff0d3-9978-494f-b0ef-a80bfe2046ff",
+        "order": 12,
+        "typeBudget": "investment"
+      },
+      {
+        "amount": "321.10",
+        "date": "05/2023",
+        "description": "Fatura cartão - Picpay",
+        "id": "a6fa9627-1d80-48e0-815f-d9c951b076b0",
+        "order": 13,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "500.00",
+        "date": "05/2023",
+        "description": "Venda FIAT UNO - 1x7",
+        "id": "e31f34df-1449-42fc-be22-01a32563ed5e",
+        "order": 14,
+        "typeBudget": "gain"
+      },
+      {
+        "amount": "4346.59",
+        "date": "06/2023",
+        "description": "Salário",
+        "id": "54545a61-0e3a-464f-aa04-ea5ecda58dfb",
+        "order": 1,
+        "typeBudget": "gain"
+      },
+      {
+        "amount": "500.00",
+        "date": "06/2023",
+        "description": "Venda FIAT UNO - 2x7",
+        "id": "6fb589d6-747b-4bd8-9f0f-7fbb5235fede",
+        "order": 2,
+        "typeBudget": "gain"
+      },
+      {
+        "amount": "400.00",
+        "date": "06/2023",
+        "description": "Cofrinho - Viagem Porto Seguro",
+        "id": "ea9914a3-a463-4ef3-87d5-1b0a20746d57",
+        "order": 3,
+        "typeBudget": "investment"
+      },
+      {
+        "amount": "600.00",
+        "date": "06/2023",
+        "description": "Investimento - Tesouro Direto",
+        "id": "3c9308a9-720d-4d24-8116-0cc419b2f86e",
+        "order": 4,
+        "typeBudget": "investment"
+      },
+      {
+        "amount": "200.00",
+        "date": "06/2023",
+        "description": "Tia Ana",
+        "id": "dc89d504-a657-4cba-8568-05376bbe1c2f",
+        "order": 5,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "258.00",
+        "date": "06/2023",
+        "description": "Energia Solar - 17x56",
+        "id": "8a5665b8-8d65-4d85-89b7-716e3fcc1d42",
+        "order": 6,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "589.00",
+        "date": "06/2023",
+        "description": "Iphone",
+        "id": "5fcded8b-9a84-4767-9bd3-eb9cfba00eae",
+        "order": 7,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "186.00",
+        "date": "06/2023",
+        "description": "Viagem - Porto Seguro - 6x10",
+        "id": "4907ed61-2d03-491d-a5ff-587a9a80c029",
+        "order": 8,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "600.00",
+        "date": "06/2023",
+        "description": "Faculdade - Vitor",
+        "id": "d865fb82-1e18-4336-8a90-42f14692d045",
+        "order": 9,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "85.00",
+        "date": "06/2023",
+        "description": "Academia",
+        "id": "c84c26a3-566e-4ab4-a2bb-1f8d88f999a7",
+        "order": 10,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "80.00",
+        "date": "06/2023",
+        "description": "Muay Thai",
+        "id": "9c1e41b0-b02b-4f6f-bc77-be9cbae7476b",
+        "order": 11,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "362.34",
+        "date": "06/2023",
+        "description": "Seguro XRE 300 - 2x3",
+        "id": "6368de96-1d59-4b81-9ce6-79b3ab1aec7b",
+        "order": 12,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "327.61",
+        "date": "06/2023",
+        "description": "Fatura cartão - Picpay",
+        "id": "a75277a0-4a16-41ec-b2f0-64f7a2ccf8e3",
+        "order": 13,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "220.00",
+        "date": "06/2023",
+        "description": "Fatura cartão - Inter PJ",
+        "id": "9d121aee-18cf-4c1e-a6c2-baffec9d98c3",
+        "order": 14,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "125.00",
+        "date": "06/2023",
+        "description": "Camisa + short - Muay Thai",
+        "id": "1401e339-ea64-480f-9630-693e1870390f",
+        "order": 15,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "4352.59",
+        "date": "07/2023",
+        "description": "Salário",
+        "id": "fc4655fd-a28c-422b-b0f9-19bef5af8f4b",
+        "order": 1,
+        "typeBudget": "gain"
+      },
+      {
+        "amount": "500.00",
+        "date": "07/2023",
+        "description": "Venda FIAT UNO - 3x7",
+        "id": "b844eeb2-73f2-478b-bea0-a89b8537e65f",
+        "order": 2,
+        "typeBudget": "gain"
+      },
+      {
+        "amount": "400.00",
+        "date": "07/2023",
+        "description": "Cofrinho - Viagem Porto Seguro",
+        "id": "076ce8ad-f5a7-4d1c-934c-a4394e39c0cd",
+        "order": 3,
+        "typeBudget": "investment"
+      },
+      {
+        "amount": "600.00",
+        "date": "07/2023",
+        "description": "Investimento - Tesouro Direto",
+        "id": "f8754d23-627c-409c-a154-16a8a0403354",
+        "order": 4,
+        "typeBudget": "investment"
+      },
+      {
+        "amount": "200.00",
+        "date": "07/2023",
+        "description": "Tia Ana",
+        "id": "ef26d289-ef9e-4066-af7d-ec4e5d5a0d2c",
+        "order": 5,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "258.00",
+        "date": "07/2023",
+        "description": "Energia Solar - 18x56",
+        "id": "e3d1eddc-54ad-498b-bae3-36ca822291f7",
+        "order": 6,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "589.00",
+        "date": "07/2023",
+        "description": "Iphone",
+        "id": "bdde3c74-fc63-498b-ac3c-9a2d7605631b",
+        "order": 7,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "186.00",
+        "date": "07/2023",
+        "description": "Viagem - Porto Seguro - 7x10",
+        "id": "db9cbdb1-6330-401c-81fa-af11b11302d9",
+        "order": 8,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "600.00",
+        "date": "07/2023",
+        "description": "Faculdade - Vitor",
+        "id": "5a01451a-07de-42fa-9a74-d25ec0b1f5c1",
+        "order": 9,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "95.00",
+        "date": "07/2023",
+        "description": "Academia",
+        "id": "659d39eb-a9ae-45df-be5d-356bf7ba83ab",
+        "order": 10,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "80.00",
+        "date": "07/2023",
+        "description": "Terapia",
+        "id": "508a0539-a917-4179-b2dc-67e2a3c7c3f5",
+        "order": 11,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "362.34",
+        "date": "07/2023",
+        "description": "Seguro XRE 300 - 3x3",
+        "id": "cb1a43f0-3b23-456e-beae-12978b10f121",
+        "order": 12,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "279.76",
+        "date": "07/2023",
+        "description": "Fatura cartão - Picpay",
+        "id": "8fa3cda4-88c1-46ca-a725-da42b0bc7dc9",
+        "order": 13,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "165.00",
+        "date": "07/2023",
+        "description": "Fatura cartão - Inter PJ",
+        "id": "bee8fd0b-1df6-467d-a91e-223447ab54f1",
+        "order": 14,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "688.86",
+        "date": "07/2023",
+        "description": "Compra Lote - Parque das Aguas",
+        "id": "aca4e6ea-7697-4d33-83f6-a4b5679a1bd2",
+        "order": 15,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "405.00",
+        "date": "07/2023",
+        "description": "Revisão XRE 300",
+        "id": "62fa6728-802d-4002-96a4-65b28c4bd1db",
+        "order": 16,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "4352.59",
+        "date": "08/2023",
+        "description": "Salário",
+        "id": "31c758ab-7572-4507-967d-a0c0f97c13a1",
+        "order": 1,
+        "typeBudget": "gain"
+      },
+      {
+        "amount": "500.00",
+        "date": "08/2023",
+        "description": "Venda FIAT UNO - 4x7",
+        "id": "23db4b7b-94b8-499b-9079-5d92d79eca51",
+        "order": 2,
+        "typeBudget": "gain"
+      },
+      {
+        "amount": "400.00",
+        "date": "08/2023",
+        "description": "Cofrinho - Viagem Porto Seguro",
+        "id": "2d2ca4ae-f30d-43ff-8c83-15c2c6102b63",
+        "order": 3,
+        "typeBudget": "investment"
+      },
+      {
+        "amount": "600.00",
+        "date": "08/2023",
+        "description": "Investimento - Tesouro Direto",
+        "id": "10812f04-99d8-477d-b0fe-f98fa9c5faeb",
+        "order": 4,
+        "typeBudget": "investment"
+      },
+      {
+        "amount": "200.00",
+        "date": "08/2023",
+        "description": "Tia Ana",
+        "id": "93e427b9-1304-4e2f-be81-fb6dc2454978",
+        "order": 5,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "258.00",
+        "date": "08/2023",
+        "description": "Energia Solar - 19x56",
+        "id": "af40bf86-c8ad-4e37-8669-1001627e2851",
+        "order": 6,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "186.00",
+        "date": "08/2023",
+        "description": "Viagem - Porto Seguro - 8x10",
+        "id": "c42bc5fa-7e44-4ad5-ac52-8dac769b5dbd",
+        "order": 7,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "600.00",
+        "date": "08/2023",
+        "description": "Faculdade - Vitor",
+        "id": "a3c03bd7-fb05-4cde-b2a8-c9d7eadb0eba",
+        "order": 8,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "95.00",
+        "date": "08/2023",
+        "description": "Academia",
+        "id": "91541d86-a847-48da-8d17-47346f2a9c4d",
+        "order": 9,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "688.86",
+        "date": "08/2023",
+        "description": "Compra Lote - Parque das Aguas",
+        "id": "5bb0545e-c595-4531-8e9d-af15ed344d66",
+        "order": 10,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "385.91",
+        "date": "08/2023",
+        "description": "Fatura cartão - Inter PJ",
+        "id": "c740575a-97f1-42fd-985e-338c81f9fe46",
+        "order": 11,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "120.00",
+        "date": "08/2023",
+        "description": "Secador de cabelo",
+        "id": "b81578a6-b2df-4fff-b54b-3f6df0850b40",
+        "order": 12,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "165.19",
+        "date": "08/2023",
+        "description": "Fatura cartão - Picpay",
+        "id": "016dd307-a28c-4f45-9961-3692f4252695",
+        "order": 13,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "91",
+        "date": "08/2023",
+        "description": "Cuecas e Meias - 1x4",
+        "id": "af265271-2a95-418b-90bb-5f0d9b253ba0",
+        "order": 14,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "4340.59",
+        "date": "09/2023",
+        "description": "Salário",
+        "id": "aa4a2439-ba1e-4f7c-9b8f-3b3c10859ed2",
+        "order": 1,
+        "typeBudget": "gain"
+      },
+      {
+        "amount": "500.00",
+        "date": "09/2023",
+        "description": "Venda FIAT UNO - 5x7",
+        "id": "94aeac60-25b6-4d54-a807-a64290ea085a",
+        "order": 2,
+        "typeBudget": "gain"
+      },
+      {
+        "amount": "600.00",
+        "date": "09/2023",
+        "description": "Investimento - Tesouro Direto",
+        "id": "d2883f99-5b42-458e-bcc3-0b5c2fe69e1f",
+        "order": 3,
+        "typeBudget": "investment"
+      },
+      {
+        "amount": "400.00",
+        "date": "09/2023",
+        "description": "Cofrinho - Viagem Porto Seguro",
+        "id": "e80aabce-6d42-48e5-a9c6-289623c907fa",
+        "order": 4,
+        "typeBudget": "investment"
+      },
+      {
+        "amount": "200.00",
+        "date": "09/2023",
+        "description": "Tia Ana",
+        "id": "4684e7ca-e7ea-410a-8f8f-7a477298a30f",
+        "order": 5,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "258.00",
+        "date": "09/2023",
+        "description": "Energia Solar - 20x56",
+        "id": "0b2e7943-aae9-4ab8-9a7c-1f22a7084176",
+        "order": 6,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "186.00",
+        "date": "09/2023",
+        "description": "Viagem - Porto Seguro - 9x10",
+        "id": "7bacc9db-95b5-49af-a925-8958858eccfd",
+        "order": 7,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "600.00",
+        "date": "09/2023",
+        "description": "Faculdade - Vitor",
+        "id": "853f5028-8a49-45c2-9327-512dc7519cd1",
+        "order": 8,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "95.00",
+        "date": "09/2023",
+        "description": "Academia",
+        "id": "d18a2026-0818-4c1f-9c3c-7896f62dd6f2",
+        "order": 9,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "688.86",
+        "date": "09/2023",
+        "description": "Compra Lote - Parque das Aguas",
+        "id": "1a6faf4b-046f-4fa8-8f88-03a2b3e6d175",
+        "order": 10,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "91.00",
+        "date": "09/2023",
+        "description": "Cuecas e Meias - 2x4",
+        "id": "51ae77a8-1a81-4d47-a0c7-3120142d7404",
+        "order": 11,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "287.50",
+        "date": "09/2023",
+        "description": "Fatura cartão - Inter PJ",
+        "id": "24b9483f-2c3c-4d7c-999a-3260b66899d3",
+        "order": 12,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "243.95",
+        "date": "09/2023",
+        "description": "Fatura cartão - Picpay",
+        "id": "4d4ea69b-1c6c-4d27-81e3-f3b4e14daff7",
+        "order": 13,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "67.00",
+        "date": "09/2023",
+        "description": "Fatura internet - Vivo",
+        "id": "fade5a9c-2c40-4d6d-b731-b9f7b622e5c0",
+        "order": 14,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "4506.79",
+        "date": "10/2023",
+        "description": "Salário",
+        "id": "14d42459-29f6-4516-8176-129dd0396f94",
+        "order": 1,
+        "typeBudget": "gain"
+      },
+      {
+        "amount": "500.00",
+        "date": "10/2023",
+        "description": "Venda FIAT UNO - 6x7",
+        "id": "613d95e1-2b4b-4e74-a66b-4706a929ac9e",
+        "order": 2,
+        "typeBudget": "gain"
+      },
+      {
+        "amount": "600.00",
+        "date": "10/2023",
+        "description": "Investimento - Tesouro Direto",
+        "id": "f9de6fee-6e95-4646-8760-c98d26591496",
+        "order": 3,
+        "typeBudget": "investment"
+      },
+      {
+        "amount": "400.00",
+        "date": "10/2023",
+        "description": "Cofrinho - Viagem Porto Seguro",
+        "id": "ad636aa2-c93c-4fdd-a69f-5c0b1cb06cc8",
+        "order": 4,
+        "typeBudget": "investment"
+      },
+      {
+        "amount": "200.00",
+        "date": "10/2023",
+        "description": "Tia Ana",
+        "id": "17dfe2be-381b-47d1-ad74-3c8c26d1d089",
+        "order": 5,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "258.00",
+        "date": "10/2023",
+        "description": "Energia Solar - 21x56",
+        "id": "819ed66e-52cb-4c6e-923b-9c930cfc943e",
+        "order": 6,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "186.00",
+        "date": "10/2023",
+        "description": "Viagem - Porto Seguro - 10x10",
+        "id": "4db7f174-9593-4232-95be-f859648f6ff6",
+        "order": 7,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "600.00",
+        "date": "10/2023",
+        "description": "Faculdade - Vitor",
+        "id": "ea6d3dde-3b5c-4371-92c0-b0ea741f2bfa",
+        "order": 8,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "95.00",
+        "date": "10/2023",
+        "description": "Academia",
+        "id": "0fcc0fa0-f5fd-4343-921b-cf65d472a9c9",
+        "order": 9,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "91.00",
+        "date": "10/2023",
+        "description": "Cuecas e Meias - 3x4",
+        "id": "210ff713-dfcc-49f8-90d5-1667383a2a4d",
+        "order": 10,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "688.86",
+        "date": "10/2023",
+        "description": "Compra Lote - Parque das Aguas",
+        "id": "23f2023b-8302-4c93-be7e-6e3ab888571f",
+        "order": 11,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "130.70",
+        "date": "10/2023",
+        "description": "Fatura cartão - Picpay",
+        "id": "219242e5-24bb-42bd-ba59-a2c44feed878",
+        "order": 12,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "112.50",
+        "date": "10/2023",
+        "description": "Fatura cartão - Inter PJ",
+        "id": "5c4567e6-114b-4838-a829-9949cb96ce6e",
+        "order": 13,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "166.00",
+        "date": "10/2023",
+        "description": "Óculos Chilli Beans - 1x4",
+        "id": "96b9e418-1176-445d-81f0-7ba87ad4ee80",
+        "order": 14,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "5316.50",
+        "date": "11/2023",
+        "description": "Salário",
+        "id": "f225c510-79f9-4612-9bbb-563d65a76074",
+        "order": 1,
+        "typeBudget": "gain"
+      },
+      {
+        "amount": "300.00",
+        "date": "11/2023",
+        "description": "Venda FIAT UNO - 7x7",
+        "id": "5dc90940-16b3-44e1-99d9-476d1e69933e",
+        "order": 2,
+        "typeBudget": "gain"
+      },
+      {
+        "amount": "600.00",
+        "date": "11/2023",
+        "description": "Investimento - Tesouro Direto",
+        "id": "1ea02a24-b873-4877-8899-cf91df383fc6",
+        "order": 3,
+        "typeBudget": "investment"
+      },
+      {
+        "amount": "200.00",
+        "date": "11/2023",
+        "description": "Tia Ana",
+        "id": "dba34624-624e-4fe3-9af3-059794722879",
+        "order": 4,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "258.00",
+        "date": "11/2023",
+        "description": "Energia Solar - 22x56",
+        "id": "447669da-f9f5-4745-a5ea-d52273986dff",
+        "order": 5,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "600.00",
+        "date": "11/2023",
+        "description": "Faculdade - Vitor",
+        "id": "f39078a4-7b46-4ad5-b8e8-97c61b7871ba",
+        "order": 6,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "95.00",
+        "date": "11/2023",
+        "description": "Academia",
+        "id": "4f2b67ef-86f9-48a9-b090-e099be6658c2",
+        "order": 7,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "91.00",
+        "date": "11/2023",
+        "description": "Cuecas e Meias - 4x4",
+        "id": "2b8a3173-3327-4902-9a94-ab0fc36c05af",
+        "order": 8,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "688.86",
+        "date": "11/2023",
+        "description": "Compra Lote - Parque das Aguas",
+        "id": "2fd42cad-0a07-497a-8f78-86dcaa1f4005",
+        "order": 9,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "117.40",
+        "date": "11/2023",
+        "description": "Fatura cartão - Inter PJ",
+        "id": "9400fc70-6436-4d70-b014-506d58e930af",
+        "order": 10,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "166.00",
+        "date": "11/2023",
+        "description": "Óculos Chilli Beans - 2x4",
+        "id": "0c4a9659-a4c7-4bd0-abef-6093cba1a589",
+        "order": 11,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "476.62",
+        "date": "11/2023",
+        "description": "Fatura cartão - Picpay",
+        "id": "d89a2a56-b2ea-4e44-a97a-230df66dd5e0",
+        "order": 12,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "700.00",
+        "date": "11/2023",
+        "description": "Cofrinho - BGS 2024",
+        "id": "8bd52037-2cf9-4c7f-b253-15e228746d15",
+        "order": 13,
+        "typeBudget": "investment"
+      },
+      {
+        "amount": "58.00",
+        "date": "11/2023",
+        "description": "Desodorantes",
+        "id": "d1bc67d0-25cd-4c07-ba0e-91114a04ef21",
+        "order": 14,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "135.00",
+        "date": "11/2023",
+        "description": "Sessão de Terapia",
+        "id": "890f1841-55c8-4a04-b12f-6a52c31fadfb",
+        "order": 15,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "2797.28",
+        "date": "11/2023",
+        "description": "13º Salário - primeira parcela",
+        "id": "0b509d4a-a56c-4399-8b78-f547b54a6636",
+        "order": 16,
+        "typeBudget": "gain"
+      },
+      {
+        "amount": "162.40",
+        "date": "11/2023",
+        "description": "Remédios para o exame de Colonoscopia",
+        "id": "fde6e516-e667-4c1f-a497-d3825fb72697",
+        "order": 17,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "200.00",
+        "date": "11/2023",
+        "description": "Investimento - Tesouro IPCA",
+        "id": "d806a19d-5861-4a37-8b3c-4f687d7ba59f",
+        "order": 18,
+        "typeBudget": "investment"
+      },
+      {
+        "amount": "250.00",
+        "date": "11/2023",
+        "description": "Vitor - Perfume Malbec Black",
+        "id": "db58cbb2-1e66-4aa4-8e65-21f982b42545",
+        "order": 19,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "200.00",
+        "date": "12/2023",
+        "description": "Tia Ana",
+        "id": "9b797a7e-c3ff-4bd9-8deb-02a7aab80022",
+        "order": 1,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "258.00",
+        "date": "12/2023",
+        "description": "Energia Solar - 23x56",
+        "id": "4a90fb6f-0a1d-43d9-8402-6cda72eb5b64",
+        "order": 2,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "600.00",
+        "date": "12/2023",
+        "description": "Faculdade - Vitor",
+        "id": "d6d7dbe1-69e0-4a92-98cc-36a79fb21b5d",
+        "order": 3,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "95.00",
+        "date": "12/2023",
+        "description": "Academia",
+        "id": "4ad8f3a1-d33b-4ae5-825c-c27e0f3c33a8",
+        "order": 4,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "688.86",
+        "date": "12/2023",
+        "description": "Compra Lote - Parque das Aguas",
+        "id": "61526f70-8f0f-44b8-a561-408da9b01b49",
+        "order": 5,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "166.00",
+        "date": "12/2023",
+        "description": "Óculos Chilli Beans - 3x4",
+        "id": "7b7a103b-dceb-4118-baa6-a77df420459a",
+        "order": 6,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "1094.68",
+        "date": "12/2023",
+        "description": "PC Gamer - 1x12",
+        "id": "757db551-e303-4219-8a7c-bb8b4825260a",
+        "order": 7,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "700.00",
+        "date": "12/2023",
+        "description": "Investimento - Tesouro Direto",
+        "id": "f0580c4a-e986-41e9-8ba1-3f1a38ebc197",
+        "order": 8,
+        "typeBudget": "investment"
+      },
+      {
+        "amount": "400",
+        "date": "12/2023",
+        "description": "Investimento - Tesouro IPCA",
+        "id": "a920cbf4-8b0b-4acb-bd62-879826a3db8c",
+        "order": 9,
+        "typeBudget": "investment"
+      },
+      {
+        "amount": "116.89",
+        "date": "12/2023",
+        "description": "Aluguel casa Ouro Preto - 1x4",
+        "id": "524e7fd5-fbc4-4bbc-9de0-bd530b0c391b",
+        "order": 10,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "277.18",
+        "date": "12/2023",
+        "description": "Fatura cartão - Picpay",
+        "id": "e710aa5e-9eed-44ac-8771-32ab58da7e92",
+        "order": 11,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "112.50",
+        "date": "12/2023",
+        "description": "Fatura cartão - Inter PJ",
+        "id": "b1d7a213-6d82-4691-8f95-3180f754a1c2",
+        "order": 12,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "700",
+        "date": "12/2023",
+        "description": "Cofrinho - BGS 2024",
+        "id": "de698264-be35-4452-a057-75efcba4c382",
+        "order": 13,
+        "typeBudget": "investment"
+      },
+      {
+        "amount": "1000",
+        "date": "12/2023",
+        "description": "Venda - PS4",
+        "id": "eedd00c1-430f-4a8b-8146-a989e00f8840",
+        "order": 14,
+        "typeBudget": "gain"
+      },
+      {
+        "amount": "4277.82",
+        "date": "12/2023",
+        "description": "Salário",
+        "id": "32bd2cab-2d3e-43a9-83e6-b27343e81962",
+        "order": 15,
+        "typeBudget": "gain"
+      },
+      {
+        "amount": "411.32",
+        "date": "12/2023",
+        "description": "Instalação de câmeras - 1x3",
+        "id": "6f573f77-0f9b-4f77-9ff1-9124139fd9ce",
+        "order": 16,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "1633.93",
+        "date": "12/2023",
+        "description": "Férias de 07/12/2023",
+        "id": "02e631a7-4622-4507-85bd-dc1fa01174b3",
+        "order": 17,
+        "typeBudget": "gain"
+      },
+      {
+        "amount": "1702.11",
+        "date": "12/2023",
+        "description": "13º Salário de 15/12/2023",
+        "id": "e1c54065-1fcb-45f6-95f1-660c719dc62f",
+        "order": 18,
+        "typeBudget": "gain"
+      },
+      {
+        "amount": "2653.63",
+        "date": "12/2023",
+        "description": "Férias de 21/12/2023",
+        "id": "ed481f63-454f-4825-a8df-36446b604f5b",
+        "order": 19,
+        "typeBudget": "gain"
+      },
+      {
+        "amount": "1761.37",
+        "date": "12/2023",
+        "description": "Amortização - Lote Parque das Águas",
+        "id": "91b48507-b9e4-421f-a5cf-4cb26227bee1",
+        "order": 20,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "200",
+        "date": "12/2023",
+        "description": "Limpeza de dente",
+        "id": "b5217e5c-e11f-4a06-ac97-f8549c5fe121",
+        "order": 21,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "135",
+        "date": "12/2023",
+        "description": "Massagem terapêutica",
+        "id": "22ca804c-1166-47a2-9906-6cf9936d6599",
+        "order": 22,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "67",
+        "date": "12/2023",
+        "description": "Internet - VIVO",
+        "id": "7f8ebd2a-4747-420d-9eff-d96ed26cf65d",
+        "order": 23,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "2659.66",
+        "date": "01/2024",
+        "description": "Salário",
+        "id": "5525fa01-6b26-4435-bc37-1f0b3e86b7b1",
+        "order": 1,
+        "typeBudget": "gain"
+      },
+      {
+        "amount": "400",
+        "date": "01/2024",
+        "description": "Investimento - Tesouro Direto",
+        "id": "ace681ee-661f-4472-b9dc-c39c50e05267",
+        "order": 2,
+        "typeBudget": "investment"
+      },
+      {
+        "amount": "200",
+        "date": "01/2024",
+        "description": "Investimento - Tesouro IPCA",
+        "id": "64cacef4-ea21-4048-b7fd-af1e4bc37a5b",
+        "order": 3,
+        "typeBudget": "investment"
+      },
+      {
+        "amount": "700",
+        "date": "01/2024",
+        "description": "Cofrinho - BGS 2024",
+        "id": "cf1f91f9-a09d-49de-bf64-50cc31255608",
+        "order": 4,
+        "typeBudget": "investment"
+      },
+      {
+        "amount": "200",
+        "date": "01/2024",
+        "description": "Tia Ana",
+        "id": "bae331a2-351b-4197-8153-c12fae806db6",
+        "order": 5,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "258",
+        "date": "01/2024",
+        "description": "Energia Solar - 24x56",
+        "id": "2a0d8ebf-6a08-406d-b5a8-5a26a763d2c1",
+        "order": 6,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "95",
+        "date": "01/2024",
+        "description": "Academia",
+        "id": "0dcc8937-f7fc-4ceb-b979-1e9de9b67165",
+        "order": 7,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "703.32",
+        "date": "01/2024",
+        "description": "Compra Lote - Parque das Aguas",
+        "id": "eca0b0cc-d86e-456b-b9cf-9bbc1202a90b",
+        "order": 8,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "166",
+        "date": "01/2024",
+        "description": "Óculos Chilli Beans - 4x4",
+        "id": "eee33f43-9374-4a0d-bdd4-ea1714ea8fe8",
+        "order": 9,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "1094.68",
+        "date": "01/2024",
+        "description": "PC Gamer - 2x12",
+        "id": "32b49048-3808-45d8-8e3d-7f7a2e75df79",
+        "order": 10,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "116.69",
+        "date": "01/2024",
+        "description": "Aluguel casa Ouro Preto - 2x4",
+        "id": "bf8c8d6f-2959-41b2-ae69-6cc38038336b",
+        "order": 11,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "444.95",
+        "date": "01/2024",
+        "description": "Fatura cartão - Picpay",
+        "id": "77e9319e-db97-4f70-bac8-9ea4f17245c5",
+        "order": 12,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "112.50",
+        "date": "01/2024",
+        "description": "Fatura cartão - Inter PJ",
+        "id": "0513f6fd-b8ac-47c0-9436-2a32cf6c9f35",
+        "order": 13,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "158.8",
+        "date": "01/2024",
+        "description": "IPVA primeira parcela - XRE 300",
+        "id": "f14cc6bd-5ac3-4c68-85f8-15de5742b6e2",
+        "order": 14,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "185",
+        "date": "01/2024",
+        "description": "Conserto portão",
+        "id": "22272159-3159-4e28-be2d-e006f697f13f",
+        "order": 15,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "150",
+        "date": "02/2024",
+        "description": "Investimento - Tesouro Direto",
+        "id": "30331999-299a-4cdd-9982-d60a696b1a7c",
+        "order": 1,
+        "typeBudget": "investment"
+      },
+      {
+        "amount": "600",
+        "date": "02/2024",
+        "description": "Cofrinho - BGS 2024",
+        "id": "bfaa86fd-7d1c-486d-b267-21a0936569e7",
+        "order": 2,
+        "typeBudget": "investment"
+      },
+      {
+        "amount": "200",
+        "date": "02/2024",
+        "description": "Tia Ana",
+        "id": "2474007f-3057-46f0-bcea-708d6e5ecf57",
+        "order": 3,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "258",
+        "date": "02/2024",
+        "description": "Energia Solar - 25x56",
+        "id": "1342145a-767b-49d3-8bfb-4cb7a82ccd1f",
+        "order": 4,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "95",
+        "date": "02/2024",
+        "description": "Academia",
+        "id": "f0384a31-f3b8-49dd-b711-5ec148e32091",
+        "order": 5,
+        "payed": false,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "688.86",
+        "date": "02/2024",
+        "description": "Compra Lote - Parque das Aguas",
+        "id": "f63a6640-afd9-46bd-b71b-72b0a5841497",
+        "order": 6,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "1094.68",
+        "date": "02/2024",
+        "description": "PC Gamer - 3x12",
+        "id": "a7ded4a9-fc34-4ff1-8aeb-f2c72d5bc679",
+        "order": 7,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "116.69",
+        "date": "02/2024",
+        "description": "Aluguel casa Ouro Preto - 3x4",
+        "id": "3bcdfc23-bed8-4a64-8d10-5311703d2940",
+        "order": 8,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "158.8",
+        "date": "02/2024",
+        "description": "IPVA segunda parcela - XRE 300",
+        "id": "03a3d565-6da7-4d68-b592-76192d094ae8",
+        "order": 9,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "311.75",
+        "date": "02/2024",
+        "description": "Viagem aniversário da Viviane",
+        "id": "03d68b26-17d0-45bd-8384-83d36cb98b6e",
+        "order": 10,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "3524.35",
+        "date": "02/2024",
+        "description": "Salário",
+        "id": "ce59a5f2-8b40-4e49-9869-c7b3f00056a3",
+        "order": 11,
+        "typeBudget": "gain"
+      },
+      {
+        "amount": "39.36",
+        "date": "02/2024",
+        "description": "Taxa de Licenciamento - XRE 300",
+        "id": "229650c7-6f6a-41fa-bb4f-ee332285f5a4",
+        "order": 12,
+        "payed": true,
+        "typeBudget": "cost"
+      },
+      {
+        "amount": "250",
+        "date": "02/2024",
+        "description": "Cofrinho - morar sozinho",
+        "id": "de8b5691-7444-4ec1-9ef9-7d4d9383a751",
+        "order": 13,
+        "typeBudget": "investment"
+      },
+      {
+        "amount": "150",
+        "date": "02/2024",
+        "description": "Investimento - Tesouro IPCA",
+        "id": "ea677fe7-8f5b-482f-a660-9f6078ed8be6",
+        "order": 14,
+        "typeBudget": "investment"
+      },
+      {
+        "amount": "50",
+        "date": "02/2024",
+        "description": "Cofrinho - Documentação de veículos 2025",
+        "id": "46782acc-f3c2-4657-8006-92c6e864ed5e",
+        "order": 15,
+        "typeBudget": "investment"
+      }
+    ]
   }
-]
+}
