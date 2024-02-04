@@ -6,6 +6,8 @@ import {
 
 import Snackbar from '../components/snackbar/script.js';
 
+import { shuffleString } from '../utils.js';
+
 new Vue({
     el: '#login',
     vuetify: new Vuetify(),
@@ -56,7 +58,7 @@ new Vue({
                 const uid = userCredential.user.uid;
 
                 if (uid) {
-                    localStorage.setItem('uid-firebase', uid);
+                    localStorage.setItem('uid-firebase', shuffleString(uid));
 
                     window.location.href = '../index.html';
                 }

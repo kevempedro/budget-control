@@ -44,8 +44,34 @@ const uuidv4 = () => {
     });
 };
 
+const shuffleString = (string) => {
+    const midpoint = Math.ceil(string.length / 2);
+
+    const firstHalf = string.substring(0, midpoint);
+    const secondeHalf = string.substring(midpoint);
+
+    const firstHalfReversed = firstHalf.split('').reverse().join('');
+    const secondeHalfReversed = secondeHalf.split('').reverse().join('');
+
+    return `${firstHalfReversed}${secondeHalfReversed}`;
+};
+
+const unscrambleString = (string) => {
+    const midpoint = Math.ceil(string.length / 2);
+
+    const firstHalf = string.substring(0, midpoint);
+    const secondeHalf = string.substring(midpoint);
+
+    const firstHalfReversed = firstHalf.split('').reverse().join('');
+    const secondeHalfReversed = secondeHalf.split('').reverse().join('');
+
+    return `${firstHalfReversed}${secondeHalfReversed}`;
+};
+
 export {
     getMonthByNumber,
     getFullMonthByNumber,
-    uuidv4
+    uuidv4,
+    shuffleString,
+    unscrambleString
 };

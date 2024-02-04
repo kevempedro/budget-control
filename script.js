@@ -16,7 +16,7 @@ import {
     signOut
 } from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js';
 
-import { getFullMonthByNumber, uuidv4 } from './utils.js';
+import { getFullMonthByNumber, uuidv4, unscrambleString } from './utils.js';
 import budgetTypesEnum from './enums/budgetTypes.enum.js';
 
 import Report from './components/report/script.js';
@@ -74,7 +74,7 @@ new Vue({
     },
 
     created() {
-        this.loginUid = localStorage.getItem('uid-firebase');
+        this.loginUid = unscrambleString(localStorage.getItem('uid-firebase'));
 
 
         if (this.getLoginUid) {
