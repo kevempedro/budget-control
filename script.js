@@ -74,10 +74,11 @@ new Vue({
     },
 
     created() {
-        this.loginUid = unscrambleString(localStorage.getItem('uid-firebase'));
+        const uidFirebaseInLocalStorage = localStorage.getItem('uid-firebase');
 
+        if (uidFirebaseInLocalStorage) {
+            this.loginUid = unscrambleString(uidFirebaseInLocalStorage);
 
-        if (this.getLoginUid) {
             this.getBudgetItems();
         } else {
             window.location.href = './login/index.html';
