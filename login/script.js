@@ -1,7 +1,9 @@
 import {
     getAuth,
-    createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
+    createUserWithEmailAndPassword,
+    updateProfile,
+    updatePhoneNumber
 } from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js';
 
 import Snackbar from '../components/snackbar/script.js';
@@ -24,7 +26,7 @@ new Vue({
             loadingLoginButton: false,
             authFirebase: getAuth(),
             showSnack: false,
-            snackbarText: '',
+            snackbarText: ''
         };
     },
 
@@ -50,11 +52,32 @@ new Vue({
         //     });
         // },
 
-        loginUser() {
-            this.loadingLoginButton = true;
+        // updateUserProfile() {
+        //     updateProfile(this.authFirebase.currentUser, { displayName: 'Kevem Lima' })
+        //     .then(() => {
+        //         console.log('Usuário atualizado com sucesso!');
+        //     })
+        //     .catch((error) => {
+        //         console.error('Erro ao atualizar usuário: ', error);
+        //     });
+        // },
 
-            signInWithEmailAndPassword(this.authFirebase, this.email, this.password)
-            .then((userCredential) => {
+        // updateUserPhoneNumber() {
+        //     updatePhoneNumber(this.authFirebase.currentUser, '38998397695')
+        //     .then(() => {
+        //         console.log('Telefone atualizado com sucesso!');
+        //     })
+        //     .catch((error) => {
+        //         console.error('Erro ao atualizar telefone   : ', error);
+        //     });
+        // },
+
+        async loginUser() {
+            try {
+                this.loadingLoginButton = true;
+
+                const userCredential = await signInWithEmailAndPassword(this.authFirebase, this.email, this.password);
+
                 const uid = userCredential.user.uid;
 
                 if (uid) {
@@ -62,21 +85,18 @@ new Vue({
 
                     window.location.href = '../index.html';
                 }
-            })
-            .catch((error) => {
+            } catch (error) {
+                console.error('Erro ao logar usuário:', error);
+
                 const errorCode = error.code;
 
                 if (errorCode === 'auth/invalid-email' || errorCode === 'auth/invalid-login-credentials') {
-                    console.log('errorCode -> ', errorCode);
                     this.showSnack = true;
                     this.snackbarText = 'E-mail ou senha inválidos';
                 }
-
-                console.error('Erro ao logar usuário:', error);
-            })
-            .finally(() => {
+            } finally {
                 this.loadingLoginButton = false;
-            });
+            }
         },
     }
 });

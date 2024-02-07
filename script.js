@@ -68,7 +68,7 @@ new Vue({
             pagination: 1,
             totalPagination: 0,
             pages: [10, 20, 30, 40, 50],
-            itemsPerPage: 10,
+            itemsPerPage: 20,
             loginUid: ''
         };
     },
@@ -254,34 +254,35 @@ new Vue({
             return getFullMonthByNumber(monthNumber);
         },
 
-        logoutUser() {
-            this.loadingLogout = true;
+        async logoutUser() {
+            try {
+                this.loadingLogout = true;
 
-            signOut(this.authFirebase).then(() => {
+                await signOut(this.authFirebase);
+
                 if (this.getLoginUid) {
                     localStorage.removeItem('uid-firebase');
 
                     window.location.href = './login/index.html';
                 }
-            }).catch((error) => {
+            } catch (error) {
                 console.error('Erro ao deslogar usuário:', error)
-            })
-            .finally(() => {
+            } finally {
                 this.loadingLogout = false;
-                this.closeDeleteModal();
-            });
+            }
         },
 
-        getBudgetItems() {
-            const queryCondition = query(
-                ref(this.dataBase, this.tableName),
-                orderByKey(),
-                equalTo(this.getLoginUid)
-            );
+        async getBudgetItems() {
+            try {
+                const queryCondition = query(
+                    ref(this.dataBase, this.tableName),
+                    orderByKey(),
+                    equalTo(this.getLoginUid)
+                );
 
-            get(queryCondition)
-            // get(child(ref(this.dataBase), this.tableName))
-            .then((snapshot) => {
+                // const snapshot = await get(child(ref(this.dataBase), this.tableName));
+                const snapshot = await get(queryCondition);
+
                 if (snapshot.exists()) {
                     this.budgetItems = snapshot.val()[this.getLoginUid];
                     this.filterBudgetItems();
@@ -290,24 +291,25 @@ new Vue({
                 } else {
                     this.budgetItems = [];
                 }
-            }).catch((error) => {
+            } catch (error) {
                 console.error('Erro ao trazer os registros: ', error);
-            });
+            }
         },
 
         async getBudgetItemById(id) {
-            let data = null;
-            let index = null;
+            try {
+                let data = null;
+                let index = null;
 
-            const queryCondition = query(
-                ref(this.dataBase, `${this.tableName}/${this.getLoginUid}`),
-                orderByChild('id'),
-                equalTo(id)
-            );
+                const queryCondition = query(
+                    ref(this.dataBase, `${this.tableName}/${this.getLoginUid}`),
+                    orderByChild('id'),
+                    equalTo(id)
+                );
 
-            // await get(child(ref(this.dataBase), `${this.tableName}/${this.getLoginUid}/${id}`))
-            await get(queryCondition)
-            .then((snapshot) => {
+                // const snapshot = await get(child(ref(this.dataBase), `${this.tableName}/${this.getLoginUid}/${id}`));
+                const snapshot = await get(queryCondition);
+
                 if (snapshot.exists()) {
                     const arrayOfValue = Object.values(snapshot.val());
                     const arrayOfKey = Object.keys(snapshot.val());
@@ -322,14 +324,14 @@ new Vue({
                 } else {
                     console.log("Erro ao retornar o registro");
                 }
-            }).catch((error) => {
-                console.error(`Erro ao trazer os registros ${id}: `, error);
-            });
 
-            return { data, index };
+                return { data, index };
+            } catch (error) {
+                console.error(`Erro ao trazer os registros ${id}: `, error);
+            }
         },
 
-        registerBudget() {
+        async registerBudget() {
             try {
                 this.loadingRegisterBudget = true;
                 this.showSnack = false;
@@ -376,79 +378,73 @@ new Vue({
                         payload = { ...payload, payed: false };
                     }
 
-                    set(ref(this.dataBase, `${this.tableName}/${this.getLoginUid}/${currentId}`), payload)
-                    .then(() => {
-                        this.getBudgetItems();
+                    await set(ref(this.dataBase, `${this.tableName}/${this.getLoginUid}/${currentId}`), payload)
 
-                        this.description = '';
-                        this.amount = null;
-                        this.typeBudget = budgetTypesEnum.GAIN;
+                    this.getBudgetItems();
 
-                        this.showSnack = true;
-                        this.snackbarText = 'Registro cadastrado com sucesso';
-                    })
-                    .catch((error) => {
-                        console.error('Erro ao registrar o registro: ', error);
-                    });
+                    this.description = '';
+                    this.amount = null;
+                    this.typeBudget = budgetTypesEnum.GAIN;
+
+                    this.showSnack = true;
+                    this.snackbarText = 'Registro cadastrado com sucesso';
                 }
-            } catch (err) {
-                console.log(err);
+            } catch (error) {
+                console.error('Erro ao registrar o registro: ', error);
             } finally {
                 this.loadingRegisterBudget = false;
             }
         },
 
         async deleteBudget() {
-            this.loadingDeleteBudget = true;
-            const { index } = await this.getBudgetItemById(this.deleteDialog.id)
+            try {
+                this.loadingDeleteBudget = true;
+                const { index } = await this.getBudgetItemById(this.deleteDialog.id);
 
-            remove(ref(this.dataBase, `${this.tableName}/${this.getLoginUid}/${index}`))
-            .then(() => {
+                await remove(ref(this.dataBase, `${this.tableName}/${this.getLoginUid}/${index}`));
+
                 this.getBudgetItems();
 
                 this.showSnack = true;
                 this.snackbarText = 'Registro excluido com sucesso';
-            })
-            .catch((error) => {
+            } catch (error) {
                 console.error('Erro ao remover o registro: ', error);
-            })
-            .finally(() => {
+            } finally {
                 this.loadingDeleteBudget = false;
                 this.closeDeleteModal();
-            });
+            }
         },
 
         async updateBudget(payload) {
-            this.loadingUpdateBudget = true;
-            const { index } = await this.getBudgetItemById(this.updateDialog.id)
+            try {
+                this.loadingUpdateBudget = true;
+                const { index } = await this.getBudgetItemById(this.updateDialog.id);
 
-            update(ref(this.dataBase, `${this.tableName}/${this.getLoginUid}/${index}`), payload)
-            .then(() => {
+                await update(ref(this.dataBase, `${this.tableName}/${this.getLoginUid}/${index}`), payload);
+
                 this.getBudgetItems();
 
                 this.showSnack = true;
                 this.snackbarText = 'Registro atualizado com sucesso';
-              })
-              .catch((error) => {
+            } catch (error) {
                 console.error('Erro ao atualizar o registro: ', error);
-            })
-            .finally(() => {
+            } finally {
                 this.loadingUpdateBudget = false;
                 this.closeUpdateModal();
-            });
+            }
         },
 
         async checkPayed(item) {
-            const { index } = await this.getBudgetItemById(item.id)
+            try {
+                const { index } = await this.getBudgetItemById(item.id);
 
-            update(ref(this.dataBase, `${this.tableName}/${this.getLoginUid}/${index}`), { payed: item.payed })
-            .then(() => {
+                await update(ref(this.dataBase, `${this.tableName}/${this.getLoginUid}/${index}`), { payed: item.payed });
+
                 this.showSnack = true;
                 this.snackbarText = 'Registro atualizado com sucesso';
-              })
-              .catch((error) => {
-                console.error('Erro ao marcar o registro como pago: ', error);
-            });
+            } catch (error) {
+                console.error('Erro ao marcar a despesa como paga: ', error);
+            }
         },
 
         filterBudgetItems() {

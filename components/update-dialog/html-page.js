@@ -94,7 +94,7 @@ const html = `
                     :loading="loadingUpdateBudget"
                     @click="onUpdateBudget"
                 >
-                    Salvar
+                    Atualizar
                 </v-btn>
             </v-card-actions>
         </v-card>

@@ -10,7 +10,7 @@ const html = `
             </v-card-title>
 
             <v-card-text>
-                Realmente deseja excluir esse registro?
+                Tem certeza de que deseja excluir este registro?
             </v-card-text>
 
             <v-card-actions>
