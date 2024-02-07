@@ -13,7 +13,8 @@ import {
 }from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js';
 import {
     getAuth,
-    signOut
+    signOut,
+    onAuthStateChanged
 } from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js';
 
 import { getFullMonthByNumber, uuidv4, unscrambleString } from './utils.js';
@@ -74,15 +75,7 @@ new Vue({
     },
 
     created() {
-        const uidFirebaseInLocalStorage = localStorage.getItem('uid-firebase');
-
-        if (uidFirebaseInLocalStorage) {
-            this.loginUid = unscrambleString(uidFirebaseInLocalStorage);
-
-            this.getBudgetItems();
-        } else {
-            window.location.href = './login/index.html';
-        }
+        this.verifyIfUserIsAuthenticated();
     },
 
     computed: {
@@ -139,6 +132,22 @@ new Vue({
     },
 
     methods: {
+        async verifyIfUserIsAuthenticated() {
+            try {
+                await onAuthStateChanged(this.authFirebase, async (user) => {
+                    if (user) {
+                        this.loginUid = user.uid;
+
+                        await this.getBudgetItems();
+                    } else {
+                        window.location.href = './login/index.html';
+                    }
+                  });
+            } catch (error) {
+                console.error('Erro ao verificar usuário:', error)
+            }
+        },
+
         openDeleteModal(id) {
             this.deleteDialog = {
                 isOpen: true,
@@ -259,12 +268,6 @@ new Vue({
                 this.loadingLogout = true;
 
                 await signOut(this.authFirebase);
-
-                if (this.getLoginUid) {
-                    localStorage.removeItem('uid-firebase');
-
-                    window.location.href = './login/index.html';
-                }
             } catch (error) {
                 console.error('Erro ao deslogar usuário:', error)
             } finally {
@@ -380,7 +383,7 @@ new Vue({
 
                     await set(ref(this.dataBase, `${this.tableName}/${this.getLoginUid}/${currentId}`), payload)
 
-                    this.getBudgetItems();
+                    await this.getBudgetItems();
 
                     this.description = '';
                     this.amount = null;
@@ -403,7 +406,7 @@ new Vue({
 
                 await remove(ref(this.dataBase, `${this.tableName}/${this.getLoginUid}/${index}`));
 
-                this.getBudgetItems();
+                await this.getBudgetItems();
 
                 this.showSnack = true;
                 this.snackbarText = 'Registro excluido com sucesso';
@@ -422,7 +425,7 @@ new Vue({
 
                 await update(ref(this.dataBase, `${this.tableName}/${this.getLoginUid}/${index}`), payload);
 
-                this.getBudgetItems();
+                await this.getBudgetItems();
 
                 this.showSnack = true;
                 this.snackbarText = 'Registro atualizado com sucesso';

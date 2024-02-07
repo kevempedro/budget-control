@@ -1,5 +1,5 @@
 [X] trocar os then catch por try catch.
-[] trocar a forma de verificação de usuário logado para utilizar o firebase em vez de verificar o uid no local storage.
+[X] trocar a forma de verificação de usuário logado para utilizar o firebase em vez de verificar o uid no local storage.
 [] componentizar o cadastro de registros.
 [] verificar no login se o usuário está inativado para informar o motivo ao realizar o login.
 [] criar a tela de perfil do usuário com os campos (nome e e-mail) e com as opções de (atualizar nome, verificar e-mail, redefinir senha), lembrando que a redefinição de senha

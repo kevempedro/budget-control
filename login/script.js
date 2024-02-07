@@ -76,13 +76,11 @@ new Vue({
             try {
                 this.loadingLoginButton = true;
 
-                const userCredential = await signInWithEmailAndPassword(this.authFirebase, this.email, this.password);
+                const { user } = await signInWithEmailAndPassword(this.authFirebase, this.email, this.password);
 
-                const uid = userCredential.user.uid;
+                const uid = user.uid;
 
                 if (uid) {
-                    localStorage.setItem('uid-firebase', shuffleString(uid));
-
                     window.location.href = '../index.html';
                 }
             } catch (error) {
