@@ -17,7 +17,7 @@ import {
     onAuthStateChanged
 } from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js';
 
-import { getFullMonthByNumber, uuidv4, unscrambleString } from './utils.js';
+import { getFullMonthByNumber, uuidv4 } from './utils.js';
 import budgetTypesEnum from './enums/budgetTypes.enum.js';
 
 import Report from './components/report/script.js';
@@ -26,6 +26,7 @@ import DeleteDialog from './components/delete-dialog/script.js';
 import UpdateDialog from './components/update-dialog/script.js';
 import Snackbar from './components/snackbar/script.js';
 import Filter from './components/filter/script.js';
+import Register from './components/register/script.js';
 
 new Vue({
     el: '#app',
@@ -37,7 +38,8 @@ new Vue({
         'delete-dialog-component': DeleteDialog,
         'update-dialog-component': UpdateDialog,
         'snackbar-component': Snackbar,
-        'filter-component': Filter
+        'filter-component': Filter,
+        'register-component': Register
     },
 
     data () {
@@ -79,10 +81,6 @@ new Vue({
     },
 
     computed: {
-        disabledRegisterButton() {
-            return !this.description || !this.amount;
-        },
-
         setPagination() {
             this.pagination = 1;
             this.totalPagination = 0;
@@ -334,10 +332,17 @@ new Vue({
             }
         },
 
-        async registerBudget() {
+        async registerBudget(item) {
             try {
                 this.loadingRegisterBudget = true;
                 this.showSnack = false;
+
+                const { description, amount, typeBudget, datePicker } = item;
+
+                this.description = description;
+                this.amount = amount;
+                this.typeBudget = typeBudget;
+                this.datePicker = datePicker;
 
                 const descriptionSlited = this.description.split(';');
                 const amountSlited = this.amount.split(';');

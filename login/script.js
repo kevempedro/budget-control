@@ -8,8 +8,6 @@ import {
 
 import Snackbar from '../components/snackbar/script.js';
 
-import { shuffleString } from '../utils.js';
-
 new Vue({
     el: '#login',
     vuetify: new Vuetify(),

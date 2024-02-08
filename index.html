@@ -14,6 +14,7 @@
     <link href="./style.css" rel="stylesheet">
     <link href="./components/report/style.css" rel="stylesheet">
     <link href="./components/budget-card/style.css" rel="stylesheet">
+    <link href="./components/register/style.css" rel="stylesheet">
 
     <title>Controle de Orçamento</title>
 </head>
@@ -53,70 +54,13 @@
                         </div>
 
                         <v-col cols="12">
-                            <v-text-field
-                                v-model="description"
-                                clearable
-                                id="description"
-                                name="description"
-                                label="Descrição"
-                                type="text"
-                            >
-                            </v-text-field>
-
-                            <v-text-field
-                                v-model="amount"
-                                clearable
-                                id="amount"
-                                name="amount"
-                                label="Valor"
-                                type="text"
-                                prefix="R$"
-                            >
-                            </v-text-field>
-
-                            <div class="d-flex justify-space-between flex-column flex-sm-row mt-10" style="gap: 20px;">
-                                <div>
-                                    <v-date-picker
-                                        v-model="datePicker"
-                                        type="month"
-                                    >
-                                    </v-date-picker>
-
-                                    <v-radio-group
-                                        v-model="typeBudget"
-                                        column
-                                    >
-                                        <v-radio
-                                            label="Ganho"
-                                            color="success"
-                                            value="gain"
-                                        >
-                                        </v-radio>
-
-                                        <v-radio
-                                            label="Investimento"
-                                            color="info"
-                                            value="investment"
-                                        >
-                                        </v-radio>
-
-                                        <v-radio
-                                            label="Despesa"
-                                            color="error"
-                                            value="cost"
-                                        >
-                                        </v-radio>
-                                    </v-radio-group>
-
-                                    <v-btn
-                                        color="primary"
-                                        :disabled="disabledRegisterButton"
-                                        :loading="loadingRegisterBudget"
-                                        @click="registerBudget"
-                                    >
-                                        Registrar
-                                    </v-btn>
-                                </div>
+                            <div class="d-flex justify-space-between flex-column flex-sm-row mt-10" style="gap: 60px;">
+                                <!-- Início - Informações para o cadastro -->
+                                <register-component
+                                    :loading-register-budget="loadingRegisterBudget"
+                                    @register-budget="registerBudget"
+                                >
+                                </register-component>
                                 <!-- Fim - Informações para o cadastro -->
 
                                 <!-- Início - Resultados do ano -->

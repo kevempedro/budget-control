@@ -1,5 +1,5 @@
 const html = `
-    <div class="order-first order-sm-last" style="height: max-content;">
+    <div class="order-last" style="height: max-content;">
         <h3>Resultados do ano de {{ yearSelected }}</h3>
 
         <v-select v-model="yearSelected" :items="years" label="Ano"></v-select>
