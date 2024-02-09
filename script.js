@@ -72,7 +72,7 @@ new Vue({
             totalPagination: 0,
             pages: [10, 20, 30, 40, 50],
             itemsPerPage: 20,
-            loginUid: ''
+            user: {}
         };
     },
 
@@ -90,7 +90,16 @@ new Vue({
         },
 
         getLoginUid() {
-            return this.loginUid;
+            return this.user.uid;
+        },
+
+        getInitialNameUser() {
+            const letters = this.user?.displayName?.split(' ');
+            let initials = '';
+
+            letters?.forEach(letter => initials += letter.charAt(0).toUpperCase());
+
+            return initials;
         },
 
         costsLeftTopay() {
@@ -250,7 +259,7 @@ new Vue({
                 await onAuthStateChanged(this.authFirebase, async (user) => {
                     if (user) {
                         console.log('user -> ', user)
-                        this.loginUid = user.uid;
+                        this.user = user;
 
                         await this.getBudgetItems();
                     } else {
