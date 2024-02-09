@@ -41,7 +41,7 @@ const Register = {
             this.description = '';
             this.amount = null;
             this.typeBudget = budgetTypesEnum.GAIN;
-        },
+        }
     }
 };
 

@@ -27,6 +27,7 @@ import UpdateDialog from './components/update-dialog/script.js';
 import Snackbar from './components/snackbar/script.js';
 import Filter from './components/filter/script.js';
 import Register from './components/register/script.js';
+import Profile from './components/profile/script.js';
 
 new Vue({
     el: '#app',
@@ -39,7 +40,8 @@ new Vue({
         'update-dialog-component': UpdateDialog,
         'snackbar-component': Snackbar,
         'filter-component': Filter,
-        'register-component': Register
+        'register-component': Register,
+        'profile-component': Profile
     },
 
     data () {
@@ -91,15 +93,6 @@ new Vue({
 
         getLoginUid() {
             return this.user.uid;
-        },
-
-        getInitialNameUser() {
-            const letters = this.user?.displayName?.split(' ');
-            let initials = '';
-
-            letters?.forEach(letter => initials += letter.charAt(0).toUpperCase());
-
-            return initials;
         },
 
         costsLeftTopay() {
@@ -258,7 +251,6 @@ new Vue({
             try {
                 await onAuthStateChanged(this.authFirebase, async (user) => {
                     if (user) {
-                        console.log('user -> ', user)
                         this.user = user;
 
                         await this.getBudgetItems();
