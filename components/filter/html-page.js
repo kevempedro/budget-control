@@ -16,8 +16,10 @@ const html = `
             <v-expansion-panel-content>
                 <div class="d-flex flex-column flex-md-row align-start justify-space-between">
                     <v-date-picker
+                        v-once
                         v-model="datePickerFilter"
                         type="month"
+                        :locale="locale"
                     >
                     </v-date-picker>
 

@@ -1,4 +1,5 @@
 import budgetTypesEnum from '../../enums/budgetTypes.enum.js';
+import { getFullMonths } from '../../utils.js';
 
 import html from './html-page.js';
 
@@ -15,7 +16,8 @@ const Register = {
             description: '',
             amount: null,
             typeBudget: budgetTypesEnum.GAIN,
-            datePicker: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10)
+            datePicker: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
+            locale: { months: getFullMonths }
         };
     },
 

@@ -36,6 +36,23 @@ const getFullMonthByNumber = (monthNumber) => {
     return months[monthNumber];
 };
 
+const getFullMonths = () => {
+    return [
+        'Janeiro',
+        'Fevereiro',
+        'Março',
+        'Abril',
+        'Maio',
+        'Junho',
+        'Julho',
+        'Agosto',
+        'Setembro',
+        'Outubro',
+        'Novembro',
+        'Dezembro'
+    ];
+};
+
 const uuidv4 = () => {
     return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
         const r = Math.random() * 16 | 0,
@@ -71,6 +88,7 @@ const unscrambleString = (string) => {
 export {
     getMonthByNumber,
     getFullMonthByNumber,
+    getFullMonths,
     uuidv4,
     shuffleString,
     unscrambleString

@@ -130,22 +130,6 @@ new Vue({
     },
 
     methods: {
-        async verifyIfUserIsAuthenticated() {
-            try {
-                await onAuthStateChanged(this.authFirebase, async (user) => {
-                    if (user) {
-                        this.loginUid = user.uid;
-
-                        await this.getBudgetItems();
-                    } else {
-                        window.location.href = './login/index.html';
-                    }
-                  });
-            } catch (error) {
-                console.error('Erro ao verificar usuário:', error)
-            }
-        },
-
         openDeleteModal(id) {
             this.deleteDialog = {
                 isOpen: true,
@@ -259,6 +243,23 @@ new Vue({
             const monthNumber = Number(month.replace('0', '')) - 1;
 
             return getFullMonthByNumber(monthNumber);
+        },
+
+        async verifyIfUserIsAuthenticated() {
+            try {
+                await onAuthStateChanged(this.authFirebase, async (user) => {
+                    if (user) {
+                        console.log('user -> ', user)
+                        this.loginUid = user.uid;
+
+                        await this.getBudgetItems();
+                    } else {
+                        window.location.href = './login/index.html';
+                    }
+                  });
+            } catch (error) {
+                console.error('Erro ao verificar usuário:', error)
+            }
         },
 
         async logoutUser() {

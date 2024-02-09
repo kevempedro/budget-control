@@ -83,12 +83,16 @@ new Vue({
                 }
             } catch (error) {
                 console.error('Erro ao logar usuário:', error);
-
                 const errorCode = error.code;
 
                 if (errorCode === 'auth/invalid-email' || errorCode === 'auth/invalid-login-credentials') {
                     this.showSnack = true;
                     this.snackbarText = 'E-mail ou senha inválidos';
+                }
+
+                if (errorCode === 'auth/user-disabled') {
+                    this.showSnack = true;
+                    this.snackbarText = 'Usuário desativado';
                 }
             } finally {
                 this.loadingLoginButton = false;

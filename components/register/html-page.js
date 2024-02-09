@@ -23,8 +23,10 @@ const html = `
 
         <v-date-picker
             class="mt-4"
+            v-once
             v-model="datePicker"
             type="month"
+            :locale="locale"
         >
         </v-date-picker>
 
