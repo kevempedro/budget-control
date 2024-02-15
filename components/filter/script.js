@@ -1,5 +1,4 @@
 import budgetTypesEnum from '../../enums/budgetTypes.enum.js';
-import { getFullMonths } from '../../utils.js';
 
 import html from './html-page.js';
 
@@ -13,8 +12,7 @@ const Filter = {
             descriptionFilter: '',
             budgetTypesEnumData: budgetTypesEnum,
             typeBudgetFilter: '',
-            typeBudgetsFilter: [],
-            locale: { months: getFullMonths }
+            typeBudgetsFilter: []
         };
     },
 

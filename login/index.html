@@ -34,6 +34,7 @@
 
                             <v-text-field
                                 v-model="email"
+                                name="email"
                                 type="email"
                                 label="E-mail"
                                 clearable
@@ -43,6 +44,7 @@
 
                             <v-text-field
                                 v-model="password"
+                                name="password"
                                 class="mt-6"
                                 :type="showPassword ? 'text' : 'password'"
                                 label="Senha"
@@ -54,6 +56,7 @@
                             </v-text-field>
 
                             <v-btn
+                                outlined
                                 color="primary"
                                 class="mt-6"
                                 :loading="loadingLoginButton"
@@ -65,14 +68,14 @@
                         </div>
                         <!-- Fim - Login -->
 
-                        <!-- Início - Snackbar de mensagens de erro -->
+                        <!-- Início - Snackbar -->
                         <snackbar-component
                           :show-snackbar="showSnack"
                           :snackbar-text="snackbarText"
                           @close-snackbar="showSnack = false"
                         >
                         </snackbar-component>
-                        <!-- Fim - Snackbar de mensagens de erro -->
+                        <!-- Fim - Snackbar -->
                     </v-row>
                 </v-container>
             </v-main>

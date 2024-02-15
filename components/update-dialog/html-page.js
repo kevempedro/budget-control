@@ -80,16 +80,16 @@ const html = `
                 <v-spacer></v-spacer>
 
                 <v-btn
+                    outlined
                     color="red darken-1"
-                    text
                     @click="closeUpdateModal"
                 >
                     Fechar
                 </v-btn>
 
                 <v-btn
-                    color="green darken-1"
-                    text
+                    outlined
+                    color="primary"
                     :disabled="disabledUpdateButton"
                     :loading="loadingUpdateBudget"
                     @click="onUpdateBudget"

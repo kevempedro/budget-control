@@ -1,9 +1,7 @@
 import {
     getAuth,
     signInWithEmailAndPassword,
-    createUserWithEmailAndPassword,
-    updateProfile,
-    updatePhoneNumber
+    createUserWithEmailAndPassword
 } from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js';
 
 import Snackbar from '../components/snackbar/script.js';

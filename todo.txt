@@ -2,6 +2,7 @@
 [X] trocar a forma de verificação de usuário logado para utilizar o firebase em vez de verificar o uid no local storage.
 [X] componentizar o cadastro de registros.
 [X] verificar no login se o usuário está inativado para informar o motivo ao realizar o login.
-[] criar a tela de perfil do usuário com os campos (nome e e-mail) e com as opções de (atualizar nome, verificar e-mail, redefinir senha), lembrando que a redefinição de senha
+[X] criar a tela de perfil do usuário com os campos (nome e e-mail) e com as opções de (atualizar nome, verificar e-mail, redefinir senha), lembrando que a redefinição de senha
 so poderar ser feita se o e-mail já tiver sido verificado.
-[] Implementar funcionalidade de ordenar/reordenar a listagem dos registros
+[] Ajustar os componentes para levar os requests do firebase para os mesmos e remover da tela principal.
+[] Implementar funcionalidade de ordenar/reordenar a listagem dos registros.

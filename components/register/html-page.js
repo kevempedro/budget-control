@@ -2,9 +2,9 @@ const html = `
     <div class="register-container">
         <v-text-field
             v-model="description"
-            clearable
-            id="description"
+            :rules="descriptionRules"
             name="description"
+            clearable
             label="Descrição"
             type="text"
         >
@@ -12,9 +12,9 @@ const html = `
 
         <v-text-field
             v-model="amount"
-            clearable
-            id="amount"
+            :rules="amountRules"
             name="amount"
+            clearable
             label="Valor"
             type="text"
             prefix="R$"
@@ -25,7 +25,7 @@ const html = `
             class="mt-4"
             v-model="datePicker"
             type="month"
-            :locale="locale"
+            locale="pt-br"
         >
         </v-date-picker>
 
@@ -56,6 +56,7 @@ const html = `
         </v-radio-group>
 
         <v-btn
+            outlined
             color="primary"
             :loading="loadingRegisterBudget"
             :disabled="disabledRegisterButton"

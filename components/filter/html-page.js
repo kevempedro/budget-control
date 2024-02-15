@@ -18,7 +18,7 @@ const html = `
                     <v-date-picker
                         v-model="datePickerFilter"
                         type="month"
-                        :locale="locale"
+                        locale="pt-br"
                     >
                     </v-date-picker>
 
@@ -68,6 +68,7 @@ const html = `
                 </div>
 
                 <v-btn
+                    outlined
                     class="mt-5"
                     color="primary"
                     @click="clearFilter"

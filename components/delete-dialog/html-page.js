@@ -18,16 +18,16 @@ const html = `
                 <v-spacer></v-spacer>
 
                 <v-btn
+                    outlined
                     color="red darken-1"
-                    text
                     @click="closeDeleteModal"
                 >
                     Cancelar
                 </v-btn>
 
                 <v-btn
-                    color="green darken-1"
-                    text
+                    outlined
+                    color="primary"
                     :loading="loadingDeleteBudget"
                     @click="onDeleteBudget"
                 >
