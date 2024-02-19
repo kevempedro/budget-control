@@ -34,6 +34,7 @@
 
                             <v-text-field
                                 v-model="email"
+                                :rules="emailRules"
                                 name="email"
                                 type="email"
                                 label="E-mail"
@@ -44,6 +45,7 @@
 
                             <v-text-field
                                 v-model="password"
+                                :rules="passwordRules"
                                 name="password"
                                 class="mt-6"
                                 :type="showPassword ? 'text' : 'password'"

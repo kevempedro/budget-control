@@ -287,12 +287,20 @@ new Vue({
                 const snapshot = await get(queryCondition);
 
                 if (snapshot.exists()) {
-                    this.budgetItems = snapshot.val()[this.getLoginUid];
+                    const data = snapshot.val()[this.getLoginUid];
+
+                    if (typeof data === 'object' && !Array.isArray(data)) {
+                        this.budgetItems = Object.values(data);
+                    } else {
+                        this.budgetItems = data;
+                    }
+
                     this.filterBudgetItems();
 
                     this.setPagination;
                 } else {
                     this.budgetItems = [];
+                    this.budgetItemsFiltered = [];
                 }
             } catch (error) {
                 console.error('Erro ao trazer os registros: ', error);
@@ -324,8 +332,6 @@ new Vue({
                     index = arrayOfKey.reduce((obj, item) => {
                         return item
                     }, {});
-                } else {
-                    console.log("Erro ao retornar o registro");
                 }
 
                 return { data, index };
@@ -340,6 +346,20 @@ new Vue({
                 this.showSnack = false;
 
                 const { description, amount, typeBudget, datePicker } = item;
+
+                if (!description.trim()) {
+                    this.showSnack = true;
+                    this.snackbarText = 'Campo descrição é obrigatório';
+
+                    return;
+                }
+
+                if (!amount) {
+                    this.showSnack = true;
+                    this.snackbarText = 'Campo valor é obrigatório';
+
+                    return;
+                }
 
                 this.description = description;
                 this.amount = amount;
@@ -391,14 +411,14 @@ new Vue({
                     await set(ref(this.dataBase, `${this.tableName}/${this.getLoginUid}/${currentId}`), payload)
 
                     await this.getBudgetItems();
-
-                    this.description = '';
-                    this.amount = null;
-                    this.typeBudget = budgetTypesEnum.GAIN;
-
-                    this.showSnack = true;
-                    this.snackbarText = 'Registro cadastrado com sucesso';
                 }
+
+                this.description = '';
+                this.amount = null;
+                this.typeBudget = budgetTypesEnum.GAIN;
+
+                this.showSnack = true;
+                this.snackbarText = 'Registro cadastrado com sucesso';
             } catch (error) {
                 console.error('Erro ao registrar o registro: ', error);
             } finally {

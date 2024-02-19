@@ -15,6 +15,16 @@ const Snackbar = {
 
     template: html,
 
+    watch: {
+        showSnackbar(value) {
+            if (value) {
+                setTimeout(() => {
+                    this.closeSnackbar();
+                }, 5000);
+            }
+        }
+    },
+
     methods: {
         closeSnackbar() {
             this.$emit('close-snackbar');

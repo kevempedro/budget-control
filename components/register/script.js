@@ -15,13 +15,7 @@ const Register = {
             description: '',
             amount: null,
             typeBudget: budgetTypesEnum.GAIN,
-            datePicker: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
-            descriptionRules: [
-                v => !!v || 'Campo obrigatório'
-            ],
-            amountRules: [
-                v => !!v || 'Campo obrigatório'
-            ]
+            datePicker: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10)
         };
     },
 

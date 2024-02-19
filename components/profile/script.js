@@ -104,9 +104,32 @@ const Profile = {
 
         async changeName() {
             try {
+                const words = this.displayName ? this.displayName.trim().split(/\s+/) : [];
+
+                if (!this.displayName.trim()) {
+                    this.showSnack = true;
+                    this.snackbarText = 'Campo obrigatório';
+
+                    return;
+                }
+
+                if (words.length < 2) {
+                    this.showSnack = true;
+                    this.snackbarText = 'Informe o nome e sobrenome';
+
+                    return;
+                }
+
+                if (this.displayName.length > 100) {
+                    this.showSnack = true;
+                    this.snackbarText = 'Nome pode conter apenas 100 caracteres';
+
+                    return;
+                }
+
                 this.loadingChangeName = true;
 
-                await updateProfile(this.authFirebase.currentUser, { displayName: this.displayName });
+                await updateProfile(this.authFirebase.currentUser, { displayName: this.displayName.trim() });
 
                 this.showSnack = true;
                 this.snackbarText = 'Nome do usuário atualizado com sucesso.';
@@ -161,10 +184,6 @@ const Profile = {
                     clearInterval(interval);
                 }
             }, 1000);
-        },
-
-        closeSnackbar() {
-            this.showSnack = false;
         }
     }
 };

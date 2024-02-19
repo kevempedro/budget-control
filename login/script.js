@@ -22,7 +22,14 @@ new Vue({
             loadingLoginButton: false,
             authFirebase: getAuth(),
             showSnack: false,
-            snackbarText: ''
+            snackbarText: '',
+            emailRules: [
+                v => !!v || 'Campo obrigatório',
+                v => /.+@.+\..+/.test(v) || 'Informe um e-mail válido'
+            ],
+            passwordRules: [
+                v => !!v || 'Campo obrigatório'
+            ]
         };
     },
 
@@ -70,9 +77,30 @@ new Vue({
 
         async loginUser() {
             try {
+                if (!this.email) {
+                    this.showSnack = true;
+                    this.snackbarText = 'Campo e-mail é obrigatório';
+
+                    return;
+                }
+
+                if (!(/.+@.+\..+/.test(this.email))) {
+                    this.showSnack = true;
+                    this.snackbarText = 'Informe um e-mail válido';
+
+                    return;
+                }
+
+                if (!this.password) {
+                    this.showSnack = true;
+                    this.snackbarText = 'Campo senha é obrigatório';
+
+                    return;
+                }
+
                 this.loadingLoginButton = true;
 
-                const { user } = await signInWithEmailAndPassword(this.authFirebase, this.email, this.password);
+                const { user } = await signInWithEmailAndPassword(this.authFirebase, this.email.trim(), this.password.trim());
 
                 const uid = user.uid;
 

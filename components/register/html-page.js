@@ -2,7 +2,6 @@ const html = `
     <div class="register-container">
         <v-text-field
             v-model="description"
-            :rules="descriptionRules"
             name="description"
             clearable
             label="Descrição"
@@ -12,7 +11,6 @@ const html = `
 
         <v-text-field
             v-model="amount"
-            :rules="amountRules"
             name="amount"
             clearable
             label="Valor"
