@@ -21,13 +21,13 @@ const html = `
             <p class="card__text__amount mt-2">
                 <v-icon>
                     {{
-                    item.typeBudget === budgetTypesEnumData.GAIN ? 'mdi-cash-plus' : ''
+                        item.typeBudget === budgetTypesEnumData.GAIN ? 'mdi-cash-plus' : ''
                     }}
                     {{
-                    item.typeBudget === budgetTypesEnumData.INVESTMENT ? 'mdi-piggy-bank-outline' : ''
+                        item.typeBudget === budgetTypesEnumData.INVESTMENT ? 'mdi-piggy-bank-outline' : ''
                     }}
                     {{
-                    item.typeBudget === budgetTypesEnumData.COST ? 'mdi-cash-minus' : ''
+                        item.typeBudget === budgetTypesEnumData.COST ? 'mdi-cash-minus' : ''
                     }}
                 </v-icon>
 

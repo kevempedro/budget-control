@@ -74,7 +74,8 @@ new Vue({
             totalPagination: 0,
             pages: [10, 20, 30, 40, 50],
             itemsPerPage: 20,
-            user: {}
+            user: {},
+			kevem: false
         };
     },
 
@@ -178,57 +179,57 @@ new Vue({
         },
 
         calculateGains() {
-            let total = 0;
+			const total = this.budgetItemsCaculation.reduce((total, budget) => {
+				if (budget.typeBudget === budgetTypesEnum.GAIN) {
+					return total + Number(budget.amount);
+				}
 
-            this.budgetItemsCaculation.forEach((item) => {
-                if (item.typeBudget === budgetTypesEnum.GAIN) {
-                    total += Number(item.amount);
-                }
-            });
+				return total;
+			}, 0);
 
             return total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
         },
 
         calculateInvestments() {
-            let total = 0;
+			const total = this.budgetItemsCaculation.reduce((total, budget) => {
+				if (budget.typeBudget === budgetTypesEnum.INVESTMENT) {
+					return total + Number(budget.amount);
+				}
 
-            this.budgetItemsCaculation.forEach((item) => {
-                if (item.typeBudget === budgetTypesEnum.INVESTMENT) {
-                    total += Number(item.amount);
-                }
-            });
+				return total;
+			}, 0);
 
             return total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
         },
 
         calculateCosts() {
-            let total = 0;
+			const total = this.budgetItemsCaculation.reduce((total, budget) => {
+				if (budget.typeBudget === budgetTypesEnum.COST) {
+					return total + Number(budget.amount);
+				}
 
-            this.budgetItemsCaculation.forEach((item) => {
-                if (item.typeBudget === budgetTypesEnum.COST) {
-                    total += Number(item.amount);
-                }
-            });
+				return total;
+			}, 0);
 
             return total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
         },
 
         calculateAmountMonth() {
-            let total = 0;
+			const total = this.budgetItemsCaculation.reduce((total, budget) => {
+				if (budget.typeBudget === budgetTypesEnum.GAIN) {
+					return total + Number(budget.amount);
+				}
 
-            this.budgetItemsCaculation.forEach((item) => {
-                if (item.typeBudget === budgetTypesEnum.GAIN) {
-                    total += Number(item.amount);
-                }
+				// if (budget.typeBudget === budgetTypesEnum.INVESTMENT) {
+				// 	return total - Number(budget.amount);
+				// }
 
-                // if (item.typeBudget === budgetTypesEnum.INVESTMENT) {
-                //     total -= Number(item.amount);
-                // }
+				if (budget.typeBudget === budgetTypesEnum.COST) {
+					return total - Number(budget.amount);
+				}
 
-                if (item.typeBudget === budgetTypesEnum.COST) {
-                    total -= Number(item.amount);
-                }
-            });
+				return total;
+			}, 0);
 
             return total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
         },
@@ -519,6 +520,60 @@ new Vue({
 
                 return 0;
             });
+        },
+
+        teste() {
+            let data = this.budgetItems.filter(
+                item => (
+                    item.description
+                    .toLowerCase()
+                    .trim()
+                    .includes(
+                        ''
+                        .toLowerCase()
+                        .trim()
+                    )
+                )
+            );
+
+			data = data.filter(budget => {
+				const getOnlyYearFromDate = budget.date.split('/')[1];
+
+				return ['2023', '2024'].includes(getOnlyYearFromDate);
+			});
+
+			data = data.filter(budget => ['gain', 'investment', 'cost'].includes(budget.typeBudget));
+
+			const gains = data.filter(budget => budget.typeBudget === 'gain');
+			const investments = data.filter(budget => budget.typeBudget === 'investment');
+			const costs = data.filter(budget => budget.typeBudget === 'cost');
+
+			const amountGain = gains.reduce((total, budget) => {
+				return total + Number(budget.amount);
+			}, 0);
+			const amountInvestment = investments.reduce((total, budget) => {
+				return total + Number(budget.amount);
+			}, 0);
+			const amountCost = costs.reduce((total, budget) => {
+				return total + Number(budget.amount);
+			}, 0);
+
+			console.log('data -> ', data);
+			console.log('gains -> ', gains);
+			console.log('investments -> ', investments);
+			console.log('costs -> ', costs);
+			console.log('amountGain -> ', amountGain.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }));
+			console.log('amountInvestment -> ', amountInvestment.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }));
+			console.log('amountCost -> ', amountCost.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }));
+
+			return {
+				gains,
+				investments,
+				costs,
+				amountGain: amountGain.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }),
+				amountInvestment: amountInvestment.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }),
+				amountCost: amountCost.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }),
+			}
         }
     }
 });
