@@ -65,7 +65,6 @@ new Vue({
             loadingUpdateBudget: false,
             loadingDeleteBudget: false,
             loadingLogout: false,
-            years: ['2023', '2024', '2025'],
             showSnack: false,
             snackbarText: '',
             mdSize: '12',
@@ -75,7 +74,11 @@ new Vue({
             pages: [10, 20, 30, 40, 50],
             itemsPerPage: 20,
             user: {},
-			kevem: false
+			kevem: false,
+            descriptionReport: '',
+            typeBudgetsReport: [],
+            years: [2023, 2024, 2025],
+            yearSelected: [new Date().getFullYear()]
         };
     },
 
@@ -529,7 +532,7 @@ new Vue({
                     .toLowerCase()
                     .trim()
                     .includes(
-                        ''
+                        this.descriptionReport
                         .toLowerCase()
                         .trim()
                     )
@@ -539,10 +542,10 @@ new Vue({
 			data = data.filter(budget => {
 				const getOnlyYearFromDate = budget.date.split('/')[1];
 
-				return ['2023', '2024'].includes(getOnlyYearFromDate);
+				return this.yearSelected.includes(Number(getOnlyYearFromDate)) || this.yearSelected.length <= 0;
 			});
 
-			data = data.filter(budget => ['gain', 'investment', 'cost'].includes(budget.typeBudget));
+			data = data.filter(budget => this.typeBudgetsReport.includes(budget.typeBudget) || this.typeBudgetsReport.length <= 0);
 
 			const gains = data.filter(budget => budget.typeBudget === 'gain');
 			const investments = data.filter(budget => budget.typeBudget === 'investment');
@@ -558,22 +561,32 @@ new Vue({
 				return total + Number(budget.amount);
 			}, 0);
 
-			console.log('data -> ', data);
-			console.log('gains -> ', gains);
-			console.log('investments -> ', investments);
-			console.log('costs -> ', costs);
-			console.log('amountGain -> ', amountGain.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }));
-			console.log('amountInvestment -> ', amountInvestment.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }));
-			console.log('amountCost -> ', amountCost.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }));
-
-			return {
-				gains,
-				investments,
-				costs,
-				amountGain: amountGain.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }),
-				amountInvestment: amountInvestment.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }),
-				amountCost: amountCost.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }),
-			}
+            return [
+                {
+                    items: gains,
+                    amount: amountGain.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }),
+                    name: 'Ganhos',
+                    icon: 'mdi-cash-plus',
+                    color: '#4caf50',
+                    background: '#d1ebd2'
+                },
+                {
+                    items: investments,
+                    amount: amountInvestment.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }),
+                    name: 'Investimentos',
+                    icon: 'mdi-piggy-bank-outline',
+                    color: '#2196f3',
+                    background: '#cbe4f7'
+                },
+                {
+                    items: costs,
+                    amount: amountCost.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }),
+                    name: 'Despesas',
+                    icon: 'mdi-cash-minus',
+                    color: '#ff5252',
+                    background: '#fde9e9'
+                }
+            ];
         }
     }
 });

@@ -77,7 +77,7 @@ const html = `
         </div>
 
         <p v-else class="ma-0 text-center mt-2">
-            Nenhum registro encontrado para o ano de {{ yearSelected }}
+            Nenhum registro encontrado para o ano de <strong>{{ yearSelected }}</strong>
         </p>
     </div>
 `;

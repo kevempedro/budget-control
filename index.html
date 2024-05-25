@@ -45,15 +45,20 @@
                                 </register-component>
                                 <!-- Fim - Informações para o cadastro -->
 
-                                <v-btn @click="kevem = true">
-                                    Pesquisar
-                                </v-btn>
-
                                 <!-- Início - Resultados do ano -->
                                 <report-component :budget-items="budgetItems">
                                 </report-component>
                                 <!-- Fim - Resultados do ano -->
                             </div>
+
+                            <v-btn
+                                outlined
+                                color="primary"
+                                class="mt-6"
+                                @click="kevem = true"
+                            >
+                                Pesquisar
+                            </v-btn>
 
                             <!-- Início - Filtros -->
                             <div ref="paginationAnchor"></div>
@@ -217,7 +222,61 @@
                                     </v-toolbar>
 
                                     <div class="d-flex flex-column pa-6" style="gap: 40px;">
-                                        <v-expansion-panels>
+                                        <div>
+                                            <v-text-field
+                                                v-model="descriptionReport"
+                                                name="descriptionReport"
+                                                clearable
+                                                label="Descrição"
+                                                type="text"
+                                            >
+                                            </v-text-field>
+
+                                            <v-select
+                                                v-model="yearSelected"
+                                                :items="years"
+                                                label="Ano"
+                                                multiple
+                                            >
+                                            </v-select>
+
+                                            <div class="d-flex flex-column">
+                                                <v-checkbox
+                                                    v-model="typeBudgetsReport"
+                                                    style="width:max-content;"
+                                                    class="ma-0"
+                                                    label="Ganhos"
+                                                    color="success"
+                                                    :value="budgetTypesEnumData.GAIN"
+                                                >
+                                                </v-checkbox>
+
+                                                <v-checkbox
+                                                    v-model="typeBudgetsReport"
+                                                    style="width:max-content;"
+                                                    class="ma-0"
+                                                    label="Investimentos"
+                                                    color="info"
+                                                    :value="budgetTypesEnumData.INVESTMENT"
+                                                >
+                                                </v-checkbox>
+
+                                                <v-checkbox
+                                                    v-model="typeBudgetsReport"
+                                                    style="width:max-content;"
+                                                    class="ma-0"
+                                                    label="Despesas"
+                                                    color="error"
+                                                    :value="budgetTypesEnumData.COST"
+                                                >
+                                                </v-checkbox>
+                                            </div>
+                                        </div>
+
+                                        <v-expansion-panels
+                                            v-for="(item, index) in teste()"
+                                            :key="index"
+                                        >
                                             <v-expansion-panel>
                                                 <v-expansion-panel-header>
                                                     <div>
@@ -225,14 +284,14 @@
                                                             <v-icon
                                                                 class="mr-2"
                                                                 size="30"
-                                                                color="#4caf50"
-                                                                style="background: #d1ebd2; border-radius: 50%; padding: 6px;"
+                                                                :color="item.color"
+                                                                :style="`background: ${item.background}; border-radius: 50%; padding: 6px;`"
                                                             >
-                                                                mdi-cash-plus
+                                                                {{ item.icon }}
                                                             </v-icon>
 
-                                                            <h2 style="color: #4caf50;">
-                                                                Ganhos
+                                                            <h2 :style="`color: ${item.color};`">
+                                                                {{ item.name }}
                                                             </h2>
                                                         </div>
 
@@ -241,7 +300,7 @@
                                                                 Total:
                                                             </b>
 
-                                                            {{ teste().gains.length }} registros
+                                                            {{ item.items.length }} registros
                                                         </p>
 
                                                         <p class="ma-0 mt-1">
@@ -249,119 +308,14 @@
                                                                 valor total:
                                                             </b>
 
-                                                            {{ teste().amountGain }}
+                                                            {{ item.amount }}
                                                         </p>
                                                     </div>
                                                 </v-expansion-panel-header>
 
                                                 <v-expansion-panel-content>
                                                     <p
-                                                        v-for="budget in teste().gains"
-                                                        :key="budget.id"
-                                                    >
-                                                        {{ budget.description }}
-                                                        <br>
-                                                        {{ budget.date }}
-                                                        <br>
-                                                        {{ Number(budget.amount).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) }}
-                                                    </p>
-                                                </v-expansion-panel-content>
-                                            </v-expansion-panel>
-                                        </v-expansion-panels>
-
-                                        <v-expansion-panels>
-                                            <v-expansion-panel>
-                                                <v-expansion-panel-header>
-                                                    <div>
-                                                        <div class="d-flex align-center">
-                                                            <v-icon
-                                                                class="mr-2"
-                                                                size="30"
-                                                                color="#2196f3"
-                                                                style="background: #cbe4f7; border-radius: 50%; padding: 6px;"
-                                                            >
-                                                                mdi-piggy-bank-outline
-                                                            </v-icon>
-
-                                                            <h2 style="color: #2196f3;">
-                                                                Investimentos
-                                                            </h2>
-                                                        </div>
-
-                                                        <p class="ma-0 mt-6">
-                                                            <b>
-                                                                Total:
-                                                            </b>
-
-                                                            {{ teste().investments.length }} registros
-                                                        </p>
-
-                                                        <p class="ma-0 mt-1">
-                                                            <b>
-                                                                valor total:
-                                                            </b>
-
-                                                            {{ teste().amountInvestment }}
-                                                        </p>
-                                                    </div>
-                                                </v-expansion-panel-header>
-
-                                                <v-expansion-panel-content>
-                                                    <p
-                                                        v-for="budget in teste().investments"
-                                                        :key="budget.id"
-                                                    >
-                                                        {{ budget.description }}
-                                                        <br>
-                                                        {{ budget.date }}
-                                                        <br>
-                                                        {{ Number(budget.amount).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) }}
-                                                    </p>
-                                                </v-expansion-panel-content>
-                                            </v-expansion-panel>
-                                        </v-expansion-panels>
-
-                                        <v-expansion-panels>
-                                            <v-expansion-panel>
-                                                <v-expansion-panel-header>
-                                                    <div>
-                                                        <div class="d-flex align-center">
-                                                            <v-icon
-                                                                class="mr-2"
-                                                                size="30"
-                                                                color="#ff5252"
-                                                                style="background: #fde9e9; border-radius: 50%; padding: 6px;"
-                                                            >
-                                                                mdi-cash-minus
-                                                            </v-icon>
-
-                                                            <h2 style="color: #ff5252;">
-                                                                Despesas
-                                                            </h2>
-                                                        </div>
-
-
-                                                        <p class="ma-0 mt-6">
-                                                            <b>
-                                                                Total:
-                                                            </b>
-
-                                                            {{ teste().costs.length }} registros
-                                                        </p>
-
-                                                        <p class="ma-0 mt-1">
-                                                            <b>
-                                                                valor total:
-                                                            </b>
-
-                                                            {{ teste().amountCost }}
-                                                        </p>
-                                                    </div>
-                                                </v-expansion-panel-header>
-
-                                                <v-expansion-panel-content>
-                                                    <p
-                                                        v-for="budget in teste().costs"
+                                                        v-for="budget in item.items"
                                                         :key="budget.id"
                                                     >
                                                         {{ budget.description }}
