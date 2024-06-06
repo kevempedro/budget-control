@@ -21,6 +21,7 @@ import { getFullMonthByNumber, uuidv4 } from './utils.js';
 import budgetTypesEnum from './enums/budgetTypes.enum.js';
 
 import Report from './components/report/script.js';
+import AdvancedReportDialog from './components/report/advanced-report-dialog/script.js';
 import BudgetCard from './components/budget-card/script.js';
 import DeleteDialog from './components/delete-dialog/script.js';
 import UpdateDialog from './components/update-dialog/script.js';
@@ -35,6 +36,7 @@ new Vue({
 
     components: {
         'report-component': Report,
+        'advanced-report-dialog': AdvancedReportDialog,
         'budget-card-component': BudgetCard,
         'delete-dialog-component': DeleteDialog,
         'update-dialog-component': UpdateDialog,
@@ -74,11 +76,7 @@ new Vue({
             pages: [10, 20, 30, 40, 50],
             itemsPerPage: 20,
             user: {},
-			kevem: false,
-            descriptionReport: '',
-            typeBudgetsReport: [],
-            years: [2023, 2024, 2025],
-            yearSelected: [new Date().getFullYear()]
+            showAdvancedReport: false
         };
     },
 
@@ -523,70 +521,6 @@ new Vue({
 
                 return 0;
             });
-        },
-
-        teste() {
-            let data = this.budgetItems.filter(
-                item => (
-                    item.description
-                    .toLowerCase()
-                    .trim()
-                    .includes(
-                        this.descriptionReport
-                        .toLowerCase()
-                        .trim()
-                    )
-                )
-            );
-
-			data = data.filter(budget => {
-				const getOnlyYearFromDate = budget.date.split('/')[1];
-
-				return this.yearSelected.includes(Number(getOnlyYearFromDate)) || this.yearSelected.length <= 0;
-			});
-
-			data = data.filter(budget => this.typeBudgetsReport.includes(budget.typeBudget) || this.typeBudgetsReport.length <= 0);
-
-			const gains = data.filter(budget => budget.typeBudget === 'gain');
-			const investments = data.filter(budget => budget.typeBudget === 'investment');
-			const costs = data.filter(budget => budget.typeBudget === 'cost');
-
-			const amountGain = gains.reduce((total, budget) => {
-				return total + Number(budget.amount);
-			}, 0);
-			const amountInvestment = investments.reduce((total, budget) => {
-				return total + Number(budget.amount);
-			}, 0);
-			const amountCost = costs.reduce((total, budget) => {
-				return total + Number(budget.amount);
-			}, 0);
-
-            return [
-                {
-                    items: gains,
-                    amount: amountGain.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }),
-                    name: 'Ganhos',
-                    icon: 'mdi-cash-plus',
-                    color: '#4caf50',
-                    background: '#d1ebd2'
-                },
-                {
-                    items: investments,
-                    amount: amountInvestment.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }),
-                    name: 'Investimentos',
-                    icon: 'mdi-piggy-bank-outline',
-                    color: '#2196f3',
-                    background: '#cbe4f7'
-                },
-                {
-                    items: costs,
-                    amount: amountCost.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }),
-                    name: 'Despesas',
-                    icon: 'mdi-cash-minus',
-                    color: '#ff5252',
-                    background: '#fde9e9'
-                }
-            ];
         }
     }
 });

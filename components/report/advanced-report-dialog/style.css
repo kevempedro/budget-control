@@ -1,0 +1,28 @@
+.v-icon {
+    border-radius: 50%;
+    padding: 6px;
+}
+
+.v-icon.gain {
+    background-color: #d1ebd2;
+}
+
+.v-icon.investment {
+    background-color: #cbe4f7;
+}
+
+.v-icon.cost {
+    background-color: #fde9e9;
+}
+
+.budget-name.gain {
+    color: #4caf50;
+}
+
+.budget-name.investment {
+    color: #2196f3;
+}
+
+.budget-name.cost {
+    color: #ff5252;
+}
