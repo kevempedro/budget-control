@@ -129,6 +129,8 @@ const html = `
                                 {{ budget.date }}
                                 <br>
                                 {{ Number(budget.amount).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) }}
+                                <br>
+                                {{ isPayed(budget) }}
                             </p>
                         </v-expansion-panel-content>
                     </v-expansion-panel>

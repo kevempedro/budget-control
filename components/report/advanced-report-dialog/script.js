@@ -89,6 +89,16 @@ const AdvancedReportDialog = {
             ];
         },
 
+        isPayed(budget) {
+            if (budget?.typeBudget === this.budgetTypesEnumData.COST) {
+                if (budget?.payed) {
+                    return 'Pago (Sim)';
+                }
+
+                return 'Pago (Não)';
+            }
+        },
+
         closeAdvancedReportDialog() {
             this.$emit('close-advance-report-dialog');
         }

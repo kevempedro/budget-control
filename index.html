@@ -105,6 +105,7 @@
                                             <template v-slot:activator="{ on, attrs }">
                                                 <v-icon
                                                     size="20"
+                                                    style="padding: 0;"
                                                     color="#535353"
                                                     class="ms-1"
                                                     v-bind="attrs"
@@ -181,14 +182,19 @@
                                 </p>
                             </div>
 
-                            <div v-else class="d-flex mt-6">
-                                <v-select
-                                    class="per-page-select"
-                                    label="Por página"
-                                    v-model="itemsPerPage"
-                                    :items="pages"
-                                >
-                                </v-select>
+                            <div v-else class="d-flex mt-6 justify-space-between">
+                                <div class="d-flex align-center">
+                                    <v-select
+                                        class="per-page-select mr-4"
+                                        label="Por página"
+                                        v-model="itemsPerPage"
+                                        :items="pages"
+                                    >
+                                    </v-select>
+
+                                    <span>total {{ totalCountPage }} registro(s)</span>
+                                </div>
+
 
                                 <v-pagination
                                     v-model="pagination"

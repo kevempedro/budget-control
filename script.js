@@ -56,6 +56,7 @@ new Vue({
             datePicker: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
             budgetItems: [],
             budgetItemsFiltered: [],
+            totalCountPage: 0,
             budgetItemsCaculation: [],
             typeBudgetsFilter: [],
             datePickerFilter: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
@@ -521,6 +522,8 @@ new Vue({
 
                 return 0;
             });
+
+            this.totalCountPage = this.budgetItemsFiltered.length;
         }
     }
 });
