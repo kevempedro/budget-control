@@ -28,8 +28,8 @@ const html = `
                 <div>
                     <v-text-field
                         v-model="descriptionReport"
+                        id="descriptionReport"
                         name="descriptionReport"
-                        clearable
                         label="Descrição"
                         type="text"
                     >
