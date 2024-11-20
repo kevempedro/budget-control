@@ -103,6 +103,7 @@ const html = `
                             <v-date-picker
                                 v-model="datePickerUpdate"
                                 type="month"
+                                locale="pt-br"
                             >
                             </v-date-picker>
                         </v-col>
