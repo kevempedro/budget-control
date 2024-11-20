@@ -35,6 +35,7 @@ const html = `
             </p>
 
             <div
+                v-if="item.tags"
                 class="mt-4"
                 style="gap: 10px"
             >
