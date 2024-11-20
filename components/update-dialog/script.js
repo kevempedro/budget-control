@@ -13,6 +13,9 @@ const UpdateDialog = {
         loadingUpdateBudget: {
             required: true,
             default: false
+        },
+        tags: {
+            required: true
         }
     },
     data () {
@@ -21,6 +24,8 @@ const UpdateDialog = {
             amountUpdate: null,
             typeBudgetUpdate: '',
             datePickerUpdate: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
+            selectedTags: [],
+            searchedTag: ''
         };
     },
 
@@ -35,6 +40,7 @@ const UpdateDialog = {
                 this.amountUpdate = this.item.amount;
                 this.typeBudgetUpdate = this.item.typeBudget;
                 this.datePickerUpdate = `${currentDateSplited[1]}-${currentDateSplited[0]}`;
+                this.selectedTags = this.item.tags;
             }
         }
     },
@@ -42,6 +48,11 @@ const UpdateDialog = {
     computed: {
         disabledUpdateButton() {
             return !this.descriptionUpdate || !this.amountUpdate;
+        },
+
+        isMobile() {
+            // Verifica se o tamanho da tela é menor ou igual ao breakpoint `sm`
+            return this.$vuetify.breakpoint.smAndDown;
         },
     },
 
@@ -53,7 +64,8 @@ const UpdateDialog = {
                 description: this.descriptionUpdate,
                 amount: this.amountUpdate,
                 typeBudget: this.typeBudgetUpdate,
-                date: `${datePickerUpdateSplited[1]}/${datePickerUpdateSplited[0]}`
+                date: `${datePickerUpdateSplited[1]}/${datePickerUpdateSplited[0]}`,
+                tags: this.selectedTags
             };
 
             this.$emit('on-update-budget', payload);
@@ -61,6 +73,19 @@ const UpdateDialog = {
 
         closeUpdateModal() {
             this.$emit('close-update-modal');
+        },
+
+        searchInuptTag(newTag) {
+            this.searchedTag = newTag?.trim();
+        },
+
+        createTag() {
+            if (this.searchedTag && !this.tags.some(item => item.toLowerCase() === this.searchedTag.toLowerCase())) {
+                this.$emit('register-tag', this.searchedTag);
+                this.selectedTags.push(this.searchedTag);
+
+                this.searchedTag = '';
+            }
         }
     }
 };

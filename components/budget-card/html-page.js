@@ -33,6 +33,25 @@ const html = `
 
                 {{ Number(item.amount).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) }}
             </p>
+
+            <div
+                class="mt-4"
+                style="gap: 10px"
+            >
+                <p>
+                    <b>Tags:</b>
+                </p>
+
+                <v-chip
+                    v-for="(tag, index) in item.tags"
+                    :key="index"
+                    outlined
+                    small
+                    class="mr-2 mt-2"
+                >
+                    {{ tag }}
+                </v-chip>
+            </div>
         </v-card-text>
 
         <v-card-actions>

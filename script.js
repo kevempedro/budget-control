@@ -19,6 +19,7 @@ import {
 
 import { getFullMonthByNumber, uuidv4 } from './utils.js';
 import budgetTypesEnum from './enums/budgetTypes.enum.js';
+import tableNames from './enums/tableNames.enum.js';
 
 import Report from './components/report/script.js';
 import AdvancedReportDialog from './components/report/advanced-report-dialog/script.js';
@@ -54,16 +55,18 @@ new Vue({
             amount: null,
             typeBudget: budgetTypesEnum.GAIN,
             datePicker: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
+            tagItems: [],
+            selectedTags: [],
             budgetItems: [],
             budgetItemsFiltered: [],
             totalCountPage: 0,
             budgetItemsCaculation: [],
             typeBudgetsFilter: [],
+            filterTags: [],
             datePickerFilter: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
             descriptionFilter: '',
             dataBase: getDatabase(),
             authFirebase: getAuth(),
-            tableName: 'budgets',
             loadingRegisterBudget: false,
             loadingUpdateBudget: false,
             loadingDeleteBudget: false,
@@ -170,11 +173,12 @@ new Vue({
         },
 
         applyFilter(item) {
-            const { datePickerFilter, descriptionFilter, typeBudgetsFilter } = item;
+            const { datePickerFilter, descriptionFilter, typeBudgetsFilter, filterTags } = item;
 
             this.datePickerFilter = datePickerFilter,
             this.descriptionFilter = descriptionFilter,
-            this.typeBudgetsFilter = typeBudgetsFilter
+            this.typeBudgetsFilter = typeBudgetsFilter,
+            this.filterTags = filterTags
 
             this.filterBudgetItems();
             this.setPagination;
@@ -257,6 +261,8 @@ new Vue({
                         this.user = user;
 
                         await this.getBudgetItems();
+
+                        await this.getTagItems();
                     } else {
                         window.location.href = './login/index.html';
                     }
@@ -281,12 +287,12 @@ new Vue({
         async getBudgetItems() {
             try {
                 const queryCondition = query(
-                    ref(this.dataBase, this.tableName),
+                    ref(this.dataBase, tableNames.TABLE_NAME_BUDGET),
                     orderByKey(),
                     equalTo(this.getLoginUid)
                 );
 
-                // const snapshot = await get(child(ref(this.dataBase), this.tableName));
+                // const snapshot = await get(child(ref(this.dataBase), tableNames.TABLE_NAME_BUDGET));
                 const snapshot = await get(queryCondition);
 
                 if (snapshot.exists()) {
@@ -316,12 +322,12 @@ new Vue({
                 let index = null;
 
                 const queryCondition = query(
-                    ref(this.dataBase, `${this.tableName}/${this.getLoginUid}`),
+                    ref(this.dataBase, `${tableNames.TABLE_NAME_BUDGET}/${this.getLoginUid}`),
                     orderByChild('id'),
                     equalTo(id)
                 );
 
-                // const snapshot = await get(child(ref(this.dataBase), `${this.tableName}/${this.getLoginUid}/${id}`));
+                // const snapshot = await get(child(ref(this.dataBase), `${tableNames.TABLE_NAME_BUDGET}/${this.getLoginUid}/${id}`));
                 const snapshot = await get(queryCondition);
 
                 if (snapshot.exists()) {
@@ -339,7 +345,7 @@ new Vue({
 
                 return { data, index };
             } catch (error) {
-                console.error(`Erro ao trazer os registros ${id}: `, error);
+                console.error(`Erro ao retornar os registros ${id}: `, error);
             }
         },
 
@@ -348,7 +354,7 @@ new Vue({
                 this.loadingRegisterBudget = true;
                 this.showSnack = false;
 
-                const { description, amount, typeBudget, datePicker } = item;
+                const { description, amount, typeBudget, datePicker, selectedTags } = item;
 
                 if (!description.trim()) {
                     this.showSnack = true;
@@ -368,6 +374,7 @@ new Vue({
                 this.amount = amount;
                 this.typeBudget = typeBudget;
                 this.datePicker = datePicker;
+                this.selectedTags = selectedTags;
 
                 const descriptionSlited = this.description.split(';');
                 const amountSlited = this.amount.split(';');
@@ -404,6 +411,7 @@ new Vue({
                         amount: parseFloat(amountSlited[i].replace(/\./g, '').replace(',', '.')).toString(),
                         date: `${datePickerSplited[1]}/${datePickerSplited[0]}`,
                         typeBudget: this.typeBudget,
+                        tags: this.selectedTags,
                         order: currentOrder
                     };
 
@@ -411,7 +419,7 @@ new Vue({
                         payload = { ...payload, payed: false };
                     }
 
-                    await set(ref(this.dataBase, `${this.tableName}/${this.getLoginUid}/${currentId}`), payload)
+                    await set(ref(this.dataBase, `${tableNames.TABLE_NAME_BUDGET}/${this.getLoginUid}/${currentId}`), payload);
 
                     await this.getBudgetItems();
                 }
@@ -423,7 +431,7 @@ new Vue({
                 this.showSnack = true;
                 this.snackbarText = 'Registro cadastrado com sucesso';
             } catch (error) {
-                console.error('Erro ao registrar o registro: ', error);
+                console.error('Erro ao cadastrar o registro: ', error);
             } finally {
                 this.loadingRegisterBudget = false;
             }
@@ -434,7 +442,7 @@ new Vue({
                 this.loadingDeleteBudget = true;
                 const { index } = await this.getBudgetItemById(this.deleteDialog.id);
 
-                await remove(ref(this.dataBase, `${this.tableName}/${this.getLoginUid}/${index}`));
+                await remove(ref(this.dataBase, `${tableNames.TABLE_NAME_BUDGET}/${this.getLoginUid}/${index}`));
 
                 await this.getBudgetItems();
 
@@ -453,7 +461,7 @@ new Vue({
                 this.loadingUpdateBudget = true;
                 const { index } = await this.getBudgetItemById(this.updateDialog.id);
 
-                await update(ref(this.dataBase, `${this.tableName}/${this.getLoginUid}/${index}`), payload);
+                await update(ref(this.dataBase, `${tableNames.TABLE_NAME_BUDGET}/${this.getLoginUid}/${index}`), payload);
 
                 await this.getBudgetItems();
 
@@ -471,7 +479,7 @@ new Vue({
             try {
                 const { index } = await this.getBudgetItemById(item.id);
 
-                await update(ref(this.dataBase, `${this.tableName}/${this.getLoginUid}/${index}`), { payed: item.payed });
+                await update(ref(this.dataBase, `${tableNames.TABLE_NAME_BUDGET}/${this.getLoginUid}/${index}`), { payed: item.payed });
 
                 this.showSnack = true;
                 this.snackbarText = 'Registro atualizado com sucesso';
@@ -508,6 +516,10 @@ new Vue({
                 );
             }
 
+            if (this.filterTags.length > 0) {
+                this.budgetItemsFiltered = this.budgetItemsFiltered.filter(item => item.tags.some(tag => this.filterTags.includes(tag)));
+            }
+
             this.budgetItemsFiltered.sort(function(a, b) {
                 const typeBudgetA = a.typeBudget.toUpperCase();
                 const typeBudgetB = b.typeBudget.toUpperCase();
@@ -524,6 +536,32 @@ new Vue({
             });
 
             this.totalCountPage = this.budgetItemsFiltered.length;
-        }
-    }
+        },
+
+        async registerTags(newTag) {
+            try {
+                await set(ref(this.dataBase, `${tableNames.TABLE_NAME_TAGS}/${this.tagItems.length}`), newTag);
+
+                await this.getTagItems();
+            } catch (error) {
+                console.error('Erro ao criar uma tag: ', error);
+            }
+        },
+
+        async getTagItems() {
+            try {
+                const snapshot = await get(child(ref(this.dataBase), tableNames.TABLE_NAME_TAGS));
+
+                if (snapshot.exists()) {
+                    const data = snapshot.val();
+
+                    this.tagItems = data;
+                } else {
+                    this.tagItems = [];
+                }
+            } catch (error) {
+                console.error('Erro ao retornar as tags: ', error);
+            }
+        },
+    },
 });

@@ -38,6 +38,40 @@ const html = `
                         </v-col>
 
                         <v-col cols="12">
+                            <v-autocomplete
+                                v-model="selectedTags"
+                                :items="tags"
+                                chips
+                                small-chips
+                                deletable-chips
+                                label="Tags"
+                                clearable
+                                multiple
+                                @update:search-input="searchInuptTag"
+                                @keydown.enter="createTag"
+                            >
+                                <template v-slot:no-data>
+                                    <div class="d-flex align-center justify-center">
+                                        <div v-if="isMobile" class="d-flex align-center justify-center">
+                                            <span class="mr-2">Essa tag não foi encontrada</span>
+
+                                            <v-btn
+                                                text
+                                                small
+                                                color="primary"
+                                                @click="createTag"
+                                            >
+                                                Criar tag
+                                            </v-btn>
+                                        </div>
+
+                                        <span v-else>Essa tag não foi encontrada: <b>Pressione enter para criar</b></span>
+                                    </div>
+                                </template>
+                            </v-autocomplete>
+                        </v-col>
+
+                        <v-col cols="12">
                             <v-radio-group
                                 v-model="typeBudgetUpdate"
                                 column

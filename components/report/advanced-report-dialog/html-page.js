@@ -43,6 +43,24 @@ const html = `
                     >
                     </v-select>
 
+                     <v-autocomplete
+                        v-model="filterTags"
+                        :items="tags"
+                        style="width: 100%;"
+                        chips
+                        small-chips
+                        deletable-chips
+                        label="Tags"
+                        clearable
+                        multiple
+                    >
+                        <template v-slot:no-data>
+                            <div class="d-flex align-center justify-center">
+                                <span>Essa tag não foi encontrada</span>
+                            </div>
+                        </template>
+                    </v-autocomplete>
+
                     <div class="d-flex flex-column">
                         <v-checkbox
                             v-model="typeBudgetsReport"
@@ -121,8 +139,9 @@ const html = `
 
                         <v-expansion-panel-content>
                             <p
-                                v-for="budget in item.items"
+                                v-for="(budget, indexBudget) in item.items"
                                 :key="budget.id"
+                                :style="budgetBackground(indexBudget)"
                             >
                                 {{ budget.description }}
                                 <br>
@@ -130,7 +149,17 @@ const html = `
                                 <br>
                                 {{ Number(budget.amount).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) }}
                                 <br>
-                                {{ isPayed(budget) }}
+                                {{ budget.typeBudget === 'cost' ? isPayed(budget) : '' }}
+                                <br v-if="budget.typeBudget === 'cost'">
+                                <v-chip
+                                    v-for="(tag, indexTag) in budget.tags"
+                                    :key="indexTag"
+                                    outlined
+                                    small
+                                    class="mr-2 mt-2"
+                                >
+                                    {{ tag }}
+                                </v-chip>
                             </p>
                         </v-expansion-panel-content>
                     </v-expansion-panel>

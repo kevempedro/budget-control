@@ -14,27 +14,48 @@ const html = `
             </v-expansion-panel-header>
 
             <v-expansion-panel-content>
-                <div class="d-flex flex-column flex-md-row align-start justify-space-between">
-                    <v-date-picker
-                        v-model="datePickerFilter"
-                        type="month"
-                        locale="pt-br"
-                    >
-                    </v-date-picker>
+                <v-row class="justify-space-between">
+                    <v-col cols="12" md="4" style="max-width: max-content;">
+                        <v-date-picker
+                            v-model="datePickerFilter"
+                            type="month"
+                            locale="pt-br"
+                        >
+                        </v-date-picker>
+                    </v-col>
 
-                    <v-text-field
-                        style="width: 100%;"
-                        class="mx-md-10 mt-6 mt-md-0"
-                        v-model="descriptionFilter"
-                        clearable
-                        id="descriptionFilter"
-                        name="descriptionFilter"
-                        label="Descrição"
-                        type="text"
-                    >
-                    </v-text-field>
+                    <v-col cols="12" md="4">
+                        <v-text-field
+                            style="width: 100%;"
+                            v-model="descriptionFilter"
+                            clearable
+                            id="descriptionFilter"
+                            name="descriptionFilter"
+                            label="Descrição"
+                            type="text"
+                        >
+                        </v-text-field>
 
-                    <div class="d-flex flex-column">
+                        <v-autocomplete
+                            v-model="filterTags"
+                            :items="tags"
+                            style="width: 100%;"
+                            chips
+                            small-chips
+                            deletable-chips
+                            label="Tags"
+                            clearable
+                            multiple
+                        >
+                            <template v-slot:no-data>
+                                <div class="d-flex align-center justify-center">
+                                    <span>Essa tag não existe</span>
+                                </div>
+                            </template>
+                        </v-autocomplete>
+                    </v-col>
+
+                    <v-col cols="12" md="4" style="max-width: max-content;">
                         <v-checkbox
                             v-model="typeBudgetsFilter"
                             style="width:max-content;"
@@ -64,8 +85,8 @@ const html = `
                             :value="budgetTypesEnumData.COST"
                         >
                         </v-checkbox>
-                    </div>
-                </div>
+                    </v-col>
+                </v-row>
 
                 <v-btn
                     outlined

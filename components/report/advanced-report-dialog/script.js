@@ -10,6 +10,9 @@ const AdvancedReportDialog = {
         },
         budgetItems: {
             required: true
+        },
+        tags: {
+            required: true
         }
     },
     data () {
@@ -18,7 +21,8 @@ const AdvancedReportDialog = {
             yearSelected: [new Date().getFullYear()],
             descriptionReport: '',
             typeBudgetsReport: [],
-            budgetTypesEnumData: budgetTypesEnum
+            budgetTypesEnumData: budgetTypesEnum,
+            filterTags: []
         };
     },
 
@@ -46,6 +50,10 @@ const AdvancedReportDialog = {
 			});
 
 			data = data.filter(budget => this.typeBudgetsReport.includes(budget.typeBudget) || this.typeBudgetsReport.length <= 0);
+
+            if (this.filterTags.length > 0) {
+                data = data.filter(budget => budget.tags && budget.tags.some(tag => this.filterTags.includes(tag)));
+            }
 
 			const gains = data.filter(budget => budget.typeBudget === this.budgetTypesEnumData.GAIN);
 			const investments = data.filter(budget => budget.typeBudget === this.budgetTypesEnumData.INVESTMENT);
@@ -101,6 +109,14 @@ const AdvancedReportDialog = {
 
         closeAdvancedReportDialog() {
             this.$emit('close-advance-report-dialog');
+        },
+
+        budgetBackground(index) {
+            if (index % 2 === 0) {
+                return 'background-color: #f5f5f5; padding: 8px; 5px; border-radius: 3px;'
+            }
+
+            return 'padding: 8px; 5px;';
         }
     }
 };

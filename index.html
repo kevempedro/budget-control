@@ -41,7 +41,9 @@
                                 <!-- Início - Informações para o cadastro -->
                                 <register-component
                                     :loading-register-budget="loadingRegisterBudget"
+                                    :tags="tagItems"
                                     @register-budget="registerBudget"
+                                    @register-tag="registerTags"
                                 >
                                 </register-component>
                                 <!-- Fim - Informações para o cadastro -->
@@ -66,6 +68,7 @@
 
                             <div class="mt-12">
                                 <filter-component
+                                    :tags="tagItems"
                                     @on-apply-filter="applyFilter"
                                 >
                                 </filter-component>
@@ -207,6 +210,7 @@
                             <advanced-report-dialog
                                 :is-open="showAdvancedReport"
                                 :budget-items="budgetItems"
+                                :tags="tagItems"
                                 @close-advance-report-dialog="showAdvancedReport = false"
                             >
                             </advanced-report-dialog>
@@ -229,8 +233,10 @@
                             <update-dialog-component
                                 :is-open="updateDialog.isOpen"
                                 :item="updateDialog.item"
+                                :tags="tagItems"
                                 :loading-update-budget="loadingUpdateBudget"
                                 @on-update-budget="updateBudget"
+                                @register-tag="registerTags"
                                 @close-update-modal="closeUpdateModal"
                             >
                             </update-dialog-component>
