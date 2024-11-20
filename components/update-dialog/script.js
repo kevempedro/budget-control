@@ -40,7 +40,7 @@ const UpdateDialog = {
                 this.amountUpdate = this.item.amount;
                 this.typeBudgetUpdate = this.item.typeBudget;
                 this.datePickerUpdate = `${currentDateSplited[1]}-${currentDateSplited[0]}`;
-                this.selectedTags = this.item.tags;
+                this.selectedTags = this.item.tags || [];
             }
         }
     },

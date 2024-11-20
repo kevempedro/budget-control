@@ -517,7 +517,7 @@ new Vue({
             }
 
             if (this.filterTags.length > 0) {
-                this.budgetItemsFiltered = this.budgetItemsFiltered.filter(item => item.tags.some(tag => this.filterTags.includes(tag)));
+                this.budgetItemsFiltered = this.budgetItemsFiltered.filter(item => item?.tags?.some(tag => this.filterTags.includes(tag)));
             }
 
             this.budgetItemsFiltered.sort(function(a, b) {
