@@ -88,6 +88,25 @@ new Vue({
         this.verifyIfUserIsAuthenticated();
     },
 
+    mounted() {
+        const backToTopButton = document.getElementById('backToTop');
+
+        window.onscroll = function () {
+          if (document.documentElement.scrollTop > 2500) {
+            backToTopButton.style.display = 'flex';
+          } else {
+            backToTopButton.style.display = 'none';
+          }
+        };
+
+        backToTopButton.addEventListener('click', function () {
+            window.scrollTo({
+              top: 0,
+              behavior: 'smooth'
+            });
+        });
+    },
+
     computed: {
         setPagination() {
             this.pagination = 1;
@@ -284,7 +303,7 @@ new Vue({
             }
         },
 
-        async getBudgetItems() {
+        async getBudgetItems(resetPagination = true) {
             try {
                 const queryCondition = query(
                     ref(this.dataBase, tableNames.TABLE_NAME_BUDGET),
@@ -306,7 +325,9 @@ new Vue({
 
                     this.filterBudgetItems();
 
-                    this.setPagination;
+                    if (resetPagination) {
+                        this.setPagination;
+                    }
                 } else {
                     this.budgetItems = [];
                     this.budgetItemsFiltered = [];
@@ -421,7 +442,7 @@ new Vue({
 
                     await set(ref(this.dataBase, `${tableNames.TABLE_NAME_BUDGET}/${this.getLoginUid}/${currentId}`), payload);
 
-                    await this.getBudgetItems();
+                    await this.getBudgetItems(false);
                 }
 
                 this.description = '';
@@ -444,7 +465,7 @@ new Vue({
 
                 await remove(ref(this.dataBase, `${tableNames.TABLE_NAME_BUDGET}/${this.getLoginUid}/${index}`));
 
-                await this.getBudgetItems();
+                await this.getBudgetItems(false);
 
                 this.showSnack = true;
                 this.snackbarText = 'Registro excluido com sucesso';
@@ -463,7 +484,7 @@ new Vue({
 
                 await update(ref(this.dataBase, `${tableNames.TABLE_NAME_BUDGET}/${this.getLoginUid}/${index}`), payload);
 
-                await this.getBudgetItems();
+                await this.getBudgetItems(false);
 
                 this.showSnack = true;
                 this.snackbarText = 'Registro atualizado com sucesso';

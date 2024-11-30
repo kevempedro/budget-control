@@ -26,3 +26,11 @@
     background-color: #A8B6C2;
     border-radius: 5px;
 }
+
+#backToTop {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 15px;
+    display: none;
+}
