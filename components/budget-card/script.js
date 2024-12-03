@@ -41,6 +41,10 @@ const BudgetCard = {
                 default:
                     return '';
             }
+        },
+
+        openRemoveTagModal(payload, tagToRemove) {
+            this.$emit('open-remove-tag-modal', { payload, tagToRemove });
         }
     }
 };

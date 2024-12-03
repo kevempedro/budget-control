@@ -40,15 +40,21 @@ const html = `
                 style="gap: 10px"
             >
                 <p>
-                    <b>Tags:</b>
+                    <v-icon small>
+                        mdi-tag
+                    </v-icon>
+
+                    <b>Tags</b>
                 </p>
 
                 <v-chip
                     v-for="(tag, index) in item.tags"
                     :key="index"
+                    class="mr-2 mt-2"
                     outlined
                     small
-                    class="mr-2 mt-2"
+                    close
+                    @click:close="openRemoveTagModal(item, tag)"
                 >
                     {{ tag }}
                 </v-chip>

@@ -166,6 +166,7 @@
                                     :item="item"
                                     @open-update-modal="openUpdateModal"
                                     @open-delete-modal="openDeleteModal"
+                                    @open-remove-tag-modal="openRemoveTagModal"
                                     @on-check-payed="checkPayed"
                                 >
                                 </budget-card-component>
@@ -227,6 +228,16 @@
                         >
                         </delete-dialog-component>
                         <!-- Fim - Modal de confirmação de exclusão do registro -->
+
+                        <!-- Início - Modal de confirmação de remoção da tag do registro -->
+                        <remove-tag-dialog-component
+                            :is-open="removeTagDialog.isOpen"
+                            :loading-remove-tag="loadingRemoveTag"
+                            @on-remove-tag="removeTag"
+                            @close-remove-tag-modal="closeRemoveTagModal"
+                        >
+                        </remove-tag-dialog-component>
+                        <!-- Fim - Modal de confirmação de remoção da tag do registro -->
 
                         <!-- Início - Modal de edição do registro -->
                         <v-row justify="center">

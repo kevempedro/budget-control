@@ -25,6 +25,7 @@ import Report from './components/report/script.js';
 import AdvancedReportDialog from './components/report/advanced-report-dialog/script.js';
 import BudgetCard from './components/budget-card/script.js';
 import DeleteDialog from './components/delete-dialog/script.js';
+import RemoveTagDialog from './components/remove-tag-dialog/script.js';
 import UpdateDialog from './components/update-dialog/script.js';
 import Snackbar from './components/snackbar/script.js';
 import Filter from './components/filter/script.js';
@@ -40,6 +41,7 @@ new Vue({
         'advanced-report-dialog': AdvancedReportDialog,
         'budget-card-component': BudgetCard,
         'delete-dialog-component': DeleteDialog,
+        'remove-tag-dialog-component': RemoveTagDialog,
         'update-dialog-component': UpdateDialog,
         'snackbar-component': Snackbar,
         'filter-component': Filter,
@@ -50,6 +52,7 @@ new Vue({
     data () {
         return {
             deleteDialog: { isOpen: false, id: 0 },
+            removeTagDialog: { isOpen: false, payload: null, tagToRemove: null },
             updateDialog: { isOpen: false, id: 0, item: {} },
             description: '',
             amount: null,
@@ -70,6 +73,7 @@ new Vue({
             loadingRegisterBudget: false,
             loadingUpdateBudget: false,
             loadingDeleteBudget: false,
+            loadingRemoveTag: false,
             loadingLogout: false,
             showSnack: false,
             snackbarText: '',
@@ -164,6 +168,14 @@ new Vue({
             };
         },
 
+        openRemoveTagModal({ payload, tagToRemove }) {
+            this.removeTagDialog = {
+                isOpen: true,
+                payload,
+                tagToRemove
+            };
+        },
+
         async openUpdateModal(id) {
             const { data } = await this.getBudgetItemById(id);
 
@@ -180,6 +192,14 @@ new Vue({
             this.deleteDialog = {
                 isOpen: false,
                 id: 0
+            };
+        },
+
+        closeRemoveTagModal() {
+            this.removeTagDialog = {
+                isOpen: false,
+                payload: null,
+                tagToRemove: null
             };
         },
 
@@ -447,7 +467,6 @@ new Vue({
 
                 this.description = '';
                 this.amount = null;
-                this.typeBudget = budgetTypesEnum.GAIN;
 
                 this.showSnack = true;
                 this.snackbarText = 'Registro cadastrado com sucesso';
@@ -474,6 +493,29 @@ new Vue({
             } finally {
                 this.loadingDeleteBudget = false;
                 this.closeDeleteModal();
+            }
+        },
+
+        async removeTag() {
+            try {
+                this.loadingRemoveTag = true;
+
+                const { payload, tagToRemove } = this.removeTagDialog;
+                payload.tags = payload.tags.filter(tag => tag !== tagToRemove);
+
+                const { index } = await this.getBudgetItemById(payload?.id);
+
+                await update(ref(this.dataBase, `${tableNames.TABLE_NAME_BUDGET}/${this.getLoginUid}/${index}`), payload);
+
+                await this.getBudgetItems(false);
+
+                this.showSnack = true;
+                this.snackbarText = 'Tag removida com sucesso';
+            } catch (error) {
+                console.error('Erro ao remover a tag: ', error);
+            } finally {
+                this.loadingRemoveTag = false;
+                this.closeRemoveTagModal();
             }
         },
 
