@@ -603,7 +603,7 @@ new Vue({
 
         async registerTags(newTag) {
             try {
-                await set(ref(this.dataBase, `${tableNames.TABLE_NAME_TAGS}/${this.tagItems.length}`), newTag);
+                await set(ref(this.dataBase, `${tableNames.TABLE_NAME_TAGS}/${this.getLoginUid}/${this.tagItems.length}`), newTag);
 
                 await this.getTagItems();
             } catch (error) {
@@ -613,12 +613,22 @@ new Vue({
 
         async getTagItems() {
             try {
-                const snapshot = await get(child(ref(this.dataBase), tableNames.TABLE_NAME_TAGS));
+                const queryCondition = query(
+                    ref(this.dataBase, tableNames.TABLE_NAME_TAGS),
+                    orderByKey(),
+                    equalTo(this.getLoginUid)
+                );
+
+                const snapshot = await get(queryCondition);
 
                 if (snapshot.exists()) {
-                    const data = snapshot.val();
+                    const data = snapshot.val()[this.getLoginUid];
 
-                    this.tagItems = data;
+                    if (typeof data === 'object' && !Array.isArray(data)) {
+                        this.tagItems = Object.values(data);
+                    } else {
+                        this.tagItems = data;
+                    }
                 } else {
                     this.tagItems = [];
                 }
