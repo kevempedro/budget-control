@@ -143,9 +143,12 @@ new Vue({
             this.filterBudgetItems();
 
             const totalItemsToShow = (this.itemsPerPage * this.pagination);
-            this.budgetItemsFiltered = this.budgetItemsFiltered.slice(((totalItemsToShow - this.itemsPerPage)),
-                totalItemsToShow)
-            ;
+            this.budgetItemsFiltered = this.budgetItemsFiltered.slice(
+                (
+                    (totalItemsToShow - this.itemsPerPage)
+                ),
+                totalItemsToShow
+            );
 
             const targetDiv = this.$refs.paginationAnchor;
             window.scrollTo({
@@ -347,6 +350,16 @@ new Vue({
 
                     if (resetPagination) {
                         this.setPagination;
+                    } else {
+                        this.filterBudgetItems();
+
+                        const totalItemsToShow = (this.itemsPerPage * this.pagination);
+                        this.budgetItemsFiltered = this.budgetItemsFiltered.slice(
+                            (
+                                (totalItemsToShow - this.itemsPerPage)
+                            ),
+                            totalItemsToShow
+                        );
                     }
                 } else {
                     this.budgetItems = [];
