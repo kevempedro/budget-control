@@ -3,6 +3,7 @@ const html = `
         <v-text-field
             v-model="description"
             name="description"
+            outlined
             clearable
             label="Descrição"
             type="text"
@@ -12,6 +13,7 @@ const html = `
         <v-text-field
             v-model="amount"
             name="amount"
+            outlined
             clearable
             label="Valor"
             type="text"
@@ -21,6 +23,7 @@ const html = `
 
         <v-autocomplete
             v-model="selectedTags"
+            outlined
             :items="tags"
             chips
             small-chips

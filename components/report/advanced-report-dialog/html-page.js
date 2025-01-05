@@ -29,6 +29,7 @@ const html = `
                     <v-text-field
                         v-model="descriptionReport"
                         id="descriptionReport"
+                        outlined
                         name="descriptionReport"
                         label="Descrição"
                         type="text"
@@ -38,6 +39,7 @@ const html = `
                     <v-select
                         v-model="yearSelected"
                         :items="years"
+                        outlined
                         label="Ano"
                         multiple
                     >
@@ -48,6 +50,7 @@ const html = `
                         :items="tags"
                         style="width: 100%;"
                         chips
+                        outlined
                         small-chips
                         deletable-chips
                         label="Tags"

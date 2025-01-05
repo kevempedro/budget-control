@@ -29,6 +29,7 @@ const html = `
                             style="width: 100%;"
                             v-model="descriptionFilter"
                             clearable
+                            outlined
                             id="descriptionFilter"
                             name="descriptionFilter"
                             label="Descrição"
@@ -41,6 +42,7 @@ const html = `
                             :items="tags"
                             style="width: 100%;"
                             chips
+                            outlined
                             small-chips
                             deletable-chips
                             label="Tags"

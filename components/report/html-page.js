@@ -2,7 +2,14 @@ const html = `
     <div class="order-last" style="height: max-content;">
         <h3>Resultados do ano de {{ yearSelected }}</h3>
 
-        <v-select v-model="yearSelected" :items="years" label="Ano"></v-select>
+        <v-select
+            v-model="yearSelected"
+            class="mt-4"
+            :items="years"
+            label="Ano"
+            outlined
+        >
+        </v-select>
 
         <div v-if="resultsOfTheYearHasAnyRegister" class="d-flex flex-column mt-4">
             <div class="d-flex justify-space-between" style="gap: 20px;">

@@ -1,5 +1,5 @@
 const html = `
-    <v-card :class="returnBorderCardClass(item.typeBudget)">
+    <v-card :class="returnBorderCardClass(item.typeBudget)" elevation="5">
         <v-card-title class="d-flex justify-space-between align-center">
             {{ item.date }}
 

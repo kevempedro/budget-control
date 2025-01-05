@@ -5,17 +5,24 @@ const html = `
         max-width="600px"
     >
         <v-card>
-            <v-card-title>
-                <span class="text-h5">Atualizar Registro</span>
-            </v-card-title>
+            <v-toolbar color="primary">
+				<v-toolbar-title
+                    class="text-h5"
+                    style="color: #FFF;"
+                >
+					Atualizar Registro
+				</v-toolbar-title>
+            </v-toolbar>
 
             <v-card-text>
                 <v-container>
-                    <v-row>
+                    <v-row class="mt-2">
                         <v-col cols="12">
                             <v-text-field
                                 v-model="descriptionUpdate"
                                 clearable
+                                outlined
+                                hide-details
                                 id="descriptionUpdate"
                                 name="descriptionUpdate"
                                 label="Descrição"
@@ -28,6 +35,8 @@ const html = `
                             <v-text-field
                                 v-model="amountUpdate"
                                 clearable
+                                outlined
+                                hide-details
                                 id="amountUpdate"
                                 name="amountUpdate"
                                 label="Valor"
@@ -41,6 +50,8 @@ const html = `
                             <v-autocomplete
                                 v-model="selectedTags"
                                 :items="tags"
+                                outlined
+                                hide-details
                                 chips
                                 small-chips
                                 deletable-chips

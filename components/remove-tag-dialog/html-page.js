@@ -5,11 +5,16 @@ const html = `
         max-width="290"
     >
         <v-card>
-            <v-card-title class="text-h5">
-                Atenção
-            </v-card-title>
+            <v-toolbar color="primary">
+				<v-toolbar-title
+                    class="text-h5"
+                    style="color: #FFF;"
+                >
+					Atenção
+				</v-toolbar-title>
+            </v-toolbar>
 
-            <v-card-text>
+            <v-card-text class="mt-4">
                 Tem certeza de que deseja remover está tag?
             </v-card-text>
 

@@ -102,6 +102,10 @@ const Profile = {
             this.$emit('logout-user');
         },
 
+        openAdvancedReport() {
+            this.$emit('open-advanced-report');
+        },
+
         async changeName() {
             try {
                 const words = this.displayName ? this.displayName.trim().split(/\s+/) : [];

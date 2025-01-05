@@ -56,12 +56,23 @@ const html = `
                             depressed
                             rounded
                             text
+                            @click="openAdvancedReport"
+                        >
+                            Relatório avançado
+                        </v-btn>
+
+                        <v-divider class="my-3"></v-divider>
+
+                        <v-btn
+                            depressed
+                            rounded
+                            text
                             @click="logoutUser"
                         >
                             Sair
 
                             <v-icon size="20">
-                                mdi-power
+                                mdi-logout
                             </v-icon>
                         </v-btn>
                     </div>
@@ -95,7 +106,7 @@ const html = `
                 </v-toolbar>
 
                 <v-list
-                    class="mt-10"
+                    class="mt-6"
                     three-line
                     subheader
                 >
@@ -110,6 +121,7 @@ const html = `
                                 :rules="displayNameRules"
                                 label="Nome"
                                 type="text"
+                                outlined
                             >
                             </v-text-field>
 
@@ -136,6 +148,7 @@ const html = `
                                 disabled
                                 label="E-mail"
                                 type="email"
+                                outlined
                             >
                             </v-text-field>
 
