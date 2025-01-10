@@ -181,10 +181,11 @@
                             <div v-else class="d-flex mt-6 justify-space-between">
                                 <div class="d-flex align-center">
                                     <v-select
+                                        v-model="itemsPerPage"
                                         class="per-page-select mr-4"
                                         label="Por página"
-                                        v-model="itemsPerPage"
                                         :items="pages"
+                                        outlined
                                     >
                                     </v-select>
 
