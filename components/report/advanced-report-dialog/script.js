@@ -1,4 +1,5 @@
 import budgetTypesEnum from '../../../enums/budgetTypes.enum.js';
+import yearsMock from '../../../mocks/years.js';
 
 import html from './html-page.js';
 
@@ -17,7 +18,7 @@ const AdvancedReportDialog = {
     },
     data () {
         return {
-            years: [2023, 2024, 2025],
+            years: yearsMock,
             yearSelected: [new Date().getFullYear()],
             descriptionReport: '',
             typeBudgetsReport: [],
